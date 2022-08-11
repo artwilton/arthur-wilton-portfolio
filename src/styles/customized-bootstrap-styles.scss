@@ -1,0 +1,42 @@
+// Required
+@import "/node_modules/bootstrap/scss/functions";
+
+// Default variable overrides
+
+$display1-size: 7.5rem;
+$display1-weight: 700;
+$headings-font-family:  'Montserrat', sans-serif;
+$lead-font-size: 2.6rem;
+$lead-font-weight: 200;
+
+$btn-font-family: gill-sans-nova, Gill Sans,Gill Sans MT,Calibri,sans-serif;
+
+$btn-font-size-lg: 2.2rem;
+$btn-border-width: .15rem;
+$btn-font-weight: 400;
+$btn-white-space: nowrap;
+
+$btn-padding-y-lg: 0;
+$btn-border-radius-lg: 0;
+
+$h1-font-size: 15.2rem;
+$h2-font-size: 3.5rem;
+$h3-font-size: 2.8rem;
+
+$border-width: .15rem;
+
+$card-border-radius: 0;
+
+// Required
+@import "/node_modules/bootstrap/scss/variables";
+@import "/node_modules/bootstrap/scss/maps";
+@import "/node_modules/bootstrap/scss/mixins";
+@import "/node_modules/bootstrap/scss/root";
+
+// Optional Bootstrap components
+@import "/node_modules/bootstrap/scss/utilities";
+@import "/node_modules/bootstrap/scss/reboot";
+@import "/node_modules/bootstrap/scss/type";
+@import "/node_modules/bootstrap/scss/buttons";
+
+// @import "/node_modules/bootstrap/scss/utilities/api";

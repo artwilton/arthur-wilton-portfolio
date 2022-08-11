@@ -3,5 +3,5 @@ module.exports = {
     title: `Arthur Wilton Portfolio`,
     siteUrl: `https://www.yourdomain.tld`,
   },
-  plugins: [],
+  plugins: [`gatsby-plugin-sass`],
 }
