@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { Link } from 'gatsby'
 import OffcanvasExample from './offcanvasExample'
 
 const Layout = ({ pageTitle, children }) => {
