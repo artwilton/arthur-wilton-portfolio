@@ -22,7 +22,7 @@ function OffcanvasExample() {
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
             onEnter={handleEnter}
-            onExit={handleExit}
+            onExiting={handleExit}
             className="text-bg-dark"
               id={`offcanvasNavbar-expand-${expand}`}
               aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
@@ -36,7 +36,7 @@ function OffcanvasExample() {
                   AW
                 </Offcanvas.Title>
               </Offcanvas.Header>
-              <Offcanvas.Body className={`${centerText ? "mx-auto text-center" : null}`}>
+              <Offcanvas.Body className={`${centerText ? "mx-auto text-center nav-offcanvas" : 'nav-top'}`}>
                 <Nav className="justify-content-end flex-grow-1 px-5">
                   <Nav.Link as={Link} to="/work">Work</Nav.Link>
                   <Nav.Link as={Link} to="/about">About</Nav.Link>
@@ -45,13 +45,13 @@ function OffcanvasExample() {
                 </Nav>
                 <Nav className="flex-row justify-content-evenly">
                   <Navbar.Brand href="https://www.github.com/artwilton" aria-label="GitHub">
-                    <GitHubIcon style={{fontSize: '1.2em'}} role="img" alt="GitHub Icon" className="nav-svg d-inline-block align-text-top"/>
+                    <GitHubIcon  role="img" alt="GitHub Icon" className="d-inline-block align-text-top"/>
                   </Navbar.Brand>                  
                   <Navbar.Brand href="https://www.linkedin.com/in/artwilton" aria-label="LinkedIn">
-                    <LinkedInIcon style={{fontSize: '1.2em'}} role="img" alt="LinkedIn Icon" className="nav-svg d-inline-block align-text-top"/>
+                    <LinkedInIcon  role="img" alt="LinkedIn Icon" className="d-inline-block align-text-top"/>
                   </Navbar.Brand>
                   <Navbar.Brand href="https://www.behance.net/artwilton" aria-label="Behance">
-                    <BehanceIcon style={{fontSize: '1.2em'}} role="img" alt="Behance Icon" className="nav-svg d-inline-block align-text-top"/>
+                    <BehanceIcon  role="img" alt="Behance Icon" className="d-inline-block align-text-top"/>
                   </Navbar.Brand>
                 </Nav>
               </Offcanvas.Body>
