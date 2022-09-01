@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 const HomePage = () => {
   return (
     <Layout pageTitle={"Home Page"}>
+      <p>Test</p>
     </Layout>
   )
 }
