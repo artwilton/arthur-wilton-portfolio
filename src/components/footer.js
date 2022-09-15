@@ -3,13 +3,14 @@ import Container from 'react-bootstrap/Container';
 
 const Footer = (props) => {
   const socialMediaIcons = props.socialMediaIcons
-  const socialMediaList = socialMediaIcons.map((icon) =>
-    <li key={icon.name}>
-      <a href={icon.link} aria-label={icon.name}>
-      <icon.svgComponent/>
+  const socialMediaList = socialMediaIcons.map(({name, link, SVGComp}) =>
+    <li key={name}>
+      <a href={link} aria-label={name}>
+      <SVGComp/>
       </a>
     </li>
     );
+    
     return (
       <Container>
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">

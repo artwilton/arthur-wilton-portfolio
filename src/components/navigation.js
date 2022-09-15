@@ -4,14 +4,22 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Link } from 'gatsby';
-import { GitHubIcon, LinkedInIcon, BehanceIcon} from '../images/social_media_icons'
 
-function OffcanvasExample() {
+const Navigation = (props) => {
   const [centerText, setCenterText] = useState(false);
 
   const handleExit = () => setCenterText(false);
   const handleEnter = () => setCenterText(true);
   const expand = 'md'
+  const socialMediaIcons = props.socialMediaIcons
+
+  const socialMediaList = socialMediaIcons.map(({name, link, SVGComp}) =>
+    <li key={name}>
+      <a href={link} aria-label={name}>
+      <SVGComp/>
+      </a>
+    </li>
+    );
 
   return (
         <Navbar bg="dark" variant="dark" expand={expand} className="mb-3">
@@ -44,15 +52,7 @@ function OffcanvasExample() {
                   <Nav.Link href="https://artwilton.medium.com">Blog</Nav.Link>
                 </Nav>
                 <Nav className="flex-row justify-content-evenly">
-                  <Navbar.Brand href="https://www.github.com/artwilton" aria-label="GitHub">
-                    <GitHubIcon  role="img" alt="GitHub Icon" className="d-inline-block align-text-top"/>
-                  </Navbar.Brand>                  
-                  <Navbar.Brand href="https://www.linkedin.com/in/artwilton" aria-label="LinkedIn">
-                    <LinkedInIcon  role="img" alt="LinkedIn Icon" className="d-inline-block align-text-top"/>
-                  </Navbar.Brand>
-                  <Navbar.Brand href="https://www.behance.net/artwilton" aria-label="Behance">
-                    <BehanceIcon  role="img" alt="Behance Icon" className="d-inline-block align-text-top"/>
-                  </Navbar.Brand>
+                  {socialMediaList}
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
@@ -61,4 +61,4 @@ function OffcanvasExample() {
   );
 }
 
-export default OffcanvasExample;
+export default Navigation;
