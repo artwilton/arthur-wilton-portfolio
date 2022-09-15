@@ -1,5 +1,5 @@
 import * as React from 'react'
-import OffcanvasExample from './offcanvasExample'
+import Navigation from './navigation'
 import Footer from './footer'
 import { GitHubIcon, LinkedInIcon, BehanceIcon } from '../images/social_media_icons'
 
@@ -12,7 +12,7 @@ const Layout = ({ pageTitle, children }) => {
 
   return (
     <div>
-      <OffcanvasExample/>
+      <Navigation/>
       <main>
         <h1>{pageTitle}</h1>
         {children}
