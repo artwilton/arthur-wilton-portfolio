@@ -14,11 +14,9 @@ const Navigation = (props) => {
   const socialMediaIcons = props.socialMediaIcons
 
   const socialMediaList = socialMediaIcons.map(({name, link, SVGComp}) =>
-    <li key={name}>
-      <a href={link} aria-label={name}>
-      <SVGComp/>
-      </a>
-    </li>
+    <Navbar.Brand href={link} aria-label={name}>
+      <SVGComp role="img" alt={`${name} Icon`} className="d-inline-block align-text-top"/>
+    </Navbar.Brand>
     );
 
   return (
@@ -48,8 +46,8 @@ const Navigation = (props) => {
                 <Nav className="justify-content-end flex-grow-1 px-5">
                   <Nav.Link as={Link} to="/work">Work</Nav.Link>
                   <Nav.Link as={Link} to="/about">About</Nav.Link>
-                  <Nav.Link as={Link} to="/projects">Projects</Nav.Link>
                   <Nav.Link href="https://artwilton.medium.com">Blog</Nav.Link>
+                  <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
                 </Nav>
                 <Nav className="flex-row justify-content-evenly">
                   {socialMediaList}
@@ -62,3 +60,4 @@ const Navigation = (props) => {
 }
 
 export default Navigation;
+
