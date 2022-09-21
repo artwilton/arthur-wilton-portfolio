@@ -2,7 +2,7 @@
 @import "/node_modules/bootstrap/scss/functions";
 
 // Default variable overrides
-
+$offcanvas-horizontal-width: 100%;
 $display1-size: 7.5rem;
 $display1-weight: 700;
 $headings-font-family:  'Montserrat', sans-serif;
@@ -38,5 +38,8 @@ $card-border-radius: 0;
 @import "/node_modules/bootstrap/scss/reboot";
 @import "/node_modules/bootstrap/scss/type";
 @import "/node_modules/bootstrap/scss/buttons";
+@import "/node_modules/bootstrap/scss/offcanvas";
 
 // @import "/node_modules/bootstrap/scss/utilities/api";
+
+// @import "/node_modules/bootstrap/scss/bootstrap";

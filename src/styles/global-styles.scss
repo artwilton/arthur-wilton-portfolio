@@ -4,6 +4,22 @@
 /* remove rounding from cards, buttons and inputs */
 // .card, .btn, .form-control { border-radius: 0; }
 
+$off-white: #f0f0f0;
+
+/* Nav */
+
+.nav-top .nav-link, svg {
+  font-size: 1.2em;
+}
+
+.nav-top svg {
+  color: $off-white;
+}
+
+.nav-offcanvas {
+  font-size: 2.2em;
+}
+
 /* Home Screen */
 
 .videoOverlay {

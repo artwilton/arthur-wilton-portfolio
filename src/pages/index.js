@@ -1,12 +1,11 @@
 import * as React from "react"
+import Layout from "../components/layout"
 
 const HomePage = () => {
   return (
-    <main>
-      <h1>
-        Home Page
-      </h1>
-    </main>
+    <Layout pageTitle={"Home Page"}>
+      <p>Test</p>
+    </Layout>
   )
 }
 
