@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Navigation from './navigation'
 import Footer from './footer'
-import { GitHubIcon, LinkedInIcon, BehanceIcon } from '../images/social_media_icons'
+import { GitHubIcon, LinkedInIcon, BehanceIcon } from '../media/social_media_icons'
 
 const Layout = ({ pageTitle, children }) => {
 
