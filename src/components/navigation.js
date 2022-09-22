@@ -20,7 +20,7 @@ const Navigation = (props) => {
     );
 
   return (
-        <Navbar bg="dark" variant="dark" expand={expand} className="mb-3">
+        <Navbar bg="dark" variant="dark" expand={expand} fixed="top">
           <Container fluid>
             <Navbar.Brand as={Link} to="/">
                 AW
