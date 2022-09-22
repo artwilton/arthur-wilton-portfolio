@@ -60,15 +60,6 @@ const HomeLanding = (props) => {
                 <Button href={blogUrl} variant="outline-light" size="lg">
                     blog
                 </Button>
-              {/* <a
-                class="btn btn-outline-light btn-lg"
-                role="button"
-                href={blogUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                blog
-              </a> */}
             </Col>
           </Row>
         </div>
