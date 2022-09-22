@@ -1,4 +1,3 @@
-@import "/node_modules/bootstrap/scss/bootstrap.scss";
 @import "./customized-bootstrap-styles.scss";
 
 /* remove rounding from cards, buttons and inputs */
@@ -65,15 +64,11 @@ $bg--dark: #161619;
 }
 
 #Section01 p {
-  // border: 2px dotted red;
   font-family: 'Montserrat', sans-serif;
-  padding-bottom: 10%;
-  // border: 2px dotted white;
 }
 
 #Section01 .btn {
   min-width: 200px;
-  padding-bottom: .4rem;
 }
 
 // Section 02
