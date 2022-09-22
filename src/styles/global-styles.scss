@@ -4,7 +4,8 @@
 /* remove rounding from cards, buttons and inputs */
 // .card, .btn, .form-control { border-radius: 0; }
 
-$off-white: #f0f0f0;
+$bg--off-white: #f0f0f0;
+$bg--dark: #161619;
 
 /* Nav */
 
@@ -13,7 +14,7 @@ $off-white: #f0f0f0;
 }
 
 .nav-top svg {
-  color: $off-white;
+  color: $bg--off-white;
 }
 
 .nav-offcanvas {
@@ -78,10 +79,10 @@ $off-white: #f0f0f0;
 // Section 02
 #Section02 {
   // color: white;
-  // background-color: #161619;
+  // background-color: $bg--dark;
 
-  color: #161619;
-  background-color: #f0f0f0;
+  color: $bg--dark;
+  background-color: $bg--off-white;
 
   // min-height:640px;
   padding-top: 4rem;
@@ -107,9 +108,9 @@ $off-white: #f0f0f0;
 
 #Section03 {
   color: white;
-  background-color: #161619;
+  background-color: $bg--dark;
 
-  // color: #161619;
+  // color: $bg--dark;
   // background-color: #DADADA;
   min-height:640px;
   border-width: 10px;

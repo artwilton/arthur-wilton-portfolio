@@ -3,29 +3,39 @@
 
 // Default variable overrides
 $offcanvas-horizontal-width: 100%;
+$enable-responsive-font-sizes: true;
+
 $display1-size: 7.5rem;
 $display1-weight: 700;
 $headings-font-family:  'Montserrat', sans-serif;
-$lead-font-size: 2.6rem;
+$lead-font-size: 2.4rem;
 $lead-font-weight: 200;
 
 $btn-font-family: gill-sans-nova, Gill Sans,Gill Sans MT,Calibri,sans-serif;
 
 $btn-font-size-lg: 2.2rem;
 $btn-border-width: .15rem;
-$btn-font-weight: 400;
+$btn-font-weight: 300;
 $btn-white-space: nowrap;
 
 $btn-padding-y-lg: 0;
 $btn-border-radius-lg: 0;
 
-$h1-font-size: 4.2rem;
-$h2-font-size: 3.5rem;
+$h1-font-size: 4rem;
+$h2-font-size: 3.2rem;
 $h3-font-size: 2.8rem;
+$h4-font-size: 2rem;
 
 $border-width: .15rem;
 
 $card-border-radius: 0;
+
+// custom function to add more options for default spacers
+@for $i from 6 through 150 {
+    $spacers: map-merge($spacers, (
+      $i: ($i * $spacer)
+      ));
+    }
 
 // Required
 @import "/node_modules/bootstrap/scss/variables";
