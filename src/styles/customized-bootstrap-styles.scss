@@ -3,11 +3,14 @@
 
 // Default variable overrides
 $offcanvas-horizontal-width: 100%;
-$enable-responsive-font-sizes: true;
 
-$display1-size: 7.5rem;
-$display1-weight: 700;
-$headings-font-family:  'Montserrat', sans-serif;
+$display-font-sizes: (
+    1: 7.5rem
+);
+
+$display-font-weight: 700;
+
+$headings-font-family: 'Montserrat', sans-serif;
 $lead-font-size: 2.4rem;
 $lead-font-weight: 200;
 
@@ -15,7 +18,7 @@ $btn-font-family: gill-sans-nova, Gill Sans,Gill Sans MT,Calibri,sans-serif;
 
 $btn-font-size-lg: 2.2rem;
 $btn-border-width: .15rem;
-$btn-font-weight: 300;
+$btn-font-weight: 200;
 $btn-white-space: nowrap;
 
 $btn-padding-y-lg: 0;
@@ -31,25 +34,28 @@ $border-width: .15rem;
 $card-border-radius: 0;
 
 // custom function to add more options for default spacers
-@for $i from 6 through 150 {
-    $spacers: map-merge($spacers, (
-      $i: ($i * $spacer)
-      ));
-    }
+// @for $i from 6 through 150 {
+//     $spacers: map-merge($spacers, (
+//       $i: ($i * $spacer)
+//       ));
+//     }
 
 // Required
 @import "/node_modules/bootstrap/scss/variables";
+
+@import "./_custom-bootstrap-maps";
+
 @import "/node_modules/bootstrap/scss/maps";
 @import "/node_modules/bootstrap/scss/mixins";
 @import "/node_modules/bootstrap/scss/root";
 
 // Optional Bootstrap components
-@import "/node_modules/bootstrap/scss/utilities";
-@import "/node_modules/bootstrap/scss/reboot";
-@import "/node_modules/bootstrap/scss/type";
-@import "/node_modules/bootstrap/scss/buttons";
-@import "/node_modules/bootstrap/scss/offcanvas";
+// @import "/node_modules/bootstrap/scss/utilities";
+// @import "/node_modules/bootstrap/scss/reboot";
+// @import "/node_modules/bootstrap/scss/type";
+// @import "/node_modules/bootstrap/scss/buttons";
+// @import "/node_modules/bootstrap/scss/offcanvas";
 
 // @import "/node_modules/bootstrap/scss/utilities/api";
 
-// @import "/node_modules/bootstrap/scss/bootstrap";
+@import "/node_modules/bootstrap/scss/bootstrap";
