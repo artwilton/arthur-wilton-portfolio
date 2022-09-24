@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 
 import { featuredProject01 } from "../../media/home";
 
-function HomeFeatured(props) {
+const HomeFeatured = () => {
   return (
     <section className="featured" id="Section03">
       <Container fluid className="py-5 py-xl-3 g-7 g-md-0 ">
