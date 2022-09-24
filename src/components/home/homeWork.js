@@ -39,15 +39,15 @@ const HomeWork = () => {
   
   return (
     <section className="my-work">
-      <Container fluid className="py-5 px-2">
-      <Row className="pb-2 pb-lg-4">
+      <Container fluid className="py-5">
+      <Row className="pb-2 pb-lg-4 px-lg-5 px-xl-7">
             <Col xs="8" lg="5" className="mx-auto">
         <h1 class="my-work__header border-bottom border-dark align-self-center card-title text-center pb-3">My Work</h1>
             </Col>
         </Row>
         <Row>
           <Col>
-          <p className="my-work__lead lead text-center">I solve technical and <br className="d-md-none" />creative problems using:
+          <p className="my-work__lead lead text-center pb-4">I solve technical and <br className="d-md-none" />creative problems using:
             <br className="d-xl-none mb-3" />
               <Link
                 style={{display: "inline-block"}}
@@ -61,7 +61,7 @@ const HomeWork = () => {
           </p>
           </Col>
         </Row>
-        <Row className="px-5 g-3 g-lg-4">
+        <Row className="pt-2 px-5 g-3 g-lg-4">
             {titleCards}
         </Row>
       </Container>
