@@ -60,7 +60,6 @@ $bg--dark: #161619;
 
 // Home - Section 01
 .landing {
-  // border: 5px dotted red;
   color: white;
   position:relative;
   width:100%;
@@ -83,16 +82,12 @@ $bg--dark: #161619;
 
 // Home - My Work Section
 .my-work {
-  color: #161619;
-  background-color: #f0f0f0;
+  color: $bg--dark;
+  background-color: $bg--off-white;
 }
 
 .my-work__header{
   font-weight: 700;
-}
-
-.my-work__lead{
-  padding-bottom: 2rem;
 }
 
 .my-work__skills-button {
@@ -101,45 +96,34 @@ $bg--dark: #161619;
   font-size: 2.4rem;
 }
 
-#Section03 {
+.featured {
   color: white;
   background-color: $bg--dark;
-
-  // color: $bg--dark;
-  // background-color: #DADADA;
   min-height:640px;
-  border-width: 10px;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
 }
 
-#Section03 h2{
+.featured__header {
   font-weight: 700;
-  padding-bottom: 2rem;
 }
 
-#Section03 .border-bottom{
+.featured__header {
   max-width: 22rem;
 }
 
-#Section03 img{
-  max-height: 50rem;
+.featured__image {
+  max-height: 750px;
 }
 
-#Section03 h3{
+.featured__title {
   font-weight: 500;
-  padding-top: 2rem;
-  padding-bottom: .5rem;
 }
 
-#Section03 p{
+.featured__description {
   font-size: 2rem;
   font-weight: 200;
-  padding-bottom: 2rem;
-
 }
 
-#Section03 .btn {
+.featured__button {
   width: 18rem;
   padding-bottom: .5rem;
   font-size: 2rem;
@@ -159,11 +143,35 @@ $bg--dark: #161619;
   .title-card__img {
     max-height: 140px;
   }
+  .featured__header {
+    font-size: 2.8rem;
+    font-weight: 600;
+  }
+  .featured__image {
+    max-height: 650px;
+  }
+  .featured__title {
+    font-size: 2.2rem;
+  }
 }
 
 @include media-breakpoint-down(md) {
   .my-work__skills-button {
     width: 14rem;
     font-size: 1.9rem;
+  }
+  .featured__header {
+    font-size: 2.6rem;
+    max-width: none;
+  }
+  .featured__description {
+    font-size: 1.8rem;
+  }
+  .featured__button {
+    width: 16rem;
+    font-size: 1.8rem;
+  }
+  .featured__image {
+    max-height: 600px;
   }
 }

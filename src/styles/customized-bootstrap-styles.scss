@@ -2,6 +2,7 @@
 @import "/node_modules/bootstrap/scss/functions";
 
 // Default variable overrides
+$enable-negative-margins: true;
 $offcanvas-horizontal-width: 100%;
 
 $display-font-sizes: (
