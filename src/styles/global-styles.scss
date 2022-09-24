@@ -1,13 +1,9 @@
 @import "./customized-bootstrap-styles.scss";
 
-/* remove rounding from cards, buttons and inputs */
-// .card, .btn, .form-control { border-radius: 0; }
-
 $bg--off-white: #f0f0f0;
 $bg--dark: #161619;
 
 /* Nav */
-
 .nav-top .nav-link, svg {
   font-size: 1.2em;
 }
@@ -20,8 +16,22 @@ $bg--dark: #161619;
   font-size: 2.2em;
 }
 
-/* Home Screen */
+/* TitleCards */
+.title-card__title {
+  font-size: 2.2rem;
+  font-weight: 600;
+}
 
+.title-card__img {
+  min-width: 100%;
+  object-fit: cover;
+}
+
+.title-card__gradient {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), 90%, transparent);
+}
+
+/* Home Screen */
 .videoOverlay {
   position: absolute;
   top: 0;
@@ -48,7 +58,7 @@ $bg--dark: #161619;
   z-index: -2;
 }
 
-// Section 01
+// Home - Section 01
 #Section01 {
   // border: 5px dotted red;
   color: white;
@@ -71,34 +81,24 @@ $bg--dark: #161619;
   min-width: 200px;
 }
 
-// Section 02
-#Section02 {
-  // color: white;
-  // background-color: $bg--dark;
-
-  color: $bg--dark;
-  background-color: $bg--off-white;
-
-  // min-height:640px;
-  padding-top: 4rem;
-  padding-bottom: 7rem;
-  padding-left: 5rem;
-  padding-right: 5rem;
-
+// Home - My Work Section
+.my-work {
+  color: #161619;
+  background-color: #f0f0f0;
 }
 
-#Section02 h1{
-  // border: 2px dotted white;
+.my-work__header{
   font-weight: 700;
-  padding-bottom: .8rem;
-  padding-left: 3.5rem;
-  padding-right:3.5rem;
-  margin-bottom: 2rem;
 }
 
-#Section02 p{
-  font-size: 2.4rem;
+.my-work__lead{
   padding-bottom: 2rem;
+}
+
+.my-work__skills-button {
+  width: 16rem;
+  padding-bottom: .5rem;
+  font-size: 2.4rem;
 }
 
 #Section03 {
@@ -144,4 +144,26 @@ $bg--dark: #161619;
   padding-bottom: .5rem;
   font-size: 2rem;
   margin-bottom: 2rem;
+}
+
+@include media-breakpoint-down(xl) {
+  .title-card__title {
+    font-size: 1.9rem;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .title-card__title {
+    font-size: 1.8rem;
+  }
+  .title-card__img {
+    max-height: 140px;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .my-work__skills-button {
+    width: 14rem;
+    font-size: 1.9rem;
+  }
 }
