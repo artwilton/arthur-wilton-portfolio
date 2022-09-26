@@ -26,7 +26,7 @@ const HomeFeatured = () => {
             </Button>
           </Col>
           <Col md="5" lg="4" className="my-auto">
-            <img className="featured__image ps-md-1 ps-lg-3 d-block mx-auto mb-n3 mb-md-0 mt-n5 mt-md-0" src={featuredProject01} />
+            <img className="featured__image ps-md-1 ps-lg-3 d-block mx-auto mb-n3 mb-md-0 mt-n5 mt-md-0" src={featuredProject01} alt="PIM Project"/>
             <Button className="featured__button d-md-none mx-auto d-block" variant="outline-light" size="lg" block>
               project case study
             </Button>
