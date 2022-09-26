@@ -3,6 +3,14 @@
 $bg--off-white: #f0f0f0;
 $bg--dark: #161619;
 
+.bg-color--off-white {
+  background-color: #f0f0f0;
+}
+
+.bg-color--dark {
+  background-color: #161619;
+}
+
 /* Nav */
 .nav-top .nav-link, svg {
   font-size: 1.2em;
@@ -129,6 +137,14 @@ $bg--dark: #161619;
   font-size: 2rem;
   margin-bottom: 2rem;
 }
+
+/* Work Page */
+
+.work-page {
+  background-color: $bg--off-white;
+}
+
+/* Media Breakpoints */
 
 @include media-breakpoint-down(xl) {
   .title-card__title {
