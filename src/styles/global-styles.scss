@@ -1,5 +1,10 @@
 @import "./customized-bootstrap-styles.scss";
 
+/* Text */
+.moz-smoothed {
+  -moz-osx-font-smoothing: grayscale;
+}
+/* Colors */
 $bg--off-white: #f0f0f0;
 $bg--dark: #161619;
 
@@ -9,9 +14,33 @@ $bg--dark: #161619;
 
 .bg-color--dark {
   background-color: #161619;
+  color: white;
 }
 
-/* Nav */
+/* Animations */
+@mixin fade-in {
+  opacity: 1;
+  animation-name: fadeIn;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+/* NavBar and OffCanvas */
+
+.nav-fade {
+  @include fade-in;
+}
+
 .nav-top .nav-link, svg {
   font-size: 1.2em;
 }
@@ -22,6 +51,50 @@ $bg--dark: #161619;
 
 .nav-offcanvas {
   font-size: 2.2em;
+}
+
+.nav--under-logo {
+  position: absolute;
+  z-index: auto;
+  top: 0px;
+  right: 0px;
+}
+
+// default bootstrap Nav values for reference
+// .fixed-top {
+//   position: fixed;
+//   z-index: 1030;
+// }
+
+.site-logo {
+  z-index: 9999;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+.navbar-toggler {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}.nav--under-logo {
+  position: absolute;
+  z-index: auto;
+  top: 0px;
+  right: 0px;
+}
+
+.site-logo {
+  z-index: 9999;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+.navbar-toggler {
+  position: fixed;
+  top: 0px;
+  right: 0px;
 }
 
 /* TitleCards */
@@ -66,7 +139,7 @@ $bg--dark: #161619;
   z-index: -2;
 }
 
-// Home - Section 01
+/* Home - Landing Section */
 .landing {
   color: white;
   position:relative;
@@ -88,7 +161,7 @@ $bg--dark: #161619;
   min-width: 200px;
 }
 
-// Home - My Work Section
+/* Home - My Work Section */
 .my-work {
   color: $bg--dark;
   background-color: $bg--off-white;
@@ -104,6 +177,7 @@ $bg--dark: #161619;
   font-size: 2.4rem;
 }
 
+/* Home - Featured Section */
 .featured {
   color: white;
   background-color: $bg--dark;
@@ -111,18 +185,17 @@ $bg--dark: #161619;
 }
 
 .featured__header {
-  font-weight: 700;
-}
-
-.featured__header {
+  font-weight: 600;
   max-width: 22rem;
 }
 
 .featured__image {
-  max-height: 750px;
+  max-width: 350px;
+  object-fit: contain;
 }
 
 .featured__title {
+  font-size: 2rem;
   font-weight: 500;
 }
 
@@ -139,13 +212,11 @@ $bg--dark: #161619;
 }
 
 /* Work Page */
-
 .work-page {
   background-color: $bg--off-white;
 }
 
 /* Media Breakpoints */
-
 @include media-breakpoint-down(xl) {
   .title-card__title {
     font-size: 1.9rem;
@@ -159,15 +230,15 @@ $bg--dark: #161619;
   .title-card__img {
     max-height: 140px;
   }
-  .featured__header {
-    font-size: 2.8rem;
-    font-weight: 600;
+  .featured__description {
+    font-size: 1.8;
+  }
+  .featured__button {
+    width: 16rem;
+    font-size: 1.9rem;
   }
   .featured__image {
-    max-height: 650px;
-  }
-  .featured__title {
-    font-size: 2.2rem;
+    max-width: 290px;
   }
 }
 
@@ -177,17 +248,21 @@ $bg--dark: #161619;
     font-size: 1.9rem;
   }
   .featured__header {
-    font-size: 2.6rem;
-    max-width: none;
+    font-size: 2.4rem;
+    max-width: 30rem;
+  }
+  .featured__title {
+    font-size: 1.8rem;
   }
   .featured__description {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
   .featured__button {
     width: 16rem;
     font-size: 1.8rem;
   }
   .featured__image {
-    max-height: 600px;
+    max-width: 270px;
+    width: 100%;
   }
 }
