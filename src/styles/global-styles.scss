@@ -1,7 +1,21 @@
 @import "./customized-bootstrap-styles.scss";
 
+/* BEM Mixins */
+@mixin element($element) {
+  &__#{$element} {
+      @content;
+  }
+}
+
+@mixin modifier($modifier) {
+  &--#{$modifier} {
+      @content;
+  }
+}
+
 /* Text */
-.moz-smoothed {
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 /* Colors */
@@ -181,6 +195,10 @@ $color--dark: #161619;
   font-weight: 700;
 }
 
+.home-work__header{
+  @include font-smoothing;
+}
+
 .home-work__skills-button {
   width: 16rem;
   padding-bottom: .5rem;
@@ -222,10 +240,34 @@ $color--dark: #161619;
 /* Home - About Section */
 
 .home-about {
-
+  @include bg-color--light;
+  @include element('header') {
+    font-weight: 700;
+  }
+  @include element('description') {
+    @include font-smoothing;
+    font-weight: 300;
+    font-size: 2rem;
+    @include modifier('bold') {
+      font-weight: 500;
+    }
+  }
 }
 
 /* Work Page */
+.work-card {
+  @include element('image') {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  @include element('title') {
+
+  }
+  @include element('description') {
+    font-size: 1.4rem;
+  }
+}
 
 /* Media Breakpoints */
 @include media-breakpoint-down(xl) {
@@ -275,5 +317,11 @@ $color--dark: #161619;
   .home-featured__image {
     max-width: 270px;
     width: 100%;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .home-featured__description {
+    @include font-smoothing;
   }
 }
