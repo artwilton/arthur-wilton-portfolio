@@ -195,8 +195,9 @@ $color--dark: #161619;
   font-weight: 700;
 }
 
-.home-work__header{
+.home-work__lead{
   @include font-smoothing;
+  display: inline;
 }
 
 .home-work__skills-button {

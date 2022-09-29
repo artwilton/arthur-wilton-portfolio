@@ -47,7 +47,7 @@ const HomeWork = () => {
         </Row>
         <Row className="text-center pb-lg-3">
           <Col>
-          <p style={{display: "inline"}} className="home-work__lead lead text-center moz-smoothed">I solve technical and <br className="d-md-none"/>creative problems using:
+          <p className="home-work__lead lead text-center">I solve technical and <br className="d-md-none"/>creative problems using:
             <br className="d-xl-none"/>
           </p>
           <Link
