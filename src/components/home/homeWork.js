@@ -38,20 +38,20 @@ const HomeWork = () => {
   }
   
   return (
-    <section className="my-work">
+    <section className="home-work">
       <Container fluid className="py-5">
       <Row className="pb-2 pb-lg-4 px-lg-5 px-xl-7">
             <Col xs="8" lg="5" className="mx-auto">
-        <h1 class="my-work__header border-bottom border-dark align-self-center card-title text-center pb-3">My Work</h1>
+        <h1 class="home-work__header border-bottom border-dark align-self-center card-title text-center pb-3">My Work</h1>
             </Col>
         </Row>
         <Row className="text-center pb-lg-3">
           <Col>
-          <p style={{display: "inline"}} className="my-work__lead lead text-center moz-smoothed">I solve technical and <br className="d-md-none"/>creative problems using:
+          <p style={{display: "inline"}} className="home-work__lead lead text-center moz-smoothed">I solve technical and <br className="d-md-none"/>creative problems using:
             <br className="d-xl-none"/>
           </p>
           <Link
-            className="my-work__skills-button btn btn-outline-dark btn-lg btn-block ms-lg-3 mb-3 mt-3 mt-xl-0"
+            className="home-work__skills-button btn btn-outline-dark btn-lg btn-block ms-lg-3 mb-3 mt-3 mt-xl-0"
             role="button"
             block
             to="/work"

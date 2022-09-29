@@ -5,15 +5,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 /* Colors */
-$bg--off-white: #f0f0f0;
-$bg--dark: #161619;
+$color--light: #f0f0f0;
+$color--dark: #161619;
 
-.bg-color--off-white {
-  background-color: #f0f0f0;
+@mixin bg-color--light {
+  background-color: $color--light;
+  color: $color--dark;
 }
 
-.bg-color--dark {
-  background-color: #161619;
+@mixin bg-color--dark {
+  background-color: $color--dark;
   color: white;
 }
 
@@ -46,7 +47,7 @@ $bg--dark: #161619;
 }
 
 .nav-top svg {
-  color: $bg--off-white;
+  color: $color--light;
 }
 
 .nav-offcanvas {
@@ -77,7 +78,9 @@ $bg--dark: #161619;
   position: fixed;
   top: 0px;
   right: 0px;
-}.nav--under-logo {
+}
+
+.nav--under-logo {
   position: absolute;
   z-index: auto;
   top: 0px;
@@ -112,8 +115,16 @@ $bg--dark: #161619;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.5), 90%, transparent);
 }
 
+.cover-section__bg--dark {
+  @include bg-color--dark;
+}
+
+.main-content__bg--light {
+  @include bg-color--light;
+}
+
 /* Landing Screen */
-.landing__video-overlay {
+.home-landing__video-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -124,7 +135,7 @@ $bg--dark: #161619;
   z-index: -1;
 }
 
-.landing__video {
+.home-landing__video {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -140,7 +151,7 @@ $bg--dark: #161619;
 }
 
 /* Home - Landing Section */
-.landing {
+.home-landing {
   color: white;
   position:relative;
   width:100%;
@@ -149,72 +160,72 @@ $bg--dark: #161619;
   overflow: hidden;
 }
 
-.landing__header {
+.home-landing__header {
   font-family: europa, Lato, sans-serif;
 }
 
-.landing__lead {
+.home-landing__lead {
   font-family: 'Montserrat', sans-serif;
 }
 
-.landing__button {
+.home-landing__button {
   min-width: 200px;
 }
 
 /* Home - My Work Section */
-.my-work {
-  color: $bg--dark;
-  background-color: $bg--off-white;
+.home-work {
+  @include bg-color--light;
 }
 
-.my-work__header{
+.home-work__header{
   font-weight: 700;
 }
 
-.my-work__skills-button {
+.home-work__skills-button {
   width: 16rem;
   padding-bottom: .5rem;
   font-size: 2.4rem;
 }
 
 /* Home - Featured Section */
-.featured {
-  color: white;
-  background-color: $bg--dark;
-  min-height:640px;
+.home-featured {
+  @include bg-color--dark;
 }
 
-.featured__header {
+.home-featured__header {
   font-weight: 600;
   max-width: 22rem;
 }
 
-.featured__image {
+.home-featured__image {
   max-width: 350px;
   object-fit: contain;
 }
 
-.featured__title {
+.home-featured__title {
   font-size: 2rem;
   font-weight: 500;
 }
 
-.featured__description {
+.home-featured__description {
   font-size: 2rem;
   font-weight: 200;
 }
 
-.featured__button {
+.home-featured__button {
   width: 18rem;
   padding-bottom: .5rem;
   font-size: 2rem;
   margin-bottom: 2rem;
 }
 
-/* Work Page */
-.work-page {
-  background-color: $bg--off-white;
+/* Home - About Section */
+
+.home-about {
+
 }
+
+/* Work Page */
 
 /* Media Breakpoints */
 @include media-breakpoint-down(xl) {
@@ -230,38 +241,38 @@ $bg--dark: #161619;
   .title-card__img {
     max-height: 140px;
   }
-  .featured__description {
+  .home-featured__description {
     font-size: 1.8;
   }
-  .featured__button {
+  .home-featured__button {
     width: 16rem;
     font-size: 1.9rem;
   }
-  .featured__image {
+  .home-featured__image {
     max-width: 290px;
   }
 }
 
 @include media-breakpoint-down(md) {
-  .my-work__skills-button {
+  .home-work__skills-button {
     width: 14rem;
     font-size: 1.9rem;
   }
-  .featured__header {
+  .home-featured__header {
     font-size: 2.4rem;
     max-width: 30rem;
   }
-  .featured__title {
+  .home-featured__title {
     font-size: 1.8rem;
   }
-  .featured__description {
+  .home-featured__description {
     font-size: 1.6rem;
   }
-  .featured__button {
+  .home-featured__button {
     width: 16rem;
     font-size: 1.8rem;
   }
-  .featured__image {
+  .home-featured__image {
     max-width: 270px;
     width: 100%;
   }
