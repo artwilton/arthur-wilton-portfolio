@@ -8,21 +8,19 @@ import Col from "react-bootstrap/Col";
 const WorkPage = () => {
     return (
         <Layout>
-            <div className="bg-color--off-white pt-9 pb-7">
-            <Container fluid >
-            <Row>
-                <Col xs="5" className="mx-auto pb-5">
-                    <h1 className=" text-center border-bottom border-dark">My Work</h1>
+            <Container fluid>
+            <Row className="cover-section__bg--dark pt-5 pb-4 py-md-5">
+                <Col xs="7" md="5" className="mx-auto mt-4 mb-2 mt-md-6 mb-md-3">
+                <h1 className="text-center border-bottom border-light pb-2 pb-md-3">My Work</h1>
                 </Col>
             </Row>
-            <Row>
-                <Col xs="10" className="mx-auto" style={{maxWidth: '1200px'}}>
+            <Row className="main-content__bg--light py-5">
+                <Col xs="10" className="mx-auto d-grid gap-4">
                     <WorkCard/>
                     <WorkCard/>
                 </Col>
             </Row>
         </Container>
-        </div>
         </Layout>
     )
 }
