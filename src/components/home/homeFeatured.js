@@ -18,7 +18,7 @@ const HomeFeatured = () => {
             <h3 className="home-featured__title pt-3 pt-md-4 pb-2">
               PIM: The Personal <br /> Inventory Manager
             </h3>
-            <p className="home-featured__description moz-smoothed mx-sm-4 mx-md-0 pb-3 pb-md-4 mb-md-0">
+            <p className="home-featured__description mx-sm-4 mx-md-0 pb-3 pb-md-4 mb-md-0">
               Mobile Application built with a React Native frontend and Ruby on Rails backend.
             </p>
             <Button className="home-featured__button d-none d-md-block" variant="outline-light" size="lg" block>
