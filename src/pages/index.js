@@ -1,10 +1,15 @@
 import * as React from "react"
 import Layout from "../components/layout"
+import HomeLanding from "../components/home/homeLanding"
+import { HomeFeatured, HomeWork, HomeAbout } from "../components/home"
 
 const HomePage = () => {
   return (
-    <Layout pageTitle={"Home Page"}>
-      <p>Test</p>
+    <Layout>
+      <HomeLanding/>
+      <HomeWork/>
+      <HomeFeatured/>
+      <HomeAbout/>
     </Layout>
   )
 }

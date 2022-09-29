@@ -1,28 +1,144 @@
-@import "/node_modules/bootstrap/scss/bootstrap.scss";
 @import "./customized-bootstrap-styles.scss";
 
-/* remove rounding from cards, buttons and inputs */
-// .card, .btn, .form-control { border-radius: 0; }
+/* BEM Mixins */
+@mixin element($element) {
+  &__#{$element} {
+      @content;
+  }
+}
 
-$off-white: #f0f0f0;
+@mixin modifier($modifier) {
+  &--#{$modifier} {
+      @content;
+  }
+}
 
-/* Nav */
+/* Text */
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* Colors */
+$color--light: #f0f0f0;
+$color--dark: #161619;
+
+@mixin bg-color--light {
+  background-color: $color--light;
+  color: $color--dark;
+}
+
+@mixin bg-color--dark {
+  background-color: $color--dark;
+  color: white;
+}
+
+/* Animations */
+@mixin fade-in {
+  opacity: 1;
+  animation-name: fadeIn;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+/* NavBar and OffCanvas */
+
+.nav-fade {
+  @include fade-in;
+}
 
 .nav-top .nav-link, svg {
   font-size: 1.2em;
 }
 
 .nav-top svg {
-  color: $off-white;
+  color: $color--light;
 }
 
 .nav-offcanvas {
   font-size: 2.2em;
 }
 
-/* Home Screen */
+.nav--under-logo {
+  position: absolute;
+  z-index: auto;
+  top: 0px;
+  right: 0px;
+}
 
-.videoOverlay {
+// default bootstrap Nav values for reference
+// .fixed-top {
+//   position: fixed;
+//   z-index: 1030;
+// }
+
+.site-logo {
+  z-index: 9999;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+.navbar-toggler {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}
+
+.nav--under-logo {
+  position: absolute;
+  z-index: auto;
+  top: 0px;
+  right: 0px;
+}
+
+.site-logo {
+  z-index: 9999;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+.navbar-toggler {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}
+
+/* TitleCards */
+.title-card__title {
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+
+.title-card__img {
+  min-width: 100%;
+  object-fit: cover;
+}
+
+.title-card__gradient {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), 90%, transparent);
+}
+
+.cover-section__bg--dark {
+  @include bg-color--dark;
+}
+
+.main-content__bg--light {
+  @include bg-color--light;
+}
+
+/* Landing Screen */
+.home-landing__video-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -33,7 +149,7 @@ $off-white: #f0f0f0;
   z-index: -1;
 }
 
-#homeScreenVideo {
+.home-landing__video {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -48,9 +164,8 @@ $off-white: #f0f0f0;
   z-index: -2;
 }
 
-// Section 01
-#Section01 {
-  // border: 5px dotted red;
+/* Home - Landing Section */
+.home-landing {
   color: white;
   position:relative;
   width:100%;
@@ -59,93 +174,162 @@ $off-white: #f0f0f0;
   overflow: hidden;
 }
 
-#Section01 h1 {
+.home-landing__header {
   font-family: europa, Lato, sans-serif;
 }
 
-#Section01 p {
-  // border: 2px dotted red;
+.home-landing__lead {
   font-family: 'Montserrat', sans-serif;
-  padding-bottom: 10%;
-  // border: 2px dotted white;
 }
 
-#Section01 .btn {
+.home-landing__button {
   min-width: 200px;
-  padding-bottom: .4rem;
 }
 
-// Section 02
-#Section02 {
-  // color: white;
-  // background-color: #161619;
-
-  color: #161619;
-  background-color: #f0f0f0;
-
-  // min-height:640px;
-  padding-top: 4rem;
-  padding-bottom: 7rem;
-  padding-left: 5rem;
-  padding-right: 5rem;
-
+/* Home - My Work Section */
+.home-work {
+  @include bg-color--light;
 }
 
-#Section02 h1{
-  // border: 2px dotted white;
+.home-work__header{
   font-weight: 700;
-  padding-bottom: .8rem;
-  padding-left: 3.5rem;
-  padding-right:3.5rem;
-  margin-bottom: 2rem;
 }
 
-#Section02 p{
+.home-work__lead{
+  @include font-smoothing;
+  display: inline;
+}
+
+.home-work__skills-button {
+  width: 16rem;
+  padding-bottom: .5rem;
   font-size: 2.4rem;
-  padding-bottom: 2rem;
 }
 
-#Section03 {
-  color: white;
-  background-color: #161619;
-
-  // color: #161619;
-  // background-color: #DADADA;
-  min-height:640px;
-  border-width: 10px;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+/* Home - Featured Section */
+.home-featured {
+  @include bg-color--dark;
 }
 
-#Section03 h2{
-  font-weight: 700;
-  padding-bottom: 2rem;
-}
-
-#Section03 .border-bottom{
+.home-featured__header {
+  font-weight: 600;
   max-width: 22rem;
 }
 
-#Section03 img{
-  max-height: 50rem;
+.home-featured__image {
+  max-width: 350px;
+  object-fit: contain;
 }
 
-#Section03 h3{
+.home-featured__title {
+  font-size: 2rem;
   font-weight: 500;
-  padding-top: 2rem;
-  padding-bottom: .5rem;
 }
 
-#Section03 p{
+.home-featured__description {
   font-size: 2rem;
   font-weight: 200;
-  padding-bottom: 2rem;
-
 }
 
-#Section03 .btn {
+.home-featured__button {
   width: 18rem;
   padding-bottom: .5rem;
   font-size: 2rem;
   margin-bottom: 2rem;
+}
+
+/* Home - About Section */
+
+.home-about {
+  @include bg-color--light;
+  @include element('header') {
+    font-weight: 700;
+  }
+  @include element('description') {
+    @include font-smoothing;
+    font-weight: 300;
+    font-size: 2rem;
+    @include modifier('bold') {
+      font-weight: 500;
+    }
+  }
+  @include element('image') {
+    max-height: 520px;
+    border-radius: 5px;
+  }
+}
+
+/* Work Page */
+.work-card {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  @include element('image') {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  @include element('title') {
+
+  }
+  @include element('description') {
+    font-size: 1.4rem;
+  }
+}
+
+/* Media Breakpoints */
+@include media-breakpoint-down(xl) {
+  .title-card__title {
+    font-size: 1.9rem;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .title-card__title {
+    font-size: 1.8rem;
+  }
+  .title-card__img {
+    max-height: 140px;
+  }
+  .home-featured__description {
+    font-size: 1.8;
+  }
+  .home-featured__button {
+    width: 16rem;
+    font-size: 1.9rem;
+  }
+  .home-featured__image {
+    max-width: 290px;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .home-work__skills-button {
+    width: 14rem;
+    font-size: 1.9rem;
+  }
+  .home-featured__header {
+    font-size: 2.4rem;
+    max-width: 30rem;
+  }
+  .home-featured__title {
+    font-size: 1.8rem;
+  }
+  .home-featured__description {
+    font-size: 1.6rem;
+  }
+  .home-featured__button {
+    width: 16rem;
+    font-size: 1.8rem;
+  }
+  .home-featured__image {
+    max-width: 270px;
+    width: 100%;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .home-featured__description {
+    @include font-smoothing;
+  }
 }
