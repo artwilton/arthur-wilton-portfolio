@@ -1,8 +1,0 @@
-// Custom Spacers
-$custom-spacer: .75rem;
-
-@for $i from 6 through 150 {
-    $spacers: map-merge($spacers, (
-      $i: ($i * $custom-spacer)
-      ));
-    }

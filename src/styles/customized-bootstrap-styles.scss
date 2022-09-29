@@ -26,9 +26,9 @@ $btn-white-space: nowrap;
 $btn-padding-y-lg: 0;
 $btn-border-radius-lg: 0;
 
-$h1-font-size: 4rem;
-$h2-font-size: 3.2rem;
-$h3-font-size: 2.8rem;
+$h1-font-size: 3.9rem;
+$h2-font-size: 3rem;
+$h3-font-size: 2.6rem;
 $h4-font-size: 2rem;
 
 $border-width: .15rem;
@@ -38,7 +38,14 @@ $card-border-radius: 0;
 // Required
 @import "/node_modules/bootstrap/scss/variables";
 
-@import "./_custom-bootstrap-maps";
+// Adding more spacer options
+$custom-spacer: .75rem;
+
+@for $i from 6 through 150 {
+    $spacers: map-merge($spacers, (
+      $i: ($i * $custom-spacer)
+      ));
+    }
 
 @import "/node_modules/bootstrap/scss/maps";
 @import "/node_modules/bootstrap/scss/mixins";
@@ -50,7 +57,6 @@ $card-border-radius: 0;
 // @import "/node_modules/bootstrap/scss/type";
 // @import "/node_modules/bootstrap/scss/buttons";
 // @import "/node_modules/bootstrap/scss/offcanvas";
-
 // @import "/node_modules/bootstrap/scss/utilities/api";
 
 @import "/node_modules/bootstrap/scss/bootstrap";
