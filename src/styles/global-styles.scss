@@ -253,6 +253,10 @@ $color--dark: #161619;
       font-weight: 500;
     }
   }
+  @include element('image') {
+    max-height: 520px;
+    border-radius: 5px;
+  }
 }
 
 /* Work Page */
