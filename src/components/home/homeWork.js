@@ -14,14 +14,16 @@ const HomeWork = () => {
   const skillsTextArray = ["Python", "JavaScript", "Ruby", "React", "HTML/CSS", "Ruby on Rails", "Shell Scripting", "FFmpeg", "Final Cut Pro", "Premiere Pro", "After Effects"]
 
   const titleCardInfo = [
-    {title: <>SOFTWARE &amp; <br/> WEB DEV</>, background: workDevBG, alt:'Software and Web Development Card'},
-    {title:'VIDEO PRODUCTION', background: workVideoBG, alt:'Video Production Card'},
-    {title:'CREATIVE PROJECTS', background: workCreativeBG, alt:'Creative Projects Card'}
+    {title: <>SOFTWARE &amp; <br/> WEB DEV</>, background: workDevBG, alt:'Software and Web Development Card', category: 'Software'},
+    {title:'VIDEO PRODUCTION', background: workVideoBG, alt:'Video Production Card', category: 'Video'},
+    {title:'CREATIVE PROJECTS', background: workCreativeBG, alt:'Creative Projects Card', category: 'Creative'}
   ]
 
-  const titleCards = titleCardInfo.map(({title, background, alt}) =>
+  const titleCards = titleCardInfo.map(({title, background, alt, category}) =>
     <Col lg="4">
+      <Link to="/work" state={{fromLink: category}}>
         <TitleCard {...{title, background, alt}}></TitleCard>
+      </Link>
     </Col>
   );
   
