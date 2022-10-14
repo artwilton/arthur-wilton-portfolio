@@ -12,10 +12,10 @@ const WorkCard = ({name, description, imgSource, imgAlt}) => {
                             <Col md="5" lg="4">
                             <img className="work-card__image" src={imgSource} alt={imgAlt}/>
                             </Col>
-                            <Col className="d-flex flex-column" md="7" lg="8">
+                            <Col className="d-flex flex-column text-md-start" md="7" lg="8">
                                 <Card.Body >
                                     <Card.Title as="h4">{name}</Card.Title>
-                                    <Card.Text className="work-card__description py-2">{description}</Card.Text>
+                                    <Card.Text className="work-card__description py-1 pb-sm-2 pb-lg-3">{description}</Card.Text>
                                 </Card.Body>
                                 <Row className="mb-3">
                                     <Col className="col-auto me-auto ms-3">
