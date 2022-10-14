@@ -20,6 +20,7 @@ const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 const PROJECTS_ARRAY = [
   {
+    id: 1,
     name: "Software Example",
     description:
       "FCPX Marker Tool is written in Python, and allows for parsing, displaying, and saving marker metadata from FCPXML files in both .fcpxml and .fcpxmld formats.",
@@ -28,6 +29,7 @@ const PROJECTS_ARRAY = [
     category: "Software",
   },
   {
+    id: 2,
     name: "Video Example",
     description:
       "FCPX Marker Tool is written in Python, and allows for parsing, displaying, and saving marker metadata from FCPXML files in both .fcpxml and .fcpxmld formats.",
@@ -36,6 +38,7 @@ const PROJECTS_ARRAY = [
     category: "Video",
   },
   {
+    id: 3,
     name: "Creative Example",
     description:
       "FCPX Marker Tool is written in Python, and allows for parsing, displaying, and saving marker metadata from FCPXML files in both .fcpxml and .fcpxmld formats.",
@@ -50,8 +53,9 @@ const WorkPage = ({ location }) => {
     location.state.fromLink ? location.state.fromLink : "All"
   );
 
-  const filterList = FILTER_NAMES.map((name) => (
+  const filterButtonList = FILTER_NAMES.map((name) => (
     <ToggleButton
+      variant="light"
       key={name}
       id={name}
       value={name}
@@ -63,10 +67,10 @@ const WorkPage = ({ location }) => {
   ));
 
   const workCardsFiltered = PROJECTS_ARRAY.filter(FILTER_MAP[filter]).map(
-    ({ name, description, imgSource, imgAlt, category }) => (
+    ({ id, name, description, imgSource, imgAlt, category }) => (
       <WorkCard
         key={name}
-        {...{ name, description, imgSource, imgAlt, category }}
+        {...{ id, name, description, imgSource, imgAlt, category }}
       />
     )
   );
@@ -76,15 +80,19 @@ const WorkPage = ({ location }) => {
       <Container fluid>
         <Row className="cover-section__bg--dark pt-5 pb-4 py-md-5">
           <Col xs="7" md="5" className="mx-auto mt-4 mb-2 mt-md-6 mb-md-3">
-            <h1 className="text-center border-bottom border-light pb-2 pb-md-3">
+            <h1 className="work__header text-center border-bottom border-light pb-2 pb-md-3">
               My Work
             </h1>
           </Col>
         </Row>
-        <Row className="main-content__bg--light py-5">
-          <ToggleButtonGroup type="radio" name="options" defaultValue={filter}>
-            {filterList}
-          </ToggleButtonGroup>
+        <Row className="main-content__bg--light py-5 justify-content-center text-center">
+          <Row>
+            <Col xs="10" className="mx-auto g-0 py-md-1 pb-md-2">
+              <ToggleButtonGroup className="shadow-lg-light" type="radio" name="options" defaultValue={filter}>
+                {filterButtonList}
+              </ToggleButtonGroup>
+            </Col>
+          </Row>
           <Col xs="10" className="mx-auto d-grid gap-4 pt-5">
             {workCardsFiltered}
           </Col>
