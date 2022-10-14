@@ -17,12 +17,12 @@ const WorkCard = ({name, description, imgSource, imgAlt}) => {
                                     <Card.Title as="h4">{name}</Card.Title>
                                     <Card.Text className="work-card__description py-1 pb-sm-2 pb-lg-3">{description}</Card.Text>
                                 </Card.Body>
-                                <Row className="mb-3">
-                                    <Col className="col-auto me-auto ms-3">
-                                        <Link to="/" className="btn btn-sm btn-dark shadow-none">Read More</Link>
+                                <Row className="mb-3 mx-auto mx-md-0 px-1 g-2 g-md-4">
+                                    <Col className="col-auto mx-auto mx-md-0">
+                                        <Link to="/" className="work-card__button btn btn-sm btn-dark shadow-none">Read More</Link>
                                     </Col>
-                                    <Col className="col-auto me-3">
-                                        <Link to="/about" className=" btn btn-outline-dark btn-sm">Watch Demo ▶</Link>
+                                    <Col className="col-auto mx-auto mx-md-0">
+                                        <Link to="/about" className="work-card__button btn btn-outline-dark btn-sm">Watch Demo ▶</Link>
                                     </Col>
                                 </Row>
                             </Col>

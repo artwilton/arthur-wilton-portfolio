@@ -279,6 +279,11 @@ $color--dark: #161619;
       font-size: 1.3rem;
       }
     @include media-breakpoint-down(sm) {
+      font-size: 1.1rem;
+    }
+  }
+  @include element('button') {
+    @include media-breakpoint-down(sm) {
       font-size: 1.2rem;
     }
   }
