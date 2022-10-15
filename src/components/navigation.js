@@ -31,7 +31,7 @@ const Navigation = ({ socialMediaIcons }) => {
         alt={`${name} Icon`}
         className={`${
           offCanvasToggled
-            ? "nav__social-media-logo--off-canvas mb-5 mx-2 mx-lg-3"
+            ? "nav__social-media-logo--off-canvas mb-4 mx-2 mx-lg-3"
             : null
         } nav__link nav__social-media-logo d-inline-block align-text-top`}
       />
@@ -73,13 +73,13 @@ const Navigation = ({ socialMediaIcons }) => {
             className={`
                   ${
                     offCanvasToggled
-                      ? "mx-auto text-center pt-7"
+                      ? "text-center d-flex flex-column align-items-center"
                       : "pt-2"
                   }
                   ${fadeNav ? "nav--fade-in" : null}
                 `}
           >
-            <Nav className={`justify-content-end flex-grow-1 px-5`}>
+            <Nav className={`${offCanvasToggled ? 'my-auto' : 'flex-grow-1'} justify-content-end px-5`}>
               <Nav.Link
                 className={`nav__link ${
                   offCanvasToggled ? "nav__link--off-canvas" : null
@@ -116,15 +116,10 @@ const Navigation = ({ socialMediaIcons }) => {
                 Contact
               </Nav.Link>
             </Nav>
-            {offCanvasToggled ? null : (
-              <Nav>
+              <Nav className={`${offCanvasToggled ? 'pt-3 mt-auto flex-row' : null}`}>
                 {socialMediaList}
               </Nav>
-            )}
           </Offcanvas.Body>
-          {offCanvasToggled ? (
-            <Nav className="mx-auto flex-row">{socialMediaList}</Nav>
-          ) : null}
         </Navbar.Offcanvas>
       </Container>
     </Navbar>

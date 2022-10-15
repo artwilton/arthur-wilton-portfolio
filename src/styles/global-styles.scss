@@ -70,7 +70,7 @@ $color--dark: #161619;
   }
   @include element('social-media-logo') {
     @include modifier('off-canvas') {
-      @include font-size(4rem);
+      @include font-size(3rem);
     }
   }
   @include modifier('fade-in') {
