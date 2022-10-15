@@ -55,6 +55,7 @@ const WorkPage = ({ location }) => {
 
   const filterButtonList = FILTER_NAMES.map((name) => (
     <ToggleButton
+      className="filter-button-group__button"
       variant="light"
       key={name}
       id={name}
@@ -85,15 +86,15 @@ const WorkPage = ({ location }) => {
             </h1>
           </Col>
         </Row>
-        <Row className="main-content__bg--light py-5 justify-content-center text-center">
-          <Row>
+        <Row className="main-content__bg--light py-4 py-md-5 justify-content-center text-center">
+          <Row >
             <Col xs="10" className="mx-auto g-0 py-md-1 pb-md-2">
-              <ToggleButtonGroup className="shadow-lg-light" type="radio" name="options" defaultValue={filter}>
+              <ToggleButtonGroup className="filter-button-group shadow-lg-light" type="radio" name="options" defaultValue={filter}>
                 {filterButtonList}
               </ToggleButtonGroup>
             </Col>
           </Row>
-          <Col xs="10" className="mx-auto d-grid gap-4 pt-5">
+          <Col xs="10" className="mx-auto d-grid gap-4 pt-4 pt-md-5">
             {workCardsFiltered}
           </Col>
         </Row>
