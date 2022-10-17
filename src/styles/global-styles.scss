@@ -52,27 +52,36 @@ $color--dark: #161619;
 
 /* NavBar and OffCanvas */
 
-.nav-fade {
-  @include fade-in;
-}
-
-.nav-top .nav-link, svg {
-  font-size: 1.2em;
-}
-
-.nav-top svg {
-  color: $color--light;
-}
-
-.nav-offcanvas {
-  font-size: 2.2em;
-}
-
-.nav--under-logo {
-  position: absolute;
-  z-index: auto;
-  top: 0px;
-  right: 0px;
+.nav {
+  @include element('site-logo') {
+    z-index: 9999;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+  }
+  @include element('link') {
+    font-size: 1.2em;
+    color: $color--light;
+    @include modifier('off-canvas') {
+      @include font-size(4.2rem);
+      padding-top: 0rem;
+      padding-bottom: 0rem;
+    }
+  }
+  @include element('social-media-logo') {
+    @include modifier('off-canvas') {
+      @include font-size(3rem);
+    }
+  }
+  @include modifier('fade-in') {
+    @include fade-in;
+  }
+  @include modifier('under-logo') {
+    position: absolute;
+    z-index: auto;
+    top: 0px;
+    right: 0px;
+  }
 }
 
 // default bootstrap Nav values for reference
@@ -80,33 +89,6 @@ $color--dark: #161619;
 //   position: fixed;
 //   z-index: 1030;
 // }
-
-.site-logo {
-  z-index: 9999;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-}
-
-.navbar-toggler {
-  position: fixed;
-  top: 0px;
-  right: 0px;
-}
-
-.nav--under-logo {
-  position: absolute;
-  z-index: auto;
-  top: 0px;
-  right: 0px;
-}
-
-.site-logo {
-  z-index: 9999;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-}
 
 .navbar-toggler {
   position: fixed;
@@ -261,12 +243,13 @@ $color--dark: #161619;
 
 /* Work Page */
 .work-card {
-  max-width: 1200px;
+  max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
   @include element('image') {
     width: 100%;
     height: 100%;
+    max-height: 420px;
     object-fit: cover;
   }
   @include element('title') {
@@ -274,6 +257,37 @@ $color--dark: #161619;
   }
   @include element('description') {
     font-size: 1.4rem;
+    @include media-breakpoint-down(md) {
+      font-size: 1.3rem;
+      }
+    @include media-breakpoint-down(sm) {
+      font-size: 1.1rem;
+    }
+  }
+  @include element('button') {
+    @include media-breakpoint-down(sm) {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.work {
+  @include element('header') {
+    @include font-smoothing;
+    font-weight: 700;
+  }
+}
+
+.filter-button-group {
+  @include element('button') {
+    @include media-breakpoint-down(md) {
+      font-size: 1.5rem;
+    }
+    @include media-breakpoint-down(sm) {
+      padding-left: .5rem;
+      padding-right: .5rem;
+      font-size: 1.2rem;
+    }
   }
 }
 

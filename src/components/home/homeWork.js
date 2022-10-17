@@ -9,19 +9,21 @@ import Col from "react-bootstrap/Col";
 import { TitleCard } from "../../components"
 import { workCreativeBG, workDevBG, workVideoBG } from '../../media/home'
 
+const SKILLS_TEXT_ARRAY = ["Python", "JavaScript", "Ruby", "React", "HTML/CSS", "Ruby on Rails", "Shell Scripting", "FFmpeg", "Final Cut Pro", "Premiere Pro", "After Effects"]
+
+const TITLE_CARD_INFO = [
+  {title: <>SOFTWARE &amp; <br/> WEB DEV</>, background: workDevBG, alt:'Software and Web Development Card', category: 'Software'},
+  {title:'VIDEO PRODUCTION', background: workVideoBG, alt:'Video Production Card', category: 'Video'},
+  {title:'CREATIVE PROJECTS', background: workCreativeBG, alt:'Creative Projects Card', category: 'Creative'}
+]
+
 const HomeWork = () => {
 
-  const skillsTextArray = ["Python", "JavaScript", "Ruby", "React", "HTML/CSS", "Ruby on Rails", "Shell Scripting", "FFmpeg", "Final Cut Pro", "Premiere Pro", "After Effects"]
-
-  const titleCardInfo = [
-    {title: <>SOFTWARE &amp; <br/> WEB DEV</>, background: workDevBG, alt:'Software and Web Development Card'},
-    {title:'VIDEO PRODUCTION', background: workVideoBG, alt:'Video Production Card'},
-    {title:'CREATIVE PROJECTS', background: workCreativeBG, alt:'Creative Projects Card'}
-  ]
-
-  const titleCards = titleCardInfo.map(({title, background, alt}) =>
+  const titleCards = TITLE_CARD_INFO.map(({title, background, alt, category}) =>
     <Col lg="4">
+      <Link to="/work" state={{fromLink: category}}>
         <TitleCard {...{title, background, alt}}></TitleCard>
+      </Link>
     </Col>
   );
   
@@ -30,11 +32,11 @@ const HomeWork = () => {
   
     useInterval(() => {
       let index = skillsTextIndex
-      index = ++index % skillsTextArray.length
+      index = ++index % SKILLS_TEXT_ARRAY.length
       setskillsTextIndex(index);
     }, 1150);
   
-    return skillsTextArray[skillsTextIndex]
+    return SKILLS_TEXT_ARRAY[skillsTextIndex]
   }
   
   return (

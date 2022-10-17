@@ -19,13 +19,15 @@ $lead-font-weight: 200;
 $btn-font-family: gill-sans-nova, Gill Sans,Gill Sans MT,Calibri,sans-serif;
 
 $btn-font-size-lg: 2.2rem;
+$btn-font-size: 1.7rem;
 $btn-font-size-sm: 1.4rem;
 $btn-border-width: .15rem;
 $btn-font-weight: 200;
 $btn-white-space: nowrap;
 
 
-$btn-border-radius: 0;
+$btn-border-radius: 5px;
+$btn-padding-y: 0;
 $btn-border-radius-lg: 0;
 $btn-padding-y-lg: 0;
 $btn-border-radius-sm: 0;
@@ -57,7 +59,30 @@ $custom-spacer: .75rem;
 @import "/node_modules/bootstrap/scss/root";
 
 // Optional Bootstrap components
-// @import "/node_modules/bootstrap/scss/utilities";
+@import "/node_modules/bootstrap/scss/utilities";
+
+$box-shadow-light: 0 .5rem 1rem rgba($black, .075);
+$box-shadow-sm-light: 0 .125rem .25rem rgba($black, .04);
+$box-shadow-lg-light: 0 1rem 3rem rgba($black, .075);
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "shadow": map-merge(
+      map-get($utilities, "shadow"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "shadow"), "values"),
+          (
+            'light': $box-shadow-light,
+            'sm-light': $box-shadow-sm-light,
+            'lg-light': $box-shadow-lg-light
+          )
+        ),
+      ),
+    ),
+  )
+);
 // @import "/node_modules/bootstrap/scss/reboot";
 // @import "/node_modules/bootstrap/scss/type";
 // @import "/node_modules/bootstrap/scss/buttons";
