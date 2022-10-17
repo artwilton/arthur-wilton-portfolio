@@ -3,20 +3,32 @@ import Navigation from './navigation'
 import Footer from './footer'
 import { GitHubIcon, LinkedInIcon, BehanceIcon } from '../media/social_media_icons'
 
-const Layout = ({ children }) => {
+const NAV_LINKS = [
+  {name: 'Work', to: "/work"},
+  {name: 'About', to: "/about"},
+  {name: 'Blog', to: "https://artwilton.medium.com"},
+  {name: 'Contact', to: "/contact"}
+]
 
-  const socialMediaIcons = [
-    {name: 'GitHub', link: 'https://www.github.com/artwilton', SVGComp: GitHubIcon},
-    {name: 'LinkedIn', link: 'https://www.linkedin.com/in/artwilton', SVGComp: LinkedInIcon},
-    {name: 'Behance', link: 'https://www.behance.net/artwilton', SVGComp: BehanceIcon}]
+const NAVBAR_BRAND = {
+  logo: "AW",
+  to: "/"
+}
+
+const SOCIAL_MEDIA_ICONS = [
+  {name: 'GitHub', link: 'https://www.github.com/artwilton', SVGComp: GitHubIcon},
+  {name: 'LinkedIn', link: 'https://www.linkedin.com/in/artwilton', SVGComp: LinkedInIcon},
+  {name: 'Behance', link: 'https://www.behance.net/artwilton', SVGComp: BehanceIcon}]
+
+const Layout = ({ children }) => {
 
   return (
     <>
-      <Navigation socialMediaIcons={socialMediaIcons}/>
+      <Navigation navLinks={NAV_LINKS} navbarBrand={NAVBAR_BRAND} socialMediaIcons={SOCIAL_MEDIA_ICONS}/>
       <main>
         {children}
       </main>
-      <Footer socialMediaIcons={socialMediaIcons}/>
+      <Footer socialMediaIcons={SOCIAL_MEDIA_ICONS}/>
     </>
   )
 }

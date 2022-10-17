@@ -4,8 +4,10 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link } from "gatsby";
+import AdaptiveLink from "./adaptiveLink";
+import { NavbarBrand } from "react-bootstrap";
 
-const Navigation = ({ socialMediaIcons }) => {
+const Navigation = ({ navLinks, navbarBrand, socialMediaIcons }) => {
   const [offCanvasToggled, setOffCanvasToggled] = useState(false);
   const [offCanvasExited, setOffCanvasExited] = useState(true);
   const [fadeNav, setFadeNav] = useState(false);
@@ -24,7 +26,7 @@ const Navigation = ({ socialMediaIcons }) => {
   };
   const expand = "md";
 
-  const socialMediaList = socialMediaIcons.map(({ name, link, SVGComp }) => (
+  const renderSocialMediaIcons = socialMediaIcons.map(({ name, link, SVGComp }) => (
     <Navbar.Brand href={link} aria-label={name}>
       <SVGComp
         role="img"
@@ -38,6 +40,18 @@ const Navigation = ({ socialMediaIcons }) => {
     </Navbar.Brand>
   ));
 
+  const renderNavLinks = navLinks.map(({name, to}) => (
+    <Nav.Link
+    className={`nav__link ${
+      offCanvasToggled ? "nav__link--off-canvas" : null
+    }`}
+    as={AdaptiveLink}
+    to={to}
+    >
+    {name}
+    </Nav.Link>
+  ));
+
   return (
     <Navbar
       className={`${offCanvasExited ? null : "nav--under-logo"}`}
@@ -47,8 +61,8 @@ const Navigation = ({ socialMediaIcons }) => {
       style={{ backgroundColor: "transparent" }}
     >
       <Container fluid>
-        <Navbar.Brand className="nav__site-logo" as={Link} to="/">
-          <p className="pt-3 ps-4">AW</p>
+        <Navbar.Brand className="nav__site-logo pt-4 ps-4" as={AdaptiveLink} to={navbarBrand.to}>
+          {navbarBrand.logo}
         </Navbar.Brand>
         <Navbar.Toggle
           className="border-0 shadow-none pt-4 pe-4"
@@ -79,45 +93,11 @@ const Navigation = ({ socialMediaIcons }) => {
                   ${fadeNav ? "nav--fade-in" : null}
                 `}
           >
-            <Nav className={`${offCanvasToggled ? 'my-auto' : 'flex-grow-1'} justify-content-end px-5`}>
-              <Nav.Link
-                className={`nav__link ${
-                  offCanvasToggled ? "nav__link--off-canvas" : null
-                }`}
-                as={Link}
-                to="/work"
-              >
-                Work
-              </Nav.Link>
-              <Nav.Link
-                className={`nav__link ${
-                  offCanvasToggled ? "nav__link--off-canvas" : null
-                }`}
-                as={Link}
-                to="/about"
-              >
-                About
-              </Nav.Link>
-              <Nav.Link
-                className={`nav__link ${
-                  offCanvasToggled ? "nav__link--off-canvas" : null
-                }`}
-                href="https://artwilton.medium.com"
-              >
-                Blog
-              </Nav.Link>
-              <Nav.Link
-                className={`nav__link ${
-                  offCanvasToggled ? "nav__link--off-canvas" : null
-                }`}
-                as={Link}
-                to="/contact"
-              >
-                Contact
-              </Nav.Link>
+            <Nav className={`${offCanvasToggled ? 'my-auto' : 'flex-grow-1 pt-1'} justify-content-end px-5`}>
+              {renderNavLinks}
             </Nav>
-              <Nav className={`${offCanvasToggled ? 'pt-3 mt-auto flex-row' : null}`}>
-                {socialMediaList}
+              <Nav className={`${offCanvasToggled ? 'pt-3 mt-auto flex-row' : 'pt-1'}`}>
+                {renderSocialMediaIcons}
               </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
