@@ -16,9 +16,9 @@ const NAVBAR_BRAND = {
 }
 
 const SOCIAL_MEDIA_ICONS = [
-  {name: 'GitHub', link: 'https://www.github.com/artwilton', SVGComp: GitHubIcon},
-  {name: 'LinkedIn', link: 'https://www.linkedin.com/in/artwilton', SVGComp: LinkedInIcon},
-  {name: 'Behance', link: 'https://www.behance.net/artwilton', SVGComp: BehanceIcon}]
+  {name: 'GitHub', to: 'https://www.github.com/artwilton', SVGComp: GitHubIcon},
+  {name: 'LinkedIn', to: 'https://www.linkedin.com/in/artwilton', SVGComp: LinkedInIcon},
+  {name: 'Behance', to: 'https://www.behance.net/artwilton', SVGComp: BehanceIcon}]
 
 const Layout = ({ children }) => {
 

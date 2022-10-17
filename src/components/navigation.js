@@ -3,9 +3,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Link } from "gatsby";
 import AdaptiveLink from "./adaptiveLink";
-import { NavbarBrand } from "react-bootstrap";
 
 const Navigation = ({ navLinks, navbarBrand, socialMediaIcons }) => {
   const [offCanvasToggled, setOffCanvasToggled] = useState(false);
@@ -26,8 +24,8 @@ const Navigation = ({ navLinks, navbarBrand, socialMediaIcons }) => {
   };
   const expand = "md";
 
-  const renderSocialMediaIcons = socialMediaIcons.map(({ name, link, SVGComp }) => (
-    <Navbar.Brand href={link} aria-label={name}>
+  const renderSocialMediaIcons = socialMediaIcons.map(({ name, to, SVGComp }) => (
+    <Navbar.Brand href={to} aria-label={name}>
       <SVGComp
         role="img"
         alt={`${name} Icon`}
