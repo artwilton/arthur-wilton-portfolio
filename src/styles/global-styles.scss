@@ -52,12 +52,20 @@ $color--dark: #161619;
 
 /* NavBar and OffCanvas */
 
-.nav {
+.navbar {
+  will-change: top;
+  transition: top 200ms linear;
+  $nav-height: 70px;
+  height: $nav-height;
+  background-color: rgba(0, 0, 0, 0.6);
+  @include modifier('on-screen') {
+    top: 0px;
+  }
+  @include modifier('off-screen') {
+    top: -$nav-height;
+  }
   @include element('site-logo') {
     z-index: 9999;
-    position: fixed;
-    top: 0px;
-    left: 0px;
   }
   @include element('link') {
     font-size: 1.2em;
@@ -89,12 +97,6 @@ $color--dark: #161619;
 //   position: fixed;
 //   z-index: 1030;
 // }
-
-.navbar-toggler {
-  position: fixed;
-  top: 0px;
-  right: 0px;
-}
 
 /* TitleCards */
 .title-card__title {
