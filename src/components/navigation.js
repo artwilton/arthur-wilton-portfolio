@@ -1,14 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDebouncedCallback } from "use-debounce";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Link } from "gatsby";
+import AdaptiveLink from "./adaptiveLink";
 
-const Navigation = ({ socialMediaIcons }) => {
+const Navigation = ({ navLinks, navbarBrand, socialMediaIcons }) => {
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
   const [offCanvasToggled, setOffCanvasToggled] = useState(false);
   const [offCanvasExited, setOffCanvasExited] = useState(true);
   const [fadeNav, setFadeNav] = useState(false);
+
+  const handleScroll = useDebouncedCallback(
+    () => {
+      const currentScrollPos = window.pageYOffset;
+      setVisible(
+        (prevScrollPos > currentScrollPos &&
+          prevScrollPos - currentScrollPos > 70) ||
+          currentScrollPos < 20
+      );
+      setPrevScrollPos(currentScrollPos);
+    },
+    // delay in ms
+    80
+  );
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollPos, visible, handleScroll]);
 
   const handleEnter = () => {
     setOffCanvasToggled(true);
@@ -24,105 +47,103 @@ const Navigation = ({ socialMediaIcons }) => {
   };
   const expand = "md";
 
-  const socialMediaList = socialMediaIcons.map(({ name, link, SVGComp }) => (
-    <Navbar.Brand href={link} aria-label={name}>
-      <SVGComp
-        role="img"
-        alt={`${name} Icon`}
-        className={`${
-          offCanvasToggled
-            ? "nav__social-media-logo--off-canvas mb-4 mx-2 mx-lg-3"
-            : null
-        } nav__link nav__social-media-logo d-inline-block align-text-top`}
-      />
-    </Navbar.Brand>
+  const renderSocialMediaIcons = socialMediaIcons.map(
+    ({ name, to, SVGComp }) => (
+      <Navbar.Brand href={to} aria-label={name}>
+        <SVGComp
+          role="img"
+          alt={`${name} Icon`}
+          className={`${
+            offCanvasToggled
+              ? "custom-navbar__social-media-logo--off-canvas mb-4 mx-2 mx-lg-3"
+              : ""
+          } custom-navbar__link custom-navbar__social-media-logo d-inline-block align-text-top`}
+        />
+      </Navbar.Brand>
+    )
+  );
+
+  const renderNavLinks = navLinks.map(({ name, to }) => (
+    <Nav.Link
+      className={`custom-navbar__link ${
+        offCanvasToggled ? "custom-navbar__link--off-canvas" : ""
+      }`}
+      as={AdaptiveLink}
+      to={to}
+    >
+      {name}
+    </Nav.Link>
   ));
 
+  console.log(prevScrollPos);
   return (
-    <Navbar
-      className={`${offCanvasExited ? null : "nav--under-logo"}`}
-      variant="dark"
-      expand={expand}
-      fixed="top"
-      style={{ backgroundColor: "transparent" }}
-    >
-      <Container fluid>
-        <Navbar.Brand className="nav__site-logo" as={Link} to="/">
-          <p className="pt-3 ps-4">AW</p>
-        </Navbar.Brand>
-        <Navbar.Toggle
-          className="border-0 shadow-none pt-4 pe-4"
-          aria-controls={`offcanvasNavbar-expand-${expand}`}
-        />
-        <Navbar.Offcanvas
-          onEnter={handleEnter}
-          onExiting={handleExiting}
-          onExited={handleExited}
-          className="text-bg-dark border-0"
-          id={`offcanvasNavbar-expand-${expand}`}
-          aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-          placement="end"
-        >
-          <Offcanvas.Header
-            className="justify-content-end pt-4"
-            closeButton
-            closeLabel
-            closeVariant="white shadow-none pe-5 pt-4"
+    <>
+      <Navbar.Brand
+        className={`pt-3 ps-4 navbar-dark custom-navbar__link custom-navbar__site-logo ${
+          visible ? "" : "custom-navbar__site-logo--off-screen"
+        }`}
+        as={AdaptiveLink}
+        to={navbarBrand.to}
+      >
+        {navbarBrand.logo}
+      </Navbar.Brand>
+      <Navbar
+        className={`custom-navbar ${
+          visible ? "" : "custom-navbar--off-screen"
+        } ${prevScrollPos ? "" : "custom-navbar--top-of-screen"}`}
+        variant="dark"
+        expand={expand}
+        fixed="top"
+      >
+        <Container fluid>
+          <Navbar.Toggle
+            className="border-0 shadow-none pe-3 ms-auto me-1"
+            aria-controls={`offcanvasNavbar-expand-${expand}`}
           />
-          <Offcanvas.Body
-            className={`
+          <Navbar.Offcanvas
+            onEnter={handleEnter}
+            onExiting={handleExiting}
+            onExited={handleExited}
+            className="text-bg-dark border-0"
+            id={`offcanvasNavbar-expand-${expand}`}
+            aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+            placement="end"
+          >
+            <Offcanvas.Header
+              className="justify-content-end pt-4"
+              closeButton
+              closeLabel
+              closeVariant="white shadow-none pe-7 pt-3"
+            />
+            <Offcanvas.Body
+              className={`
                   ${
                     offCanvasToggled
                       ? "text-center d-flex flex-column align-items-center"
                       : "pt-2"
                   }
-                  ${fadeNav ? "nav--fade-in" : null}
+                  ${fadeNav ? "custom-navbar--fade-in" : ""}
                 `}
-          >
-            <Nav className={`${offCanvasToggled ? 'my-auto' : 'flex-grow-1'} justify-content-end px-5`}>
-              <Nav.Link
-                className={`nav__link ${
-                  offCanvasToggled ? "nav__link--off-canvas" : null
-                }`}
-                as={Link}
-                to="/work"
+            >
+              <Nav
+                className={`${
+                  offCanvasToggled ? "my-auto" : "flex-grow-1 pb-2"
+                } justify-content-end px-5`}
               >
-                Work
-              </Nav.Link>
-              <Nav.Link
-                className={`nav__link ${
-                  offCanvasToggled ? "nav__link--off-canvas" : null
-                }`}
-                as={Link}
-                to="/about"
-              >
-                About
-              </Nav.Link>
-              <Nav.Link
-                className={`nav__link ${
-                  offCanvasToggled ? "nav__link--off-canvas" : null
-                }`}
-                href="https://artwilton.medium.com"
-              >
-                Blog
-              </Nav.Link>
-              <Nav.Link
-                className={`nav__link ${
-                  offCanvasToggled ? "nav__link--off-canvas" : null
-                }`}
-                as={Link}
-                to="/contact"
-              >
-                Contact
-              </Nav.Link>
-            </Nav>
-              <Nav className={`${offCanvasToggled ? 'pt-3 mt-auto flex-row' : null}`}>
-                {socialMediaList}
+                {renderNavLinks}
               </Nav>
-          </Offcanvas.Body>
-        </Navbar.Offcanvas>
-      </Container>
-    </Navbar>
+              <Nav
+                className={`${
+                  offCanvasToggled ? "pt-3 mt-auto flex-row" : "pt-1 pe-2"
+                }`}
+              >
+                {renderSocialMediaIcons}
+              </Nav>
+            </Offcanvas.Body>
+          </Navbar.Offcanvas>
+        </Container>
+      </Navbar>
+    </>
   );
 };
 

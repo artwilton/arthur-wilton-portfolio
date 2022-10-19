@@ -50,14 +50,34 @@ $color--dark: #161619;
   }
 }
 
+$transform-transition: transform 200ms linear;
+$bg-color-transition: background-color 300ms linear;
+
 /* NavBar and OffCanvas */
 
-.nav {
+.custom-navbar {
+  transition: $transform-transition, $bg-color-transition;
+  will-change: transform;
+  transform: translateY(0%);
+  height: 70px;
+  background-color: rgba(0, 0, 0, 0.6);
+  @include modifier('off-screen') {
+    transform: translateY(-100%);
+  }
+  @include modifier('top-of-screen') {
+    background-color: transparent;
+  }
   @include element('site-logo') {
     z-index: 9999;
     position: fixed;
     top: 0px;
     left: 0px;
+    transform: translateY(0%);
+    transition: $transform-transition;
+    @include modifier('off-screen') {
+      transform: translateY(-100%);
+
+    }
   }
   @include element('link') {
     font-size: 1.2em;
@@ -76,12 +96,6 @@ $color--dark: #161619;
   @include modifier('fade-in') {
     @include fade-in;
   }
-  @include modifier('under-logo') {
-    position: absolute;
-    z-index: auto;
-    top: 0px;
-    right: 0px;
-  }
 }
 
 // default bootstrap Nav values for reference
@@ -89,12 +103,6 @@ $color--dark: #161619;
 //   position: fixed;
 //   z-index: 1030;
 // }
-
-.navbar-toggler {
-  position: fixed;
-  top: 0px;
-  right: 0px;
-}
 
 /* TitleCards */
 .title-card__title {

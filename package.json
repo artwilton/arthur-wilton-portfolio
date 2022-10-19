@@ -25,6 +25,7 @@
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.1.0",
     "react-helmet": "^6.1.0",
-    "sass": "^1.54.4"
+    "sass": "^1.54.4",
+    "use-debounce": "^8.0.4"
   }
 }
