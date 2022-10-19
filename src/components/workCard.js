@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 
-const WorkCard = ({name, description, imgSource, imgAlt}) => {
+const WorkCard = ({name, description, link, demo, altLink, altLinkName, imgSource, imgAlt}) => {
     return (
                     <Card className="work-card border-0 shadow-sm">
                         <Row className="g-0">
@@ -19,10 +19,10 @@ const WorkCard = ({name, description, imgSource, imgAlt}) => {
                                 </Card.Body>
                                 <Row className="mb-3 mx-auto mx-md-0 px-1 g-2 g-md-4">
                                     <Col className="col-auto mx-auto mx-md-0">
-                                        <Link to="/" className="work-card__button btn btn-sm btn-dark shadow-none">Read More</Link>
+                                        <Link to={link} className="work-card__button btn btn-sm btn-dark shadow-none">Read More</Link>
                                     </Col>
                                     <Col className="col-auto mx-auto mx-md-0">
-                                        <Link to="/about" className="work-card__button btn btn-outline-dark btn-sm">Watch Demo ▶</Link>
+                                        {altLink ? <Link to={altLink} className="work-card__button btn btn-outline-dark btn-sm">{altLinkName}</Link> : <Link to={demo} className="work-card__button btn btn-outline-dark btn-sm">Watch Demo ▶</Link>}
                                     </Col>
                                 </Row>
                             </Col>
