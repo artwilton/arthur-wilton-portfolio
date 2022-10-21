@@ -34,9 +34,9 @@ const WorkProjectPage = ({ data }) => {
                 className="btn btn-outline-light"
                 role="button"
                 block
-                to={frontmatter.alt_link}
+                to={frontmatter.altLink.to}
               >
-                {frontmatter.alt_link_name}
+                {frontmatter.altLink.name}
               </Link>
             )}
           </Col>
@@ -57,12 +57,15 @@ export const query = graphql`
       html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
-        title
+        name
         description
-        github
         demo
-        alt_link
-        alt_link_name
+        github
+        altLink
+        {
+          to
+          name
+        }
         slug
       }
     }
