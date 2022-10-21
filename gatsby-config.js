@@ -6,6 +6,21 @@ module.exports = {
   plugins: [
     `gatsby-plugin-sass`,
     {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: `work`,
+        path: `${__dirname}/work`,
+      }
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: `work`,
+        path: `${__dirname}/src/media`,
+      }
+    },
+    `gatsby-transformer-remark`,
+    {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {

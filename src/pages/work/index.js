@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Layout, WorkCard } from "../components";
+import { graphql } from 'gatsby'
+import { Layout, WorkCard } from "../../components";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -7,48 +8,16 @@ import Col from "react-bootstrap/Col";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 
-import { workCreativeBG } from "../media/home";
-
 const FILTER_MAP = {
   All: () => true,
-  Software: (project) => project.category === "Software",
-  Video: (project) => project.category === "Video",
-  Creative: (project) => project.category === "Creative",
+  Software: (project) => project.frontmatter.category === "Software",
+  Video: (project) => project.frontmatter.category === "Video",
+  Creative: (project) => project.frontmatter.category === "Creative",
 };
 
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
-const PROJECTS_ARRAY = [
-  {
-    id: 1,
-    name: "Software Example",
-    description:
-      "FCPX Marker Tool is written in Python, and allows for parsing, displaying, and saving marker metadata from FCPXML files in both .fcpxml and .fcpxmld formats.",
-    imgSource: workCreativeBG,
-    imgAlt: "FCPX Marker Tool Icon",
-    category: "Software",
-  },
-  {
-    id: 2,
-    name: "Video Example",
-    description:
-      "FCPX Marker Tool is written in Python, and allows for parsing, displaying, and saving marker metadata from FCPXML files in both .fcpxml and .fcpxmld formats.",
-    imgSource: workCreativeBG,
-    imgAlt: "FCPX Marker Tool Icon",
-    category: "Video",
-  },
-  {
-    id: 3,
-    name: "Creative Example",
-    description:
-      "FCPX Marker Tool is written in Python, and allows for parsing, displaying, and saving marker metadata from FCPXML files in both .fcpxml and .fcpxmld formats.",
-    imgSource: workCreativeBG,
-    imgAlt: "FCPX Marker Tool Icon",
-    category: "Creative",
-  },
-];
-
-const WorkPage = ({ location }) => {
+const WorkPage = ({ location, data }) => {
   const [filter, setFilter] = useState(
     location.state.fromLink ? location.state.fromLink : "All"
   );
@@ -67,14 +36,22 @@ const WorkPage = ({ location }) => {
     </ToggleButton>
   ));
 
-  const workCardsFiltered = PROJECTS_ARRAY.filter(FILTER_MAP[filter]).map(
-    ({ id, name, description, imgSource, imgAlt, category }) => (
+  const workCardsFiltered = data.work.nodes.filter(FILTER_MAP[filter]).map(
+    ({id, frontmatter: {name, demo, description, category, img, altLink, slug}}) => (
       <WorkCard
-        key={name}
-        {...{ id, name, description, imgSource, imgAlt, category }}
-      />
-    )
-  );
+        key={id}
+        name={name ?? 'Project Name'}
+        demo={demo}
+        description={description ?? 'Project Description'}
+        category={category}
+        link={`/work/${slug ?? ''}`}
+        imgSource={img?.src.publicURL}
+        imgAlt={img?.src.alt ?? 'Project Icon'}
+        altLinkTo={altLink?.to}
+        altLinkName={altLink?.name ?? 'Project Demo'}
+      >
+      </WorkCard>
+  ));
 
   return (
     <Layout>
@@ -103,6 +80,35 @@ const WorkPage = ({ location }) => {
   );
 };
 
+export const query = graphql`
+  {
+    work: allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
+      nodes {
+        frontmatter {
+          date(formatString: "MMMM D, YYYY")
+          name
+          category
+          description
+          demo
+          img
+          {
+            src
+              {publicURL}
+            alt
+          }
+          altLink
+          {
+            to
+            name
+          }
+          slug
+        }
+        id
+      }
+    }
+  }
+`
+
 export default WorkPage;
 
-export const Head = () => <title>Work</title>;
+export const Head = () => <title>My Work</title>;
