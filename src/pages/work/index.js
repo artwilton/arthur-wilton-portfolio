@@ -8,8 +8,6 @@ import Col from "react-bootstrap/Col";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 
-import { workCreativeBG } from "../../media/home";
-
 const FILTER_MAP = {
   All: () => true,
   Software: (project) => project.frontmatter.category === "Software",
@@ -39,18 +37,18 @@ const WorkPage = ({ location, data }) => {
   ));
 
   const workCardsFiltered = data.work.nodes.filter(FILTER_MAP[filter]).map(
-    node => (
+    ({id, frontmatter: {name, demo, description, category, img, altLink, slug}}) => (
       <WorkCard
-        key={node.id}
-        name={node.frontmatter.title}
-        link={`/work/${node.frontmatter.slug}`}
-        demo={node.frontmatter.demo}
-        altLink={node.frontmatter.alt_link ? node.frontmatter.alt_link : null}
-        altLinkName={node.frontmatter.alt_link_name ? node.frontmatter.alt_link_name : null}
-        description={node.frontmatter.description}
-        category={node.frontmatter.category}
-        imgSource={workCreativeBG}
-        imgAlt="Image Alt Stand-in"
+        key={id}
+        name={name ?? 'Project Name'}
+        demo={demo}
+        description={description ?? 'Project Description'}
+        category={category}
+        link={`/work/${slug ?? ''}`}
+        imgSource={img?.src.publicURL}
+        imgAlt={img?.src.alt ?? 'Project Icon'}
+        altLinkTo={altLink?.to}
+        altLinkName={altLink?.name ?? 'Project Demo'}
       >
       </WorkCard>
   ));
@@ -88,12 +86,21 @@ export const query = graphql`
       nodes {
         frontmatter {
           date(formatString: "MMMM D, YYYY")
-          title
+          name
           category
           description
           demo
-          alt_link
-          alt_link_name
+          img
+          {
+            src
+              {publicURL}
+            alt
+          }
+          altLink
+          {
+            to
+            name
+          }
           slug
         }
         id
@@ -104,4 +111,4 @@ export const query = graphql`
 
 export default WorkPage;
 
-export const Head = () => <title>Work</title>;
+export const Head = () => <title>My Work</title>;
