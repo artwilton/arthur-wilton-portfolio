@@ -1,10 +1,13 @@
 ---
-title: "PIM: The Personal Inventory Manager"
+name: "PIM: The Personal Inventory Manager"
 date: "2022-10-18"
 category: "Software"
 description: "PIM is a mobile application built with React Native and Ruby on Rails. It allows users to create an inventory of items, keep track of each item's location, and add metadata to the items and their containers."
 github: "https://github.com/artwilton/pim-frontend"
 demo: "https://user-images.githubusercontent.com/69938486/123050076-4805de80-d3ce-11eb-8096-1c391b3d1b9d.mp4"
+img:
+    src: ../src/media/home/work-dev-bg.jpg
+    alt: "PIM: The Personal Inventory Manager"
 slug: "personal-inventory-manager"
 ---
 

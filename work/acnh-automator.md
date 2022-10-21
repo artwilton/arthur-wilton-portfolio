@@ -1,10 +1,13 @@
 ---
-title: "ACNH Automator"
+name: "ACNH Automator"
 date: "2022-10-17"
 category: "Software"
 description: "Automates repetitive tasks in Animal Crossing New Horizons using Python. The joycontrol library is used for emulating a Nintendo Switch controller over Bluetooth."
 github: "https://github.com/artwilton/joycontrol-acnh-automator"
 demo: "https://youtu.be/vURoaECIB4M"
+img:
+    src: ../src/media/home/work-dev-bg.jpg
+    alt: "ACNH Automator Project"
 slug: "acnh-automator"
 ---
 
