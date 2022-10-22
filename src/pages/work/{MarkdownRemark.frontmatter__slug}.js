@@ -16,8 +16,8 @@ const WorkProjectPage = ({ data }) => {
       <Container fluid>
         <Row className="cover-section__bg--dark pt-5 pb-4 py-md-5 text-center">
           <Col xs="10" md="7" className="mx-auto mt-4 mb-2 mt-md-5 mb-md-3">
-            <h2>{frontmatter.title}</h2>
-            <p className="lead pt-md-2 pb-md-3" style={{ fontSize: "1.5rem" }}>
+            <h2>{frontmatter.name}</h2>
+            <p className="work-project-page__lead lead pt-md-2 pb-md-3">
               {frontmatter.description}
             </p>
             {frontmatter.github ? (

@@ -299,6 +299,12 @@ $bg-color-transition: background-color 300ms linear;
   }
 }
 
+.work-project-page {
+  @include element('lead') {
+    font-size: 1.5rem;
+  }
+}
+
 /* Media Breakpoints */
 @include media-breakpoint-down(xl) {
   .title-card__title {
