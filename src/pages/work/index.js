@@ -45,8 +45,8 @@ const WorkPage = ({ location, data }) => {
         description={description ?? 'Project Description'}
         category={category}
         link={`/work/${slug ?? ''}`}
-        imgSource={img?.src.publicURL}
-        imgAlt={img?.src.alt ?? 'Project Icon'}
+        imgSource={img?.src?.publicURL}
+        imgAlt={img?.alt ?? 'Project Icon'}
         altLinkTo={altLink?.to}
         altLinkName={altLink?.name ?? 'Project Demo'}
       >
