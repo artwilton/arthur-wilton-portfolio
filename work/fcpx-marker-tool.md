@@ -6,7 +6,7 @@ description: "Written in Python, FCPX Marker Tool allows users to parse, display
 github: "https://github.com/artwilton/fcpx-marker-tool"
 demo: "https://user-images.githubusercontent.com/69938486/172484701-ef0404ae-5c49-4d5a-bcdc-8e336846d4b5.mp4"
 img:
-    src: ../src/media/home/work-dev-bg.jpg
+    src: ../src/media/work/fcpx-marker-tool-work-card-img.jpg
     alt: "FCPX Marker Tool"
 slug: "fcpx-marker-tool"
 ---

@@ -6,7 +6,7 @@ description: "Automates repetitive tasks in Animal Crossing New Horizons using P
 github: "https://github.com/artwilton/joycontrol-acnh-automator"
 demo: "https://youtu.be/vURoaECIB4M"
 img:
-    src: ../src/media/home/work-dev-bg.jpg
+    src: ../src/media/work/anch-automator-work-card-img.jpg
     alt: "ACNH Automator Project"
 slug: "acnh-automator"
 ---
