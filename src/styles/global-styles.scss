@@ -1,5 +1,17 @@
 @import "./customized-bootstrap-styles.scss";
 
+
+@mixin landing-page__description {
+  font-size: 1.9rem;
+  font-weight: 200;
+  @include media-breakpoint-up(md) {
+    @include font-smoothing;
+  }
+  @include media-breakpoint-down(md) {
+    font-size: 1.6rem;
+  }
+}
+
 /* BEM Mixins */
 @mixin element($element) {
   &__#{$element} {
@@ -105,18 +117,18 @@ $bg-color-transition: background-color 300ms linear;
 // }
 
 /* TitleCards */
-.title-card__title {
-  font-size: 2.2rem;
-  font-weight: 600;
-}
-
-.title-card__img {
-  min-width: 100%;
-  object-fit: cover;
-}
-
-.title-card__gradient {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), 90%, transparent);
+.title-card {
+  @include element('title') {
+    font-size: 2.2rem;
+    font-weight: 600;
+  }
+  @include element('img') {
+    min-width: 100%;
+    object-fit: cover;
+  }
+  @include element('gradient') {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), 90%, transparent);
+  }
 }
 
 .cover-section__bg--dark {
@@ -128,31 +140,6 @@ $bg-color-transition: background-color 300ms linear;
 }
 
 /* Landing Screen */
-.home-landing__video-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  opacity: 0.8;
-  z-index: -1;
-}
-
-.home-landing__video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-  z-index: -2;
-}
 
 /* Home - Landing Section */
 .home-landing {
@@ -162,70 +149,82 @@ $bg-color-transition: background-color 300ms linear;
   height:100vh;
   min-height:640px;
   overflow: hidden;
-}
-
-.home-landing__header {
-  font-family: europa, Lato, sans-serif;
-}
-
-.home-landing__lead {
-  font-family: 'Montserrat', sans-serif;
-}
-
-.home-landing__button {
-  min-width: 200px;
+  @include element('header') {
+    font-family: europa, Lato, sans-serif;
+  }
+  @include element('lead') {
+    font-family: 'Montserrat', sans-serif;
+  }
+  @include element('button') {
+    min-width: 200px;
+    @include font-smoothing;
+  }
+  @include element('video') {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    z-index: -2;
+  }
+  @include element('video-overlay') {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.8;
+    z-index: -1;
+  }
 }
 
 /* Home - My Work Section */
 .home-work {
   @include bg-color--light;
-}
-
-.home-work__header{
-  font-weight: 700;
-}
-
-.home-work__lead{
-  @include font-smoothing;
-  display: inline;
-}
-
-.home-work__skills-button {
-  width: 16rem;
-  padding-bottom: .5rem;
-  font-size: 2.4rem;
+  @include element('header') {
+    font-weight: 700;
+  }
+  @include element('lead') {
+    @include font-smoothing;
+    display: inline;
+  }
+  @include element('skills-button') {
+    width: 16rem;
+    padding-bottom: .5rem;
+    font-size: 2.2rem;
+  }
 }
 
 /* Home - Featured Section */
 .home-featured {
   @include bg-color--dark;
-}
-
-.home-featured__header {
-  font-weight: 600;
-  max-width: 22rem;
-}
-
-.home-featured__image {
-  max-width: 350px;
-  object-fit: contain;
-}
-
-.home-featured__title {
-  font-size: 2rem;
-  font-weight: 500;
-}
-
-.home-featured__description {
-  font-size: 2rem;
-  font-weight: 200;
-}
-
-.home-featured__button {
-  width: 18rem;
-  padding-bottom: .5rem;
-  font-size: 2rem;
-  margin-bottom: 2rem;
+  @include element('header') {
+    font-weight: 600;
+    max-width: 22rem;
+  }
+  @include element('description') {
+    @include landing-page__description;
+  }
+  @include element('image') {
+    max-width: 350px;
+    object-fit: contain;
+  }
+  @include element('title') {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+  @include element('button') {
+    padding-bottom: .25rem;
+    margin-bottom: 2rem;
+    @include font-smoothing;
+  }
 }
 
 /* Home - About Section */
@@ -236,43 +235,45 @@ $bg-color-transition: background-color 300ms linear;
     font-weight: 700;
   }
   @include element('description') {
-    @include font-smoothing;
-    font-weight: 300;
-    font-size: 2rem;
+    @include landing-page__description;
     @include modifier('bold') {
       font-weight: 500;
     }
   }
   @include element('image') {
     max-height: 520px;
-    border-radius: 5px;
+    border-radius: 6px;
   }
 }
 
 /* Work Page */
 .work-card {
-  max-width: 1100px;
+  max-width: 550px;
   margin-left: auto;
   margin-right: auto;
   @include element('image') {
-    width: 100%;
-    height: 100%;
     max-height: 420px;
     object-fit: cover;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
   }
   @include element('title') {
-
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: .25rem;
+    @include media-breakpoint-down(lg) {
+      font-size: 1.8rem;
+    }
   }
   @include element('description') {
-    font-size: 1.4rem;
-    @include media-breakpoint-down(md) {
-      font-size: 1.3rem;
-      }
+    font-size: 1.3rem;
     @include media-breakpoint-down(sm) {
       font-size: 1.1rem;
     }
   }
   @include element('button') {
+    padding-left: .75rem;
+    padding-right: .75rem;
     @include media-breakpoint-down(sm) {
       font-size: 1.2rem;
     }
@@ -288,13 +289,14 @@ $bg-color-transition: background-color 300ms linear;
 
 .filter-button-group {
   @include element('button') {
+    font-size: 1.65rem;
     @include media-breakpoint-down(md) {
       font-size: 1.5rem;
     }
     @include media-breakpoint-down(sm) {
       padding-left: .5rem;
       padding-right: .5rem;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
   }
 }
@@ -302,6 +304,16 @@ $bg-color-transition: background-color 300ms linear;
 .work-project-page {
   @include element('lead') {
     font-size: 1.5rem;
+  }
+}
+
+.tag {
+  @include element('small') {
+    font-size: .9rem;
+    padding-right: .6rem;
+    padding-left: .6rem;
+    padding-bottom: .15rem;
+    padding-top: .15rem;
   }
 }
 
@@ -318,9 +330,6 @@ $bg-color-transition: background-color 300ms linear;
   }
   .title-card__img {
     max-height: 140px;
-  }
-  .home-featured__description {
-    font-size: 1.8;
   }
   .home-featured__button {
     width: 16rem;
@@ -343,9 +352,6 @@ $bg-color-transition: background-color 300ms linear;
   .home-featured__title {
     font-size: 1.8rem;
   }
-  .home-featured__description {
-    font-size: 1.6rem;
-  }
   .home-featured__button {
     width: 16rem;
     font-size: 1.8rem;
@@ -353,11 +359,5 @@ $bg-color-transition: background-color 300ms linear;
   .home-featured__image {
     max-width: 270px;
     width: 100%;
-  }
-}
-
-@include media-breakpoint-up(md) {
-  .home-featured__description {
-    @include font-smoothing;
   }
 }
