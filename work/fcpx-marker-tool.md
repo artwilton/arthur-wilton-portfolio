@@ -2,12 +2,18 @@
 name: "FCPX Marker Tool"
 date: "2022-10-19"
 category: "Software"
-description: "Written in Python, FCPX Marker Tool allows users to parse, display, and save marker metadata from FCPXML files in both .fcpxml and .fcpxmld formats."
+description:
+    short: "Parse, display, and save marker metadata from FCPXML files."
+    full: "Written in Python, FCPX Marker Tool allows users to parse, display, and save marker metadata from FCPXML files in both .fcpxml and .fcpxmld formats."
 github: "https://github.com/artwilton/fcpx-marker-tool"
 demo: "https://user-images.githubusercontent.com/69938486/172484701-ef0404ae-5c49-4d5a-bcdc-8e336846d4b5.mp4"
 img:
     src: ../src/media/work/fcpx-marker-tool-work-card-img.jpg
     alt: "FCPX Marker Tool"
+tags:
+    - "Python"
+    - "XML Parser"
+    - "Post Production"
 slug: "fcpx-marker-tool"
 ---
 
