@@ -37,20 +37,24 @@ const WorkPage = ({ location, data }) => {
   ));
 
   const workCardsFiltered = data.work.nodes.filter(FILTER_MAP[filter]).map(
-    ({id, frontmatter: {name, demo, description, category, img, altLink, slug}}) => (
+    ({id, frontmatter: {name, demo, description, category, img, altLink, tags, slug}}) => (
+      <Col className="pt-4">
+      {workCardsFiltered}
       <WorkCard
         key={id}
         name={name ?? 'Project Name'}
         demo={demo}
-        description={description ?? 'Project Description'}
+        tags={tags}
+        description={description?.short ?? 'Project Description'}
         category={category}
         link={`/work/${slug ?? ''}`}
         imgSource={img?.src?.publicURL}
         imgAlt={img?.alt ?? 'Project Icon'}
         altLinkTo={altLink?.to}
         altLinkName={altLink?.name ?? 'Project Demo'}
-      >
+        >
       </WorkCard>
+        </Col>
   ));
 
   return (
@@ -63,7 +67,7 @@ const WorkPage = ({ location, data }) => {
             </h1>
           </Col>
         </Row>
-        <Row className="main-content__bg--light py-4 py-md-5 justify-content-center text-center">
+        <Row className="main-content__bg--light py-4 py-md-5 justify-content-center text-center px-3 px-md-5">
           <Row >
             <Col xs="10" className="mx-auto g-0 py-md-1 pb-md-2">
               <ToggleButtonGroup className="filter-button-group shadow-lg-light" type="radio" name="options" defaultValue={filter}>
@@ -71,9 +75,9 @@ const WorkPage = ({ location, data }) => {
               </ToggleButtonGroup>
             </Col>
           </Row>
-          <Col xs="10" className="mx-auto d-grid gap-4 pt-4 pt-md-5">
+          <Row xs="1" md="2" xl="3">
             {workCardsFiltered}
-          </Col>
+          </Row>
         </Row>
       </Container>
     </Layout>
@@ -88,7 +92,10 @@ export const query = graphql`
           date(formatString: "MMMM D, YYYY")
           name
           category
-          description
+          description {
+            short,
+            full
+          }
           demo
           img
           {
@@ -101,6 +108,7 @@ export const query = graphql`
             to
             name
           }
+          tags
           slug
         }
         id
