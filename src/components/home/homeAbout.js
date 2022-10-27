@@ -11,7 +11,7 @@ const HomeAbout = () => {
   return (
     <section className="home-about" id="Section04">
       <Container fluid className="py-5 px-5 px-md-0">
-        <Row className="pb-5 ">
+        <Row className="pb-3 pb-md-5">
           <Col md="8" lg="6" className="mx-auto">
             <h1 class="home-about__header border-bottom border-dark align-self-center card-title mx-auto text-center pb-3">
               Let's Work Together
@@ -43,7 +43,7 @@ const HomeAbout = () => {
           </Col>
           <Col md="5" lg="4">
             <img
-              className="home-about__image img-fluid mx-auto d-block pt-md-0 pt-3 pl-md-5 pl-0"
+              className="home-about__image img-fluid mx-auto d-block pl-md-5 pl-0"
               src={aboutPhoto}
               alt="Arthur holding a cute dog"
             />
@@ -51,7 +51,7 @@ const HomeAbout = () => {
           <Col md="1" lg="2"></Col>
         </Row>
         <Row>
-          <Col className="home-about__description d-xl-none py-5 text-center">
+          <Col className="home-about__description d-xl-none py-3 py-md-5 text-center">
             <p>Have a project you think I might be a good fit for?</p>
             <Button variant="outline-dark" size="lg" className="px-5">
               Contact Me
