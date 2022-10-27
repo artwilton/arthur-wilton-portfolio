@@ -22,13 +22,13 @@ const HomeFeatured = () => {
               Mobile Application built with a React Native frontend and Ruby on Rails backend.
             </p>
             <Button className="home-featured__button d-none d-md-block" variant="outline-light" size="lg" block>
-              project case study
+              Read More
             </Button>
           </Col>
           <Col md="5" lg="4" className="my-auto">
             <img className="home-featured__image shadow-lg ps-md-4 ps-lg-5 d-block mx-auto mb-4 mb-md-5 mt-md-5" src={featuredProject01} alt="PIM Project"/>
             <Button className="home-featured__button d-md-none mx-auto d-block" variant="outline-light" size="lg" block>
-              project case study
+              Read More
             </Button>
           </Col>
           <Col md="1" lg="2"></Col>
