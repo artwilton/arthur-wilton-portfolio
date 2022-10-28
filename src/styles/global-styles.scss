@@ -264,6 +264,9 @@ $bg-color-transition: background-color 300ms linear;
     @include media-breakpoint-down(lg) {
       font-size: 1.8rem;
     }
+    @include media-breakpoint-down(sm) {
+      font-size: 1.6rem;
+    }
   }
   @include element('description') {
     font-size: 1.3rem;
@@ -314,6 +317,11 @@ $bg-color-transition: background-color 300ms linear;
     padding-left: .6rem;
     padding-bottom: .15rem;
     padding-top: .15rem;
+    @include media-breakpoint-down(sm) {
+      font-size: .85rem;
+      padding-right: .5rem;
+      padding-left: .5rem;
+    }
   }
 }
 

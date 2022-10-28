@@ -38,7 +38,7 @@ const WorkPage = ({ location, data }) => {
 
   const workCardsFiltered = data.work.nodes.filter(FILTER_MAP[filter]).map(
     ({id, frontmatter: {name, demo, description, category, img, altLink, tags, slug}}) => (
-      <Col className="pt-4">
+      <Col className="gy-4 gx-3">
       {workCardsFiltered}
       <WorkCard
         key={id}
@@ -67,9 +67,9 @@ const WorkPage = ({ location, data }) => {
             </h1>
           </Col>
         </Row>
-        <Row className="main-content__bg--light py-4 py-md-5 justify-content-center text-center px-3 px-md-5">
-          <Row >
-            <Col xs="10" className="mx-auto g-0 py-md-1 pb-md-2">
+        <Row className="main-content__bg--light py-4 py-md-5 justify-content-center text-center px-md-5">
+          <Row className="g-0">
+            <Col xs="10" className="mx-auto py-md-1 pb-md-2">
               <ToggleButtonGroup className="filter-button-group shadow-lg-light" type="radio" name="options" defaultValue={filter}>
                 {filterButtonList}
               </ToggleButtonGroup>
