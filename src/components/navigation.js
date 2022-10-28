@@ -49,7 +49,7 @@ const Navigation = ({ navLinks, navbarBrand, socialMediaIcons }) => {
 
   const renderSocialMediaIcons = socialMediaIcons.map(
     ({ name, to, SVGComp }) => (
-      <Navbar.Brand href={to} aria-label={name}>
+      <Navbar.Brand href={to} aria-label={name} key={name}>
         <SVGComp
           role="img"
           alt={`${name} Icon`}
@@ -65,6 +65,7 @@ const Navigation = ({ navLinks, navbarBrand, socialMediaIcons }) => {
 
   const renderNavLinks = navLinks.map(({ name, to }) => (
     <Nav.Link
+      key={name}
       className={`custom-navbar__link ${
         offCanvasToggled ? "custom-navbar__link--off-canvas" : ""
       }`}
@@ -112,7 +113,7 @@ const Navigation = ({ navLinks, navbarBrand, socialMediaIcons }) => {
             <Offcanvas.Header
               className="justify-content-end pt-4"
               closeButton
-              closeLabel
+              closeLabel='Close'
               closeVariant="white shadow-none pe-7 pt-3"
             />
             <Offcanvas.Body

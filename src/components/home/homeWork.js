@@ -19,8 +19,8 @@ const TITLE_CARD_INFO = [
 
 const HomeWork = () => {
 
-  const titleCards = TITLE_CARD_INFO.map(({title, background, alt, category}) =>
-    <Col lg="4">
+  const titleCards = TITLE_CARD_INFO.map(({title, background, alt, category}, index) =>
+    <Col lg="4" key={index}>
       <Link to="/work" state={{fromLink: category}}>
         <TitleCard {...{title, background, alt}}></TitleCard>
       </Link>
@@ -44,7 +44,7 @@ const HomeWork = () => {
       <Container fluid className="py-5">
       <Row className="pb-2 pb-lg-4 px-lg-5 px-xl-7">
             <Col xs="8" lg="5" className="mx-auto">
-        <h1 class="home-work__header border-bottom border-dark align-self-center card-title text-center pb-3">My Work</h1>
+        <h1 className="home-work__header border-bottom border-dark align-self-center card-title text-center pb-3">My Work</h1>
             </Col>
         </Row>
         <Row className="text-center pb-lg-3">
@@ -55,7 +55,6 @@ const HomeWork = () => {
           <Link
             className="home-work__skills-button btn btn-outline-dark btn-lg btn-block ms-lg-3 mb-3 mt-3 mt-xl-0"
             role="button"
-            block
             to="/work"
           >
             {CycleSkillsText()}

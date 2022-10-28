@@ -36,7 +36,6 @@ const HomeLanding = (props) => {
             <Link
               className="home-landing__button d-grid d-block btn btn-block btn-outline-light btn-lg pb-1"
               role="button"
-              block
               to="/work"
             >
               Work
@@ -46,7 +45,6 @@ const HomeLanding = (props) => {
             <Link
               className="home-landing__button d-grid d-block btn btn-outline-light btn-lg pb-1"
               role="button"
-              block
               to="/about"
               onMouseEnter={() => setBackgroundVideo(landingAboutBG)}
               onMouseLeave={() => setBackgroundVideo(landingDefaultBG)}
