@@ -10,10 +10,10 @@ import { aboutPhoto } from "../../media/home";
 const HomeAbout = () => {
   return (
     <section className="home-about" id="Section04">
-      <Container fluid className="py-5 px-5 px-md-0">
+      <Container fluid className="py-5 px-5">
         <Row className="pb-3 pb-md-5">
           <Col md="8" lg="6" className="mx-auto">
-            <h1 class="home-about__header border-bottom border-dark align-self-center card-title mx-auto text-center pb-3">
+            <h1 className="home-about__header border-bottom border-dark align-self-center card-title mx-auto text-center pb-3">
               Let's Work Together
             </h1>
           </Col>
