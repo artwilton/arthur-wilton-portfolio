@@ -1,7 +1,7 @@
 import * as React from "react";
 import { graphql, Link } from "gatsby";
 import Layout from "../../components/layout";
-import { GitHubIcon } from "../../media/social_media_icons";
+import { GitHubIcon } from "../../media/svg_icons";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -18,7 +18,7 @@ const WorkProjectPage = ({ data }) => {
           <Col xs="10" md="7" className="mx-auto mt-4 mb-2 mt-md-5 mb-md-3">
             <h2>{frontmatter.name}</h2>
             <p className="work-project-page__lead lead pt-md-2 pb-md-3">
-              {frontmatter.description}
+              {frontmatter.description?.full}
             </p>
             {frontmatter.github ? (
               <Link
@@ -58,7 +58,9 @@ export const query = graphql`
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         name
-        description
+        description {
+          full
+        }
         demo
         github
         altLink

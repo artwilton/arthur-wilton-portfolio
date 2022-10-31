@@ -29,29 +29,27 @@ const HomeLanding = (props) => {
 
       <Container fluid className="d-flex flex-column h-100 align-items-center justify-content-center text-center">
         <h1 className="home-landing__header display-1 py-3 pb-3 pb-md-4">ARTHUR WILTON</h1>
-        <p className="home-landing__lead lead fw-lighter d-none d-md-block">software development | post production</p>
-        <p className="home-landing__lead lead d-md-none"> software development <br /> &amp; <br /> post production</p>
+        <p className="home-landing__lead lead d-none d-md-block">Software Development | Post Production</p>
+        <p className="home-landing__lead lead d-md-none"> Software Development <br /> &amp; <br /> Post Production</p>
         <Row className="justify-content-center pt-4 pb-3 pt-md-10">
           <Col md="4" className="px-6 px-md-3 pb-3">
             <Link
               className="home-landing__button d-grid d-block btn btn-block btn-outline-light btn-lg pb-1"
               role="button"
-              block
               to="/work"
             >
-              work
+              Work
             </Link>
           </Col>
           <Col md="4" className="px-6 px-md-3 pb-3">
             <Link
               className="home-landing__button d-grid d-block btn btn-outline-light btn-lg pb-1"
               role="button"
-              block
               to="/about"
               onMouseEnter={() => setBackgroundVideo(landingAboutBG)}
               onMouseLeave={() => setBackgroundVideo(landingDefaultBG)}
             >
-              about
+              About
             </Link>
           </Col>
           <Col md="4" className="px-6 px-md-3 pb-3">
@@ -61,7 +59,7 @@ const HomeLanding = (props) => {
               size="lg"
               className="home-landing__button d-grid d-block pb-1"
             >
-              blog
+              Blog
             </Button>
           </Col>
         </Row>
