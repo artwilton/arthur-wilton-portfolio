@@ -39,21 +39,20 @@ const WorkPage = ({ location, data }) => {
   const workCardsFiltered = data.work.nodes.filter(FILTER_MAP[filter]).map(
     ({id, frontmatter: {name, demo, description, category, img, altLink, tags, slug}}) => (
       <Col className="gy-4 gx-3">
-      {workCardsFiltered}
-      <WorkCard
-        key={id}
-        name={name ?? 'Project Name'}
-        demo={demo}
-        tags={tags}
-        description={description?.short ?? 'Project Description'}
-        category={category}
-        link={`/work/${slug ?? ''}`}
-        imgSource={img?.src?.publicURL}
-        imgAlt={img?.alt ?? 'Project Icon'}
-        altLinkTo={altLink?.to}
-        altLinkName={altLink?.name ?? 'Project Demo'}
-        >
-      </WorkCard>
+        <WorkCard
+          key={id}
+          name={name ?? 'Project Name'}
+          demo={demo}
+          tags={tags}
+          description={description?.short ?? 'Project Description'}
+          category={category}
+          link={`/work/${slug ?? ''}`}
+          imgSource={img?.src?.publicURL}
+          imgAlt={img?.alt ?? 'Project Icon'}
+          altLinkTo={altLink?.to}
+          altLinkName={altLink?.name ?? 'Project Demo'}
+          >
+        </WorkCard>
         </Col>
   ));
 
@@ -75,7 +74,7 @@ const WorkPage = ({ location, data }) => {
               </ToggleButtonGroup>
             </Col>
           </Row>
-          <Row xs="1" md="2" xl="3">
+          <Row xs="1" md="2" xl="3" className="work-card-group">
             {workCardsFiltered}
           </Row>
         </Row>

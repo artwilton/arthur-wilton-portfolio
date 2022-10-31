@@ -247,8 +247,14 @@ $bg-color-transition: background-color 300ms linear;
 }
 
 /* Work Page */
+.work-card-group {
+  max-width: 1600px;
+  @include media-breakpoint-down(md) {
+    max-width: 550px;
+  }
+}
+
 .work-card {
-  max-width: 550px;
   margin-left: auto;
   margin-right: auto;
   @include element('image') {
