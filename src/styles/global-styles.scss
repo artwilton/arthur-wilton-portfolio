@@ -1,15 +1,13 @@
 @import "./customized-bootstrap-styles.scss";
 
-
-@mixin landing-page__description {
-  font-size: 1.9rem;
-  font-weight: 200;
-  @include media-breakpoint-up(md) {
-    @include font-smoothing;
-  }
-  @include media-breakpoint-down(md) {
-    font-size: 1.6rem;
-  }
+/*
+Used for keeping footer at bottom of page
+Referenced here - https://github.com/gatsbyjs/gatsby/issues/7310
+*/
+#___gatsby, #gatsby-focus-wrapper {
+  flex-direction: column !important;
+  height: 100% !important;
+  display: flex !important;
 }
 
 /* BEM Mixins */
@@ -25,6 +23,34 @@
   }
 }
 
+/* Generic Mixins */
+.background-element {
+  $self: &;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+
+  &--centered {
+    @extend #{ $self };
+    object-position: center center;
+  }
+
+  &--top-left {
+    @extend #{ $self };
+    object-position: 10% 10%;
+  }
+
+  &__overlay {
+    @extend #{ $self };
+    background-color: black;
+    z-index: -1;
+  }
+}
+
 /* Text */
 @mixin font-smoothing {
   -webkit-font-smoothing: antialiased;
@@ -34,12 +60,12 @@
 $color--light: #f0f0f0;
 $color--dark: #161619;
 
-@mixin bg-color--light {
+@mixin bg--light {
   background-color: $color--light;
   color: $color--dark;
 }
 
-@mixin bg-color--dark {
+@mixin bg--dark {
   background-color: $color--dark;
   color: white;
 }
@@ -131,15 +157,26 @@ $bg-color-transition: background-color 300ms linear;
   }
 }
 
-.cover-section__bg--dark {
-  @include bg-color--dark;
+.bg--dark {
+  @include bg--dark;
 }
 
-.main-content__bg--light {
-  @include bg-color--light;
+.bg--light {
+  @include bg--light;
 }
 
 /* Landing Screen */
+
+@mixin landing-page__description {
+  font-size: 1.9rem;
+  font-weight: 200;
+  @include media-breakpoint-up(md) {
+    @include font-smoothing;
+  }
+  @include media-breakpoint-down(md) {
+    font-size: 1.6rem;
+  }
+}
 
 /* Home - Landing Section */
 .home-landing {
@@ -159,35 +196,11 @@ $bg-color-transition: background-color 300ms linear;
     min-width: 200px;
     @include font-smoothing;
   }
-  @include element('video') {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-    z-index: -2;
-  }
-  @include element('video-overlay') {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    opacity: 0.8;
-    z-index: -1;
-  }
 }
 
 /* Home - My Work Section */
 .home-work {
-  @include bg-color--light;
+  @include bg--light;
   @include element('header') {
     font-weight: 700;
   }
@@ -204,7 +217,7 @@ $bg-color-transition: background-color 300ms linear;
 
 /* Home - Featured Section */
 .home-featured {
-  @include bg-color--dark;
+  @include bg--dark;
   @include element('header') {
     font-weight: 600;
     max-width: 22rem;
@@ -230,7 +243,7 @@ $bg-color-transition: background-color 300ms linear;
 /* Home - About Section */
 
 .home-about {
-  @include bg-color--light;
+  @include bg--light;
   @include element('header') {
     font-weight: 700;
   }
