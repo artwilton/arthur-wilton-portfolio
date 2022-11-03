@@ -41,7 +41,10 @@ Referenced here - https://github.com/gatsbyjs/gatsby/issues/7310
 
   &--top-left {
     @extend #{ $self };
-    object-position: 10% 10%;
+    object-position: 10% 5%;
+    @include media-breakpoint-down(sm) {
+      object-position: 0% 0%;
+    }
   }
 
   &__overlay {
@@ -341,6 +344,61 @@ $bg-color-transition: background-color 300ms linear;
       padding-right: .5rem;
       padding-left: .5rem;
     }
+  }
+}
+
+/* About Page */
+.about-banner {
+  position: relative;
+
+  &__gradient-overlay {
+    @extend .background-element__overlay;
+    background: linear-gradient(to right, transparent 20%, rgba(0,0,0,.5));
+    @include media-breakpoint-down(sm) {
+    background: linear-gradient(to bottom, transparent 40%, 70%, $color--dark);
+    }
+  }
+
+  &__description {
+    max-width: 740px;
+    @include font-size(1.6rem);
+    @include media-breakpoint-down(md) {
+      @include font-size(1.3rem);
+    }
+    @include media-breakpoint-down(sm) {
+      @include font-size(1.1rem);
+    }
+  }
+
+  &__header {
+    @include media-breakpoint-down(md) {
+      @include font-size(2.4rem);
+    }
+    @include media-breakpoint-down(sm) {
+      @include font-size(2.2rem);
+    }
+  }
+
+  &__sub-header {
+    @include media-breakpoint-down(md) {
+      @include font-size(1.6rem);
+    }
+    @include media-breakpoint-down(sm) {
+      @include font-size(1.4rem);
+    }
+  }
+
+  &__button {
+    @include media-breakpoint-down(md) {
+      @include font-size(1.2rem);
+    }
+    @include media-breakpoint-down(sm) {
+      @include font-size(1rem);
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    min-height: 800px;
   }
 }
 
