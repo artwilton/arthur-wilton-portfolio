@@ -10,7 +10,7 @@ import LinuxIcon from './linux.svg';
 import PlayIcon from './play.svg';
 import PostgreSQLIcon from './postgresql.svg';
 import PythonIcon from './python.svg';
-import ReactIcon from './react.svg';
+import ReactIcon from './react-icon.svg';
 import RubyOnRailsIcon from './ruby-on-rails.svg';
 import RubyIcon from './ruby.svg';
 import SassIcon from './sass.svg';
