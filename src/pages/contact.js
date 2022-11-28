@@ -1,5 +1,6 @@
 import * as React from "react";
 import Layout from "../components/layout";
+import HeaderWithBGImg from "../components/headerWithBGImg";
 import contactBannerImg from "../media/contact/contact-banner.jpg";
 
 import Button from "react-bootstrap/Button";
@@ -12,18 +13,7 @@ const ContactPage = () => {
   return (
     <Layout>
       <Container fluid className="g-0">
-        <Row className="header-with-bg-img pt-5 pb-4 py-md-5 g-0">
-          <div className="header-with-bg-img__gradient-overlay"></div>
-          <img
-            src={contactBannerImg}
-            class="img-fluid background-element--center-bottom"
-          ></img>
-          <Col xs="7" md="5" className="mx-auto mt-4 mb-2 mt-md-6 mb-md-3">
-            <h1 className="work__header text-center pb-2 pb-md-3">
-              Contact Me
-            </h1>
-          </Col>
-        </Row>
+        <HeaderWithBGImg title="Contact Me" image={contactBannerImg} />
         <Row className="bg--light py-5 mx-auto">
           <Col xs={1} />
           <Col className="mx-auto" style={{ maxWidth: 850 }}>
