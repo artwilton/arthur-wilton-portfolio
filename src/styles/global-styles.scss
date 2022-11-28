@@ -39,6 +39,11 @@ Referenced here - https://github.com/gatsbyjs/gatsby/issues/7310
     object-position: center center;
   }
 
+  &--center-bottom {
+    @extend #{ $self };
+    object-position: center bottom;
+  }
+
   &--top-left {
     @extend #{ $self };
     object-position: 10% 5%;
@@ -347,9 +352,20 @@ $bg-color-transition: background-color 300ms linear;
   }
 }
 
+.header-with-bg-img {
+  position: relative;
+  color: $color--light;
+
+  &__gradient-overlay {
+    @extend .background-element__overlay;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.4), $color--dark);
+  }
+}
+
 /* About Page */
 .about-banner {
   position: relative;
+  color: $color--light;
 
   &__gradient-overlay {
     @extend .background-element__overlay;
