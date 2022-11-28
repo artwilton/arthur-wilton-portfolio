@@ -150,6 +150,22 @@ $bg-color-transition: background-color 300ms linear;
 //   z-index: 1030;
 // }
 
+/* Generic Header Classes */
+.header-with-bg-img {
+  position: relative;
+  color: $color--light;
+
+  &__title { 
+    @include font-smoothing;
+    font-weight: 700;
+  }
+
+  &__gradient-overlay {
+    @extend .background-element__overlay;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.4), $color--dark);
+  }
+}
+
 /* TitleCards */
 .title-card {
   @include element('title') {
@@ -310,13 +326,6 @@ $bg-color-transition: background-color 300ms linear;
   }
 }
 
-.work {
-  @include element('header') {
-    @include font-smoothing;
-    font-weight: 700;
-  }
-}
-
 .filter-button-group {
   @include element('button') {
     font-size: 1.65rem;
@@ -349,16 +358,6 @@ $bg-color-transition: background-color 300ms linear;
       padding-right: .5rem;
       padding-left: .5rem;
     }
-  }
-}
-
-.header-with-bg-img {
-  position: relative;
-  color: $color--light;
-
-  &__gradient-overlay {
-    @extend .background-element__overlay;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.4), $color--dark);
   }
 }
 
