@@ -24,17 +24,18 @@ const ContactPage = () => {
             </h1>
           </Col>
         </Row>
-        <Row className="bg--light py-5 mx-auto" style={{ maxWidth: 1000 }}>
+        <Row className="bg--light py-5 mx-auto">
           <Col xs={1} />
-          <Col>
+          <Col className="mx-auto" style={{ maxWidth: 850 }}>
             <p className="lead fw-light">
               Have a project you think I'd be a good fit for?
             </p>
             <p style={{ fontSize: "1.2rem" }}>
-              Feel free to connect with me on <a href="https://www.linkedin.com/in/artwilton">LinkedIn</a>, or contact
-              me using the form below:
+              Feel free to connect with me on{" "}
+              <a href="https://www.linkedin.com/in/artwilton">LinkedIn</a>, or
+              contact me using the form below:
             </p>
-            <Form className="d-block mt-3 mt-md-5">
+            <Form className=" mt-3 mt-md-5">
               <Row className="mb-1">
                 <Form.Group as={Col} controlId="formGridName">
                   <Form.Label column="lg">Name *</Form.Label>
@@ -51,7 +52,11 @@ const ContactPage = () => {
               </Form.Group>
               <Form.Group className="mb-3" controlId="formGroupMessage">
                 <Form.Label column="lg">Message *</Form.Label>
-                <Form.Control as="textarea" rows={8} placeholder="Hi Arthur, I'd like to work with you on this project..."/>
+                <Form.Control
+                  as="textarea"
+                  rows={8}
+                  placeholder="Hi Arthur, I'd like to work with you on this project..."
+                />
               </Form.Group>
               <Button variant="dark" type="submit">
                 Send Message
