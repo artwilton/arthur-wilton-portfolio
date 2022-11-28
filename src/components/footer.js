@@ -12,7 +12,7 @@ const Footer = (props) => {
     );
 
   return (
-    <Container as="footer" className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <Container as="footer" className="d-flex flex-wrap justify-content-between align-items-center py-3 mt-auto">
       <div className="col-md-4 d-flex align-items-top">
         <span className="text-muted">© 2022 Arthur Wilton</span>
       </div>
