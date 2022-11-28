@@ -76,7 +76,6 @@ const Navigation = ({ navLinks, navbarBrand, socialMediaIcons }) => {
     </Nav.Link>
   ));
 
-  console.log(prevScrollPos);
   return (
     <>
       <Navbar.Brand
