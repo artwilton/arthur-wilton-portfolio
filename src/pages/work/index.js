@@ -59,14 +59,14 @@ const WorkPage = ({ location, data }) => {
   return (
     <Layout>
       <Container fluid>
-        <Row className="cover-section__bg--dark pt-5 pb-4 py-md-5">
+        <Row className="bg--dark pt-5 pb-4 py-md-5">
           <Col xs="7" md="5" className="mx-auto mt-4 mb-2 mt-md-6 mb-md-3">
             <h1 className="work__header text-center border-bottom border-light pb-2 pb-md-3">
               My Work
             </h1>
           </Col>
         </Row>
-        <Row className="main-content__bg--light py-4 py-md-5 justify-content-center text-center px-md-5">
+        <Row className="bg--light py-4 py-md-5 justify-content-center text-center px-md-5">
           <Row className="g-0">
             <Col xs="10" className="mx-auto py-md-1 pb-md-2">
               <ToggleButtonGroup className="filter-button-group shadow-lg-light" type="radio" name="options" defaultValue={filter}>

@@ -14,11 +14,11 @@ const HomeLanding = (props) => {
 
   return (
     <section className="home-landing">
-      <div className="home-landing__video-overlay"></div>
+      <div className="background-element__overlay opacity-75"></div>
 
       <video
         key={backgroundVideo}
-        className="home-landing__video"
+        className="background-element--centered"
         poster={landingDefaultBGStill}
         autoPlay
         muted
@@ -35,7 +35,6 @@ const HomeLanding = (props) => {
           <Col md="4" className="px-6 px-md-3 pb-3">
             <Link
               className="home-landing__button d-grid d-block btn btn-block btn-outline-light btn-lg pb-1"
-              role="button"
               to="/work"
             >
               Work
@@ -44,7 +43,6 @@ const HomeLanding = (props) => {
           <Col md="4" className="px-6 px-md-3 pb-3">
             <Link
               className="home-landing__button d-grid d-block btn btn-outline-light btn-lg pb-1"
-              role="button"
               to="/about"
               onMouseEnter={() => setBackgroundVideo(landingAboutBG)}
               onMouseLeave={() => setBackgroundVideo(landingDefaultBG)}
