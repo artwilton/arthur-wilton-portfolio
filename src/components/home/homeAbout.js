@@ -1,13 +1,27 @@
 import * as React from "react";
+import { Link } from 'gatsby';
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
 
 import { aboutPhoto } from "../../media/home";
 
 const HomeAbout = () => {
+
+  const renderContact = () => (
+    <>
+      <p> Have a project you think I might be a good fit for?</p>
+      <Link
+        className="btn btn-outline-dark btn-lg px-5"
+        role="button"
+        to="/contact"
+      >
+        Contact Me
+      </Link>
+    </>
+  )
+  
   return (
     <section className="home-about" id="Section04">
       <Container fluid className="py-5 px-5">
@@ -34,10 +48,7 @@ const HomeAbout = () => {
                 </p>
               </Col>
               <Col className="d-none d-xl-block">
-                <p> Have a project you think I might be a good fit for?</p>
-                <Button variant="outline-dark" size="lg" className="px-5">
-                  Contact Me
-                </Button>
+                {renderContact()}
               </Col>
             </Row>
           </Col>
@@ -52,10 +63,7 @@ const HomeAbout = () => {
         </Row>
         <Row>
           <Col className="home-about__description d-xl-none py-3 py-md-5 text-center">
-            <p>Have a project you think I might be a good fit for?</p>
-            <Button variant="outline-dark" size="lg" className="px-5">
-              Contact Me
-            </Button>
+            {renderContact()}
           </Col>
         </Row>
       </Container>
