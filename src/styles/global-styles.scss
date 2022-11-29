@@ -144,6 +144,15 @@ $bg-color-transition: background-color 300ms linear;
   }
 }
 
+/* Footer */
+.footer {
+  &__social-media-logo {
+    font-size: 1.3rem;
+    padding-left: .3rem;
+    padding-right: .3rem;
+  }
+}
+
 // default bootstrap Nav values for reference
 // .fixed-top {
 //   position: fixed;
