@@ -14,7 +14,7 @@ const WorkProjectPage = ({ data }) => {
   return (
     <Layout>
       <Container fluid>
-        <Row className="cover-section__bg--dark pt-5 pb-4 py-md-5 text-center">
+        <Row className="bg--dark pt-5 pb-4 py-md-5 text-center">
           <Col xs="10" md="7" className="mx-auto mt-4 mb-2 mt-md-5 mb-md-3">
             <h2>{frontmatter.name}</h2>
             <p className="work-project-page__lead lead pt-md-2 pb-md-3">
@@ -41,7 +41,7 @@ const WorkProjectPage = ({ data }) => {
             )}
           </Col>
         </Row>
-        <Row className="main-content__bg--light py-5">
+        <Row className="bg--light py-5">
           <Col xs="10" md="8" className="mx-auto">
             <div dangerouslySetInnerHTML={{ __html: html }} />
           </Col>
