@@ -120,10 +120,9 @@ const AboutPage = () => {
           <Col />
           <Col xs="12" md="4" className="px-5 px-md-0 pe-md-5">
             <h3>Software Development</h3>
-            <p style={{ fontSize: "1.5rem" }} className="lead mt-3">
+            <p style={{ fontSize: "1.4rem" }} className="lead mt-3">
               {" "}
-              Working across the full stack, this is a paragraph about my
-              software skills.
+              Whether it's writing front-end or back-end code, automating tasks with shell scripts, or building PCs, I love solving problems using technology.
             </p>
             <Link
               to="/work"
@@ -148,10 +147,9 @@ const AboutPage = () => {
             className="order-first order-md-last px-5 px-md-0 pe-md-5"
           >
             <h3>Video Production</h3>
-            <p style={{ fontSize: "1.5rem" }} className="lead mt-3">
+            <p style={{ fontSize: "1.4rem" }} className="lead mt-3">
               {" "}
-              Post production, camera, and sound. This is a paragraph about my
-              video skills.
+              With a background in Editing and Media Asset Management, I've worked across a variety of industries from Advertising to Film and Television. My skills also include Color Correction, VFX, Motion Graphics, and Camera Operation.
             </p>
             <Link
               to="/work"
