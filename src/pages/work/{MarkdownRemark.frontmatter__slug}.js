@@ -1,7 +1,7 @@
 import * as React from "react";
 import { graphql, Link } from "gatsby";
 import Layout from "../../components/layout";
-import { GitHubIcon } from "../../media/svg_icons";
+import { GitHubIcon } from "../../media/icons/social_media";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";

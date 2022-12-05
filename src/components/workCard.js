@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-import { PlayIcon } from "../media/svg_icons";
+import { PlayIcon } from "../media/icons/generic";
 
 const WorkCard = ({
   name,

@@ -19,7 +19,7 @@ import {
   RubyIcon,
   SassIcon,
   SeleniumIcon,
-} from "../media/svg_icons";
+} from "../media/icons/software";
 
 const SOFTWARE_SKILLS = [
   { nameFull: "HTML / CSS", SVGComp: HTML5Icon },

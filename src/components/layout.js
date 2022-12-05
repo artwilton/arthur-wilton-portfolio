@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Navigation from './navigation'
 import Footer from './footer'
-import { GitHubIcon, LinkedInIcon, BehanceIcon } from '../media/svg_icons'
+import { GitHubIcon, LinkedInIcon, BehanceIcon } from '../media/icons/social_media'
 
 const NAV_LINKS = [
   {name: 'Work', to: "/work"},
