@@ -427,6 +427,30 @@ $bg-color-transition: background-color 300ms linear;
   }
 }
 
+.about-skills-section {
+  &__description {
+    @include font-size(1.4rem);
+    @include media-breakpoint-down(sm) {
+      @include font-size(1.3rem);
+    }
+  }
+  &__skill {
+    @include font-size(1.3rem);
+    @include media-breakpoint-down(xl) {
+      @include font-size(1.25rem);
+    }
+    @include media-breakpoint-down(sm) {
+      @include font-size(1.1rem);
+    }
+  }
+  &__icon {
+    @include font-size(2.1rem);
+    @include media-breakpoint-down(sm) {
+      @include font-size(1.32rem);
+    }
+  }
+}
+
 /* Contact Page */
 .contact-form {
   max-width: 850px;
