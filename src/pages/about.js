@@ -9,7 +9,6 @@ import Col from "react-bootstrap/Col";
 import aboutBannerImg from "../media/about/about-banner.jpg";
 import {
   BashIcon,
-  CSS3Icon,
   HTML5Icon,
   JavaScriptIcon,
   LinuxIcon,
