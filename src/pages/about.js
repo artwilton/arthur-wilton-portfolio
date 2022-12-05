@@ -23,44 +23,70 @@ import {
 } from "../media/svg_icons";
 
 const SOFTWARE_SKILLS = [
-  { name: "HTML / CSS", SVGComp: HTML5Icon },
-  { name: "Sass", SVGComp: SassIcon },
-  { name: "JavaScript", SVGComp: JavaScriptIcon },
-  { name: "React", SVGComp: ReactIcon },
-  { name: "Python", SVGComp: PythonIcon },
-  { name: "Ruby", SVGComp: RubyIcon },
-  { name: "Ruby on Rails", SVGComp: RubyOnRailsIcon },
-  { name: "React Native", SVGComp: ReactIcon },
-  { name: "Selenium", SVGComp: SeleniumIcon },
-  { name: "PostgreSQL", SVGComp: PostgreSQLIcon },
-  { name: "Bash", SVGComp: BashIcon },
-  { name: "Linux", SVGComp: LinuxIcon },
+  { nameFull: "HTML / CSS", SVGComp: HTML5Icon },
+  { nameFull: "Sass", SVGComp: SassIcon },
+  { nameFull: "JavaScript", SVGComp: JavaScriptIcon },
+  { nameFull: "React", SVGComp: ReactIcon },
+  { nameFull: "Python", SVGComp: PythonIcon },
+  { nameFull: "Ruby", SVGComp: RubyIcon },
+  { nameFull: "Ruby on Rails", SVGComp: RubyOnRailsIcon },
+  { nameFull: "React Native", SVGComp: ReactIcon },
+  { nameFull: "Selenium", SVGComp: SeleniumIcon },
+  { nameFull: "PostgreSQL", SVGComp: PostgreSQLIcon },
+  { nameFull: "Bash", SVGComp: BashIcon },
+  { nameFull: "Linux", SVGComp: LinuxIcon },
 ];
 
 const VIDEO_SKILLS = [
-  { name: "Final Cut Pro", SVGComp: PythonIcon },
-  { name: "Mocha Pro", SVGComp: PythonIcon },
-  { name: "Adobe Premiere Pro", SVGComp: PythonIcon },
-  { name: "Davinci Resolve", SVGComp: PythonIcon },
-  { name: "Media Management", SVGComp: PythonIcon },
-  { name: "Adobe Photoshop", SVGComp: PythonIcon },
-  { name: "FFmpeg", SVGComp: PythonIcon },
-  { name: "StorageDNA", SVGComp: PythonIcon },
-  { name: "Adobe After Effects", SVGComp: PythonIcon },
-  { name: "Apple Compressor", SVGComp: PythonIcon },
-  { name: "CatDV", SVGComp: PythonIcon },
-  { name: "Adobe Media Encoder", SVGComp: PythonIcon },
+  { nameFull: "Final Cut Pro", SVGComp: PythonIcon },
+  { nameFull: "Mocha Pro", SVGComp: PythonIcon },
+  {
+    nameFull: "Adobe Premiere Pro",
+    nameShort: "Premiere Pro",
+    SVGComp: PythonIcon,
+  },
+  { nameFull: "Davinci Resolve", SVGComp: PythonIcon },
+  { nameFull: "Avid", SVGComp: PythonIcon },
+  { nameFull: "Adobe Photoshop", nameShort: "Photoshop", SVGComp: PythonIcon },
+  { nameFull: "FFmpeg", SVGComp: PythonIcon },
+  { nameFull: "StorageDNA", SVGComp: PythonIcon },
+  {
+    nameFull: "Adobe After Effects",
+    nameShort: "After Effects",
+    SVGComp: PythonIcon,
+  },
+  {
+    nameFull: "Apple Compressor",
+    nameShort: "Compressor",
+    SVGComp: PythonIcon,
+  },
+  { nameFull: "CatDV", SVGComp: PythonIcon },
+  {
+    nameFull: "Adobe Media Encoder",
+    nameShort: "Media Encoder",
+    SVGComp: PythonIcon,
+  },
 ];
 
 const AboutPage = () => {
-  const renderSkills = (skillsArray) =>
-    skillsArray.map(({ name, SVGComp }) => (
-      <Col>
-        <p style={{ fontSize: "1.4rem" }}>
-          <SVGComp role="img" alt={`${name} Icon`} /> {`${name}`}
-        </p>
-      </Col>
-    ));
+  const renderSkills = (skillsArray, shortened = false) =>
+    skillsArray.map(({ nameFull, nameShort, SVGComp }) => {
+      if (shortened && nameShort) {
+        nameFull = nameShort;
+      }
+      return (
+        <Col>
+          <p className="about-skills-section__skill text-nowrap">
+            <SVGComp
+              className="about-skills-section__icon pe-lg-1"
+              role="img"
+              alt={`${nameFull} Icon`}
+            />{" "}
+            {`${nameFull}`}
+          </p>
+        </Col>
+      );
+    });
 
   return (
     <Layout>
@@ -116,13 +142,14 @@ const AboutPage = () => {
           </Col>
           <Col xs="1" sm="1" />
         </Row>
-        <Row className="bg--dark py-5 justify-content-center px-3 px-xl-5 g-0 text-center text-md-start">
+        <Row className="bg--dark py-5 justify-content-center px-3 px-xxl-5 g-0 text-center text-md-start">
           <Col />
-          <Col xs="12" md="4" className="px-5 px-md-0 pe-md-5">
+          <Col xs="12" md="4" className="px-3 px-md-0 pe-md-5">
             <h3>Software Development</h3>
-            <p style={{ fontSize: "1.4rem" }} className="lead mt-3">
+            <p className="about-skills-section__description lead mt-3">
               {" "}
-              Whether it's writing front-end or back-end code, automating tasks with shell scripts, or building PCs, I love solving problems using technology.
+              Whether it's writing front-end or back-end code, automating tasks with shell scripts, or building
+              PCs, I love solving problems using technology.
             </p>
             <Link
               to="/work"
@@ -139,15 +166,15 @@ const AboutPage = () => {
             </Row>
           </Col>
         </Row>
-        <Row className="bg--light py-5 justify-content-center px-3 px-xl-5 g-0 text-center text-md-start">
+        <Row className="bg--light py-5 justify-content-center pe-3 px-xxl-5 g-0 text-center text-md-start">
           <Col />
           <Col
             xs="12"
             md="4"
-            className="order-first order-md-last px-5 px-md-0 pe-md-5"
+            className="order-first order-md-last px-3 px-md-0 pe-md-5"
           >
             <h3>Video Production</h3>
-            <p style={{ fontSize: "1.4rem" }} className="lead mt-3">
+            <p className="about-skills-section__description lead mt-3">
               {" "}
               With a background in Editing and Media Asset Management, I've worked across a variety of industries from Advertising to Film and Television. My skills also include Color Correction, VFX, Motion Graphics, and Camera Operation.
             </p>
@@ -160,8 +187,11 @@ const AboutPage = () => {
             </Link>
           </Col>
           <Col xs="12" md="7" className="my-auto">
-            <Row xs="2" xl="3" className="g-0">
+            <Row xs="2" xl="3" className="d-none d-md-flex g-0">
               {renderSkills(VIDEO_SKILLS)}
+            </Row>
+            <Row xs="2" xl="3" className="d-flex d-md-none g-0">
+              {renderSkills(VIDEO_SKILLS, true)}
             </Row>
           </Col>
           <Col />
