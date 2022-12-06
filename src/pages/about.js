@@ -21,6 +21,15 @@ import {
   SeleniumIcon,
 } from "../media/icons/software";
 
+import {
+  AdobeAfterEffectsIcon,
+  AdobeMediaEncoderIcon,
+  AdobePhotoshopIcon,
+  AdobePremiereProIcon,
+  AppleCompressorIcon,
+  AppleFinalCutProIcon, AvidIcon, CatDVIcon, DavinciResolveIcon, FFmpegIcon, MochaIcon, StorageDNAIcon
+} from "../media/icons/video";
+
 const SOFTWARE_SKILLS = [
   { nameFull: "HTML / CSS", SVGComp: HTML5Icon },
   { nameFull: "Sass", SVGComp: SassIcon },
@@ -37,33 +46,33 @@ const SOFTWARE_SKILLS = [
 ];
 
 const VIDEO_SKILLS = [
-  { nameFull: "Final Cut Pro", SVGComp: PythonIcon },
-  { nameFull: "Mocha Pro", SVGComp: PythonIcon },
+  { nameFull: "Final Cut Pro", SVGComp: AppleFinalCutProIcon },
+  { nameFull: "Mocha Pro", SVGComp: MochaIcon },
   {
     nameFull: "Adobe Premiere Pro",
     nameShort: "Premiere Pro",
-    SVGComp: PythonIcon,
+    SVGComp: AdobePremiereProIcon,
   },
-  { nameFull: "Davinci Resolve", SVGComp: PythonIcon },
-  { nameFull: "Avid", SVGComp: PythonIcon },
-  { nameFull: "Adobe Photoshop", nameShort: "Photoshop", SVGComp: PythonIcon },
-  { nameFull: "FFmpeg", SVGComp: PythonIcon },
-  { nameFull: "StorageDNA", SVGComp: PythonIcon },
+  { nameFull: "Davinci Resolve", SVGComp: DavinciResolveIcon },
+  { nameFull: "Avid", SVGComp: AvidIcon },
+  { nameFull: "Adobe Photoshop", nameShort: "Photoshop", SVGComp: AdobePhotoshopIcon },
+  { nameFull: "FFmpeg", SVGComp: FFmpegIcon },
+  { nameFull: "StorageDNA", SVGComp: StorageDNAIcon },
   {
     nameFull: "Adobe After Effects",
     nameShort: "After Effects",
-    SVGComp: PythonIcon,
+    SVGComp: AdobeAfterEffectsIcon,
   },
   {
     nameFull: "Apple Compressor",
     nameShort: "Compressor",
-    SVGComp: PythonIcon,
+    SVGComp: AppleCompressorIcon,
   },
-  { nameFull: "CatDV", SVGComp: PythonIcon },
+  { nameFull: "CatDV", SVGComp: CatDVIcon },
   {
     nameFull: "Adobe Media Encoder",
     nameShort: "Media Encoder",
-    SVGComp: PythonIcon,
+    SVGComp: AdobeMediaEncoderIcon,
   },
 ];
 
