@@ -252,25 +252,47 @@ $bg-color-transition: background-color 300ms linear;
 /* Home - Featured Section */
 .home-featured {
   @include bg--dark;
-  @include element('header') {
+  &__header {
     font-weight: 600;
     max-width: 22rem;
+    @include media-breakpoint-down(md) {
+      font-size: 2.4rem;
+      max-width: 30rem;
+    }
   }
-  @include element('description') {
+  &__description {
     @include landing-page__description;
   }
-  @include element('image') {
+  &__image {
     max-width: 350px;
     object-fit: contain;
+    @include media-breakpoint-down(lg) {
+      max-width: 290px;
+    }
+    @include media-breakpoint-down(md) {
+      max-width: 270px;
+      width: 100%;
+    }
   }
-  @include element('title') {
+  &__title {
     font-size: 2rem;
     font-weight: 500;
+    @include media-breakpoint-down(md) {
+      font-size: 1.8rem;
+    }
   }
-  @include element('button') {
+  &__button {
     padding-bottom: .25rem;
     margin-bottom: 2rem;
     @include font-smoothing;
+    @include media-breakpoint-down(lg) {
+      width: 16rem;
+      font-size: 1.9rem;
+    }
+    @include media-breakpoint-down(md) {
+      width: 16rem;
+      font-size: 1.8rem;
+    }
   }
 }
 
@@ -487,33 +509,11 @@ $bg-color-transition: background-color 300ms linear;
   .title-card__img {
     max-height: 140px;
   }
-  .home-featured__button {
-    width: 16rem;
-    font-size: 1.9rem;
-  }
-  .home-featured__image {
-    max-width: 290px;
-  }
 }
 
 @include media-breakpoint-down(md) {
   .home-work__skills-button {
     width: 14rem;
     font-size: 1.9rem;
-  }
-  .home-featured__header {
-    font-size: 2.4rem;
-    max-width: 30rem;
-  }
-  .home-featured__title {
-    font-size: 1.8rem;
-  }
-  .home-featured__button {
-    width: 16rem;
-    font-size: 1.8rem;
-  }
-  .home-featured__image {
-    max-width: 270px;
-    width: 100%;
   }
 }
