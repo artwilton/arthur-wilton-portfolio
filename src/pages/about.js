@@ -86,10 +86,10 @@ const AboutPage = () => {
         <Col>
           <p className="about-skills-section__skill text-nowrap">
             <SVGComp
-              className="about-skills-section__icon pe-lg-1"
+              className="about-skills-section__icon me-1 me-lg-2"
               role="img"
               alt={`${nameFull} Icon`}
-            />{" "}
+            />
             {`${nameFull}`}
           </p>
         </Col>
