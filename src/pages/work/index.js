@@ -64,7 +64,7 @@ const WorkPage = ({ location, data }) => {
         <HeaderWithBGImg title="My Work" image={workBannerImg}/>
         <Row className="bg--light px-3 py-4 py-md-5 justify-content-center text-center px-md-5 g-0">
           <Row className="g-0">
-            <Col xs="10" className="mx-auto py-md-1 pb-md-2">
+            <Col xs="12" className="mx-auto py-md-1 pb-md-2">
               <ToggleButtonGroup className="filter-button-group shadow-lg-light" type="radio" name="options" defaultValue={filter}>
                 {filterButtonList}
               </ToggleButtonGroup>
