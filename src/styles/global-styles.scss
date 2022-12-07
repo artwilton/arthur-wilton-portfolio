@@ -229,13 +229,14 @@ $bg-color-transition: background-color 300ms linear;
   height:100vh;
   min-height:640px;
   overflow: hidden;
-  @include element('header') {
+
+  &__header {
     font-family: europa, Lato, sans-serif;
   }
-  @include element('lead') {
+  &__lead {
     font-family: 'Montserrat', sans-serif;
   }
-  @include element('button') {
+  &__button {
     min-width: 200px;
     @include font-smoothing;
   }
@@ -314,16 +315,16 @@ $bg-color-transition: background-color 300ms linear;
 
 .home-about {
   @include bg--light;
-  @include element('header') {
+  &__header {
     font-weight: 700;
   }
-  @include element('description') {
+  &__description {
     @include landing-page__description;
-    @include modifier('bold') {
+    &--bold {
       font-weight: 500;
     }
   }
-  @include element('image') {
+  &__image {
     max-height: 520px;
     border-radius: 6px;
   }
