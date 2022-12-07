@@ -10,19 +10,6 @@ Referenced here - https://github.com/gatsbyjs/gatsby/issues/7310
   display: flex !important;
 }
 
-/* BEM Mixins */
-@mixin element($element) {
-  &__#{$element} {
-      @content;
-  }
-}
-
-@mixin modifier($modifier) {
-  &--#{$modifier} {
-      @content;
-  }
-}
-
 /* Generic Mixins */
 .background-element {
   $self: &;
@@ -406,18 +393,6 @@ $bg-color-transition: background-color 300ms linear;
       padding-left: .5rem;
     }
   }
-  // @include element('small') {
-  //   font-size: .9rem;
-  //   padding-right: .6rem;
-  //   padding-left: .6rem;
-  //   padding-bottom: .15rem;
-  //   padding-top: .15rem;
-  //   @include media-breakpoint-down(sm) {
-  //     font-size: .85rem;
-  //     padding-right: .5rem;
-  //     padding-left: .5rem;
-  //   }
-  // }
 }
 
 /* About Page */
