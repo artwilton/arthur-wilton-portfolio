@@ -243,18 +243,22 @@ $bg-color-transition: background-color 300ms linear;
 /* Home - My Work Section */
 .home-work {
   @include bg--light;
-  @include element('header') {
+  &__header {
     font-weight: 700;
   }
-  @include element('lead') {
+  &__lead {
     @include font-smoothing;
     display: inline;
   }
-  @include element('skills-button') {
+  &__skills-button {
     width: 16rem;
     padding-bottom: .5rem;
     padding-top: .25rem;
     font-size: 2.2rem;
+    @include media-breakpoint-down(md) {
+      width: 14rem;
+      font-size: 1.9rem;
+    }
   }
 }
 
@@ -501,14 +505,5 @@ $bg-color-transition: background-color 300ms linear;
     &--submit {
       @include font-size(1.3rem)
     }
-  }
-}
-
-/* Media Breakpoints */
-
-@include media-breakpoint-down(md) {
-  .home-work__skills-button {
-    width: 14rem;
-    font-size: 1.9rem;
   }
 }
