@@ -6,9 +6,13 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import { landingAboutBG, landingDefaultBGStill, landingDefaultBG } from "../../media/home";
+import { landingDefaultBGStill, landingDefaultBG } from "../../media/home";
 
-const HomeLanding = (props) => {
+// Re-enable when Work, About, and Blog videos are all prepared
+// import { landingAboutBG } from "../../media/home";
+
+
+const HomeLanding = () => {
   const [backgroundVideo, setBackgroundVideo] = useState(landingDefaultBG);
   const blogUrl = "https://artwilton.medium.com/";
 
@@ -44,8 +48,9 @@ const HomeLanding = (props) => {
             <Link
               className="home-landing__button d-grid d-block btn btn-outline-light btn-lg pb-1"
               to="/about"
-              onMouseEnter={() => setBackgroundVideo(landingAboutBG)}
-              onMouseLeave={() => setBackgroundVideo(landingDefaultBG)}
+              // Re-enable when Work, About, and Blog videos are all prepared
+              // onMouseEnter={() => setBackgroundVideo(landingAboutBG)}
+              // onMouseLeave={() => setBackgroundVideo(landingDefaultBG)}
             >
               About
             </Link>
