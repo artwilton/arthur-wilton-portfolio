@@ -81,25 +81,24 @@ const WorkPage = ({ location, data }) => {
 
 export const query = graphql`
   {
-    work: allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
+    work: allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
       nodes {
         frontmatter {
           date(formatString: "MMMM D, YYYY")
           name
           category
           description {
-            short,
+            short
             full
           }
           demo
-          img
-          {
-            src
-              {publicURL}
+          img {
+            src {
+              publicURL
+            }
             alt
           }
-          altLink
-          {
+          altLink {
             to
             name
           }

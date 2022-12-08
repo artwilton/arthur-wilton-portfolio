@@ -75,7 +75,7 @@ export const query = graphql`
 `;
 
 export const Head = ({ data }) => (
-  <title>{data.markdownRemark.frontmatter.title}</title>
+  <title>{data.markdownRemark.frontmatter.name}</title>
 );
 
 export default WorkProjectPage;
