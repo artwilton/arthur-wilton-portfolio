@@ -21,7 +21,7 @@ const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 const WorkPage = ({ location, data }) => {
   const [filter, setFilter] = useState(
-    location.state.fromLink ? location.state.fromLink : "All"
+    location.state?.fromLink ?? "All"
   );
 
   const filterButtonList = FILTER_NAMES.map((name) => (
@@ -81,24 +81,25 @@ const WorkPage = ({ location, data }) => {
 
 export const query = graphql`
   {
-    work: allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
+    work: allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
       nodes {
         frontmatter {
           date(formatString: "MMMM D, YYYY")
           name
           category
           description {
-            short
+            short,
             full
           }
           demo
-          img {
-            src {
-              publicURL
-            }
+          img
+          {
+            src
+              {publicURL}
             alt
           }
-          altLink {
+          altLink
+          {
             to
             name
           }
