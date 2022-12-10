@@ -1,0 +1,23 @@
+@import "./custom-mixins-and-vars";
+
+/* Contact Page */
+.contact-form {
+  max-width: 850px;
+  &__title {
+    &--main {
+      font-weight: 300;
+      @include font-size(2.4rem);
+      @include media-breakpoint-down(md) {
+        @include font-size(2.2rem);
+      }
+    }
+    &--secondary {
+      @include font-size(1.2rem);
+    }
+  }
+  &__button {
+    &--submit {
+      @include font-size(1.3rem)
+    }
+  }
+}

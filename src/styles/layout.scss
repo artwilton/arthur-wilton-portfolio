@@ -1,0 +1,73 @@
+@import "./custom-mixins-and-vars";
+@import "./customized-bootstrap-styles.scss";
+
+/*
+Used for keeping footer at bottom of page
+Referenced here - https://github.com/gatsbyjs/gatsby/issues/7310
+*/
+#___gatsby, #gatsby-focus-wrapper {
+    flex-direction: column !important;
+    height: 100% !important;
+    display: flex !important;
+  }
+
+/* NavBar and OffCanvas */
+
+.custom-navbar {
+  transition: $transform-transition, $bg-color-transition;
+  will-change: transform;
+  transform: translateY(0%);
+  height: 70px;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  &--off-screen {
+    transform: translateY(-100%);
+  }
+  &--top-of-screen {
+    background-color: transparent;
+  }
+  &--fade-in {
+    @include fade-in;
+  }
+
+  &__site-logo {
+    z-index: 9999;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    transform: translateY(0%);
+    transition: $transform-transition;
+    &--off-screen {
+      transform: translateY(-100%);
+    }
+  }
+  &__link {
+    font-size: 1.2em;
+    color: $color--light;
+    &--off-canvas {
+      @include font-size(4.2rem);
+      padding-top: 0rem;
+      padding-bottom: 0rem;
+    }
+  }
+  &__social-media-logo {
+    &--off-canvas {
+      @include font-size(3rem);
+    }
+  }
+}
+
+// default bootstrap Nav values for reference
+// .fixed-top {
+//   position: fixed;
+//   z-index: 1030;
+// }
+
+/* Footer */
+.footer {
+  &__social-media-logo {
+    font-size: 1.3rem;
+    padding-left: .3rem;
+    padding-right: .3rem;
+  }
+}

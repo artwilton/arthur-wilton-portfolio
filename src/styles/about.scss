@@ -1,0 +1,81 @@
+@import "./custom-mixins-and-vars";
+
+/* About Page */
+.about-banner {
+  position: relative;
+  color: $color--light;
+
+  &__gradient-overlay {
+    @extend .background-element__overlay;
+    background: linear-gradient(to right, transparent 20%, rgba(0,0,0,.5));
+    @include media-breakpoint-down(sm) {
+    background: linear-gradient(to bottom, transparent 40%, 70%, $color--dark);
+    }
+  }
+
+  &__description {
+    max-width: 740px;
+    @include font-size(1.6rem);
+    @include media-breakpoint-down(md) {
+      @include font-size(1.3rem);
+    }
+    @include media-breakpoint-down(sm) {
+      @include font-size(1.1rem);
+    }
+  }
+
+  &__header {
+    @include media-breakpoint-down(md) {
+      @include font-size(2.4rem);
+    }
+    @include media-breakpoint-down(sm) {
+      @include font-size(2.2rem);
+    }
+  }
+
+  &__sub-header {
+    @include media-breakpoint-down(md) {
+      @include font-size(1.6rem);
+    }
+    @include media-breakpoint-down(sm) {
+      @include font-size(1.4rem);
+    }
+  }
+
+  &__button {
+    @include media-breakpoint-down(md) {
+      @include font-size(1.2rem);
+    }
+    @include media-breakpoint-down(sm) {
+      @include font-size(1rem);
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    min-height: 800px;
+  }
+}
+
+.about-skills-section {
+  &__description {
+    @include font-size(1.4rem);
+    @include media-breakpoint-down(sm) {
+      @include font-size(1.3rem);
+    }
+  }
+  &__skill {
+    @include font-size(1.3rem);
+    @include media-breakpoint-down(xl) {
+      @include font-size(1.25rem);
+    }
+    @include media-breakpoint-down(sm) {
+      @include font-size(1.1rem);
+    }
+  }
+  &__icon {
+    @include font-size(2.1rem);
+    @include media-breakpoint-down(sm) {
+      @include font-size(1.32rem);
+    }
+  }
+}
