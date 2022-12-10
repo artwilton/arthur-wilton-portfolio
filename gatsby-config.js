@@ -4,7 +4,14 @@ module.exports = {
     siteUrl: `https://www.yourdomain.tld`,
   },
   plugins: [
-    `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        sassOptions: {
+          precision: 6,
+        },
+      },
+    },
     {
       resolve: 'gatsby-plugin-purgecss',
       options: {
