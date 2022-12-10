@@ -10,6 +10,8 @@ import Col from "react-bootstrap/Col";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 
+import "../../styles/work.scss"
+
 const FILTER_MAP = {
   All: () => true,
   Software: (project) => project.frontmatter.category === "Software",
