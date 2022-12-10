@@ -6,6 +6,16 @@ module.exports = {
   plugins: [
     `gatsby-plugin-sass`,
     {
+      resolve: 'gatsby-plugin-purgecss',
+      options: {
+        printRejected: true,
+        develop: true,
+        purgeCSSOptions: {
+          safelist: ["___gatsby", "gatsby-focus-wrapper", /^row/, /^col/, /^container/, /^btn/, /^card/, /^nav/, /^offcanvas/, /^fixed/, /^form/, /^shadow/, "fade", "show", "h5"],
+        },
+      },
+    },
+    {
       resolve: "gatsby-source-filesystem",
       options: {
         name: `work`,
