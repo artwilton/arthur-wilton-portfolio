@@ -21,7 +21,7 @@ const HomeFeatured = () => {
   );
 
   return (
-    <section className="home-featured">
+    <section className="home-featured bg--dark">
       <Container fluid className="py-5 py-xl-3">
         <Row className="justify-content-center align-self-center mx-md-auto px-3">
           <Col md="1" lg="2"></Col>

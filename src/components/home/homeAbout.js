@@ -23,7 +23,7 @@ const HomeAbout = () => {
   )
   
   return (
-    <section className="home-about" id="Section04">
+    <section className="home-about bg--light" id="Section04">
       <Container fluid className="py-5 px-5">
         <Row className="pb-3 pb-md-5">
           <Col md="8" lg="6" className="mx-auto">

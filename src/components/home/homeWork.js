@@ -40,7 +40,7 @@ const HomeWork = () => {
   }
   
   return (
-    <section className="home-work">
+    <section className="home-work bg--light">
       <Container fluid className="py-5">
       <Row className="pb-2 pb-lg-4 px-lg-5 px-xl-7">
             <Col xs="8" lg="5" className="mx-auto">
