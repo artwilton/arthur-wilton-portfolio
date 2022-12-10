@@ -55,16 +55,6 @@ Referenced here - https://github.com/gatsbyjs/gatsby/issues/7310
 $color--light: #f0f0f0;
 $color--dark: #161619;
 
-@mixin bg--light {
-  background-color: $color--light;
-  color: $color--dark;
-}
-
-@mixin bg--dark {
-  background-color: $color--dark;
-  color: white;
-}
-
 /* Animations */
 @mixin fade-in {
   opacity: 1;
@@ -85,6 +75,56 @@ $color--dark: #161619;
 
 $transform-transition: transform 200ms linear;
 $bg-color-transition: background-color 300ms linear;
+
+.bg--dark {
+  background-color: $color--dark;
+  color: white;
+}
+
+.bg--light {
+  background-color: $color--light;
+  color: $color--dark;
+}
+
+/* Generic Header Classes */
+.header-with-bg-img {
+  position: relative;
+  color: $color--light;
+
+  &__title { 
+    @include font-smoothing;
+    font-weight: 700;
+  }
+
+  &__gradient-overlay {
+    @extend .background-element__overlay;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.4), $color--dark);
+  }
+}
+
+/* Title Cards */
+.title-card {
+  &__title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    @include media-breakpoint-down(xl) {
+      font-size: 1.9rem;
+    }
+    @include media-breakpoint-down(lg) {
+      font-size: 1.8rem;
+    }
+  }
+  &__img {
+    min-width: 100%;
+    object-fit: cover;
+    @include media-breakpoint-down(lg) {
+      max-height: 140px;
+    }
+  }
+  &__gradient {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), 90%, transparent);
+  }
+}
 
 /* NavBar and OffCanvas */
 
@@ -147,54 +187,6 @@ $bg-color-transition: background-color 300ms linear;
   }
 }
 
-/* Generic Header Classes */
-.header-with-bg-img {
-  position: relative;
-  color: $color--light;
-
-  &__title { 
-    @include font-smoothing;
-    font-weight: 700;
-  }
-
-  &__gradient-overlay {
-    @extend .background-element__overlay;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.4), $color--dark);
-  }
-}
-
-/* Title Cards */
-.title-card {
-  &__title {
-    font-size: 2.2rem;
-    font-weight: 600;
-    @include media-breakpoint-down(xl) {
-      font-size: 1.9rem;
-    }
-    @include media-breakpoint-down(lg) {
-      font-size: 1.8rem;
-    }
-  }
-  &__img {
-    min-width: 100%;
-    object-fit: cover;
-    @include media-breakpoint-down(lg) {
-      max-height: 140px;
-    }
-  }
-  &__gradient {
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), 90%, transparent);
-  }
-}
-
-.bg--dark {
-  @include bg--dark;
-}
-
-.bg--light {
-  @include bg--light;
-}
-
 /* Landing Screen */
 
 @mixin landing-page__description {
@@ -231,7 +223,6 @@ $bg-color-transition: background-color 300ms linear;
 
 /* Home - My Work Section */
 .home-work {
-  @include bg--light;
   &__header {
     font-weight: 700;
   }
@@ -253,7 +244,6 @@ $bg-color-transition: background-color 300ms linear;
 
 /* Home - Featured Section */
 .home-featured {
-  @include bg--dark;
   &__header {
     font-weight: 600;
     max-width: 22rem;
@@ -301,7 +291,6 @@ $bg-color-transition: background-color 300ms linear;
 /* Home - About Section */
 
 .home-about {
-  @include bg--light;
   &__header {
     font-weight: 700;
   }
