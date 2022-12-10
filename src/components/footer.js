@@ -1,5 +1,6 @@
 import * as React from 'react'
-import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const Footer = (props) => {
   const socialMediaIcons = props.socialMediaIcons
@@ -12,15 +13,15 @@ const Footer = (props) => {
     );
 
   return (
-    <Container as="footer" className="bg--dark d-flex flex-wrap justify-content-between align-items-center py-3 mt-auto">
-      <div className="col-md-4 d-flex align-items-top">
+    <Row as="footer" className="bg--dark g-0 justify-content-between align-items-center px-3 px-md-5 py-3 mt-auto">
+      <Col className="align-items-top">
         <span className="text-muted">© 2022 Arthur Wilton</span>
-      </div>
+      </Col>
   
-      <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <Col as="ul" className="nav justify-content-end list-unstyled">
         {socialMediaList}
-      </ul>
-    </Container>
+      </Col>
+    </Row>
   )
 }
 
