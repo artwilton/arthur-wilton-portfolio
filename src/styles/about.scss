@@ -1,4 +1,6 @@
-@import "./custom-mixins-and-vars";
+@import "./mixins-and-vars";
+@import "./background-element";
+@import "/node_modules/rfs/scss";
 
 /* About Page */
 .about-banner {
