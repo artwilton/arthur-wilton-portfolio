@@ -32,10 +32,11 @@ Referenced here - https://github.com/gatsbyjs/gatsby/issues/7310
   }
 
   &__site-logo {
+    font-size: 2.4rem;
     z-index: 9999;
     position: fixed;
-    top: 0px;
-    left: 0px;
+    top: 0.1rem;
+    left: 1.8rem;
     transform: translateY(0%);
     transition: $transform-transition;
     &--off-screen {
@@ -43,7 +44,7 @@ Referenced here - https://github.com/gatsbyjs/gatsby/issues/7310
     }
   }
   &__link {
-    font-size: 1.2em;
+    font-size: 1.25em;
     color: $color--light;
     &--off-canvas {
       @include font-size(4.2rem);
