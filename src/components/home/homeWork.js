@@ -12,7 +12,7 @@ import { workCreativeBG, workDevBG, workVideoBG } from '../../media/home'
 const SKILLS_TEXT_ARRAY = ["Python", "JavaScript", "Ruby", "React", "HTML/CSS", "Ruby on Rails", "Shell Scripting", "FFmpeg", "Final Cut Pro", "Premiere Pro", "After Effects"]
 
 const TITLE_CARD_INFO = [
-  {title: <>SOFTWARE &amp; <br/> WEB DEV</>, background: workDevBG, alt:'Software and Web Development Card', category: 'Software'},
+  {title: 'SOFTWARE DEVELOPMENT', background: workDevBG, alt:'Software and Web Development Card', category: 'Software'},
   {title:'VIDEO PRODUCTION', background: workVideoBG, alt:'Video Production Card', category: 'Video'},
   {title:'CREATIVE PROJECTS', background: workCreativeBG, alt:'Creative Projects Card', category: 'Creative'}
 ]
