@@ -9,6 +9,8 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
+import "../styles/contact.scss"
+
 const ContactPage = () => {
   return (
     <Layout>

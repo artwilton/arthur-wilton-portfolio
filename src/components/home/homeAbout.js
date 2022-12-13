@@ -24,17 +24,17 @@ const HomeAbout = () => {
   
   return (
     <section className="home-about bg--light" id="Section04">
-      <Container fluid className="py-5 px-5">
+      <Container fluid className="py-5 px-4">
         <Row className="pb-3 pb-md-5">
-          <Col md="8" lg="6" className="mx-auto">
+          <Col md="10" className="mx-auto">
             <h1 className="home-about__header border-bottom border-dark align-self-center card-title mx-auto text-center pb-3">
               Let's Work Together
             </h1>
           </Col>
         </Row>
         <Row>
-          <Col md="1" lg="2"></Col>
-          <Col md="5" lg="4" className="home-about__description text-center text-md-start">
+          <Col lg="2"></Col>
+          <Col lg="4" className="home-about__description text-center text-lg-start">
             <Row>
               <Col sm="12">
                 <p>
@@ -47,22 +47,22 @@ const HomeAbout = () => {
                   pictured here).
                 </p>
               </Col>
-              <Col className="d-none d-xl-block">
+              <Col className="d-none d-lg-block">
                 {renderContact()}
               </Col>
             </Row>
           </Col>
-          <Col md="5" lg="4">
+          <Col lg="4">
             <img
               className="home-about__image img-fluid mx-auto d-block pl-md-5 pl-0"
               src={aboutPhoto}
               alt="Arthur holding a cute dog"
             />
           </Col>
-          <Col md="1" lg="2"></Col>
+          <Col lg="2"></Col>
         </Row>
         <Row>
-          <Col className="home-about__description d-xl-none py-3 py-md-5 text-center">
+          <Col className="home-about__description d-lg-none py-3 py-md-5 text-center">
             {renderContact()}
           </Col>
         </Row>
