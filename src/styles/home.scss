@@ -1,4 +1,5 @@
 @import "./mixins-and-vars";
+@import "/node_modules/rfs/scss";
 
 /* Landing Screen */
 @mixin landing-page__description {
@@ -59,10 +60,7 @@
     font-size: 2.2rem;
     font-weight: 600;
     @include media-breakpoint-down(xl) {
-      font-size: 1.9rem;
-    }
-    @include media-breakpoint-down(lg) {
-      font-size: 1.8rem;
+      @include font-size(1.9rem);
     }
   }
   &__img {
@@ -73,7 +71,7 @@
     }
   }
   &__gradient {
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), 90%, transparent);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.52), 92%, transparent);
   }
 }
 
