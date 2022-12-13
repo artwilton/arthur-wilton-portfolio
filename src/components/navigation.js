@@ -79,13 +79,13 @@ const Navigation = ({ navLinks, navbarBrand, socialMediaIcons }) => {
   return (
     <>
       <Navbar.Brand
-        className={`pt-3 ps-4 navbar-dark custom-navbar__link custom-navbar__site-logo ${
+        className={`navbar-dark custom-navbar__site-logo ${
           visible ? "" : "custom-navbar__site-logo--off-screen"
         }`}
         as={AdaptiveLink}
         to={navbarBrand.to}
       >
-        {navbarBrand.logo}
+        <navbarBrand.SVGComp/>
       </Navbar.Brand>
       <Navbar
         className={`custom-navbar ${
