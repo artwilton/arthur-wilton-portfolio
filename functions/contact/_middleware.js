@@ -1,6 +1,6 @@
 const DEMO_SECRET_KEY = "1x0000000000000000000000000000000AA";
 
-async function onRequestPost(context) {
+export async function onRequestPost(context) {
   const { request }  = context;
   const body = await request.formData();
   // Turnstile injects a token in "cf-turnstile-response".
