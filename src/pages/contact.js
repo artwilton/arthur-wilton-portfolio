@@ -9,7 +9,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
-import "../styles/contact.scss"
+import "../styles/contact.scss";
 
 const ContactPage = () => {
   return (
@@ -27,20 +27,28 @@ const ContactPage = () => {
               <a href="https://www.linkedin.com/in/artwilton">LinkedIn</a>, or
               contact me using the form below:
             </p>
-            <Form data-static-form-name="contact" className="mt-3 mt-md-5" method="post">
+            <Form
+              data-static-form-name="contact"
+              className="mt-3 mt-md-5"
+              method="post"
+            >
               <Row>
                 <Form.Group className="mb-2" as={Col} sm={6} controlId="name">
                   <Form.Label column="lg">Name *</Form.Label>
-                  <Form.Control type="text" placeholder="Name" name="name"/>
+                  <Form.Control type="text" placeholder="Name" name="name" />
                 </Form.Group>
                 <Form.Group className="mb-2" as={Col} sm={6} controlId="email">
                   <Form.Label column="lg">Email *</Form.Label>
-                  <Form.Control type="email" placeholder="Email" name="email"/>
+                  <Form.Control type="email" placeholder="Email" name="email" />
                 </Form.Group>
               </Row>
-              <Form.Group className="mb-2"controlId="subject">
+              <Form.Group className="mb-2" controlId="subject">
                 <Form.Label column="lg">Subject</Form.Label>
-                <Form.Control type="text" placeholder="Subject (optional)"  name="subject"/>
+                <Form.Control
+                  type="text"
+                  placeholder="Subject (optional)"
+                  name="subject"
+                />
               </Form.Group>
               <Form.Group className="mb-2 mb-md-3" controlId="message">
                 <Form.Label column="lg">Message *</Form.Label>
@@ -51,12 +59,19 @@ const ContactPage = () => {
                   name="message"
                 />
               </Form.Group>
-              <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
               {/* <div class="cf-turnstile" data-sitekey="0x4AAAAAAABlzym_jmQK0sez" data-callback="javascriptCallback" data-name="contact-form"></div> */}
               <div class="checkbox mb-3">
-                <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-theme="light"></div>
+                <div
+                  class="cf-turnstile"
+                  data-sitekey="1x00000000000000000000AA"
+                  data-theme="light"
+                ></div>
               </div>
-              <Button className="contact-form__button--submit" variant="dark" type="submit">
+              <Button
+                className="contact-form__button--submit"
+                variant="dark"
+                type="submit"
+              >
                 Send Message
               </Button>
             </Form>
@@ -70,4 +85,13 @@ const ContactPage = () => {
 
 export default ContactPage;
 
-export const Head = () => <title>Contact</title>;
+export const Head = () => (
+  <>
+    <title>Contact</title>
+    <script
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+      async
+      defer
+    ></script>
+  </>
+);
