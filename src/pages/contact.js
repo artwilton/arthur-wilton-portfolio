@@ -29,31 +29,32 @@ const ContactPage = () => {
             </p>
             <Form data-static-form-name="contact" className="mt-3 mt-md-5" method="post">
               <Row>
-                <Form.Group className="mb-2" as={Col} sm={6} controlId="formGridName">
+                <Form.Group className="mb-2" as={Col} sm={6} controlId="name">
                   <Form.Label column="lg">Name *</Form.Label>
-                  <Form.Control type="text" placeholder="Name" />
+                  <Form.Control type="text" placeholder="Name" name="name"/>
                 </Form.Group>
-                <Form.Group className="mb-2" as={Col} sm={6} controlId="formGroupEmail">
+                <Form.Group className="mb-2" as={Col} sm={6} controlId="email">
                   <Form.Label column="lg">Email *</Form.Label>
-                  <Form.Control type="email" placeholder="Email" />
+                  <Form.Control type="email" placeholder="Email" name="email"/>
                 </Form.Group>
               </Row>
-              <Form.Group className="mb-2" controlId="formGroupSubject">
+              <Form.Group className="mb-2"controlId="subject">
                 <Form.Label column="lg">Subject</Form.Label>
-                <Form.Control type="text" placeholder="Subject (optional)" />
+                <Form.Control type="text" placeholder="Subject (optional)"  name="subject"/>
               </Form.Group>
-              <Form.Group className="mb-2 mb-md-3" controlId="formGroupMessage">
+              <Form.Group className="mb-2 mb-md-3" controlId="message">
                 <Form.Label column="lg">Message *</Form.Label>
                 <Form.Control
                   as="textarea"
                   rows={8}
                   placeholder="Hi Arthur, I'd like to work with you on this project..."
+                  name="message"
                 />
               </Form.Group>
               <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
               {/* <div class="cf-turnstile" data-sitekey="0x4AAAAAAABlzym_jmQK0sez" data-callback="javascriptCallback" data-name="contact-form"></div> */}
               <div class="checkbox mb-3">
-                <div class="cf-turnstile" data-sitekey="0x4AAAAAAABlzym_jmQK0sez" data-theme="light"></div>
+                <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-theme="light"></div>
               </div>
               <Button className="contact-form__button--submit" variant="dark" type="submit">
                 Send Message
