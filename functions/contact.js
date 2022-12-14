@@ -31,12 +31,12 @@ export const onRequest = ({ request, env }) => {
   mailChannelsPlugin({
   personalizations: [
     {
-      to: [{ name: "ACME Support", email: "support@example.com" }],
+      to: [{ name: "Contact Form", email: "contact@arthurwilton.com" }],
     },
   ],
   from: {
-    name: "ACME Support",
-    email: "support@example.com",
+    name: "Arthur Portfolio",
+    email: "contact@arthurwilton.com",
   },
   respondWith: async () => {
     return await handlePost(request, SECRET_KEY);
