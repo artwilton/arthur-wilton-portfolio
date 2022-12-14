@@ -1,4 +1,5 @@
-import mailChannelsPlugin from "@cloudflare/pages-plugin-mailchannels";
+// import mailChannelsPlugin from "@cloudflare/pages-plugin-mailchannels";
+import staticFormsPlugin from "@cloudflare/pages-plugin-static-forms";
 
 async function handlePost(request, SECRET_KEY) {
   const body = await request.formData();
@@ -25,21 +26,30 @@ async function handlePost(request, SECRET_KEY) {
   return new Response('Turnstile token successfuly validated. \n' + JSON.stringify(outcome));
 }
 
-export const onRequest = ({ request, env }) => {
-  const SECRET_KEY = env.TURNSTILE_SECRET_KEY;
-
-  mailChannelsPlugin({
-  personalizations: [
-    {
-      to: [{ name: "Contact Form", email: "contact@arthurwilton.com" }],
-    },
-  ],
-  from: {
-    name: "Arthur Portfolio",
-    email: "contact@arthurwilton.com",
-  },
-  respondWith: async () => {
-    return await handlePost(request, SECRET_KEY);
-  },
+export const onRequest = staticFormsPlugin({
+  respondWith: ({ formData, name }) => {
+    // console.log('[LOGGING FROM /contact]', context)
+    const email = formData.get('email')
+    return new Response(`Hello, ${email}! Thank you for submitting the ${name} form.`)
+  }
 });
-};
+
+
+// export const onRequest = ({ request, env }) => {
+//   const SECRET_KEY = env.TURNSTILE_SECRET_KEY;
+
+//   mailChannelsPlugin({
+//   personalizations: [
+//     {
+//       to: [{ name: "Contact Form", email: "" }],
+//     },
+//   ],
+//   from: {
+//     name: "Arthur Portfolio",
+//     email: "",
+//   },
+//   respondWith: async () => {
+//     return await handlePost(request, SECRET_KEY);
+//   },
+// });
+// };
