@@ -28,7 +28,7 @@ async function handlePost(request, SECRET_KEY) {
 
 export const onRequest = staticFormsPlugin({
   respondWith: ({ formData, name }) => {
-    // console.log('[LOGGING FROM /contact]', context)
+    console.log('[LOGGING FROM /contact]', formData, name)
     const email = formData.get('email')
     return new Response(`Hello, ${email}! Thank you for submitting the ${name} form.`)
   }

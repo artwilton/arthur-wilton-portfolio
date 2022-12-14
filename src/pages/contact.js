@@ -27,7 +27,7 @@ const ContactPage = () => {
               <a href="https://www.linkedin.com/in/artwilton">LinkedIn</a>, or
               contact me using the form below:
             </p>
-            <Form data-static-form-name="contact" className="mt-3 mt-md-5">
+            <Form data-static-form-name="contact" className="mt-3 mt-md-5" method="post">
               <Row>
                 <Form.Group className="mb-2" as={Col} sm={6} controlId="formGridName">
                   <Form.Label column="lg">Name *</Form.Label>
@@ -51,7 +51,10 @@ const ContactPage = () => {
                 />
               </Form.Group>
               <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-              <div class="cf-turnstile" data-sitekey="0x4AAAAAAABlzym_jmQK0sez" data-callback="javascriptCallback" data-name="contact-form"></div>
+              {/* <div class="cf-turnstile" data-sitekey="0x4AAAAAAABlzym_jmQK0sez" data-callback="javascriptCallback" data-name="contact-form"></div> */}
+              <div class="checkbox mb-3">
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAAABlzym_jmQK0sez" data-theme="light"></div>
+              </div>
               <Button className="contact-form__button--submit" variant="dark" type="submit">
                 Send Message
               </Button>
