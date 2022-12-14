@@ -50,11 +50,11 @@ const ContactPage = () => {
                   placeholder="Hi Arthur, I'd like to work with you on this project..."
                 />
               </Form.Group>
+              <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAAABlzym_jmQK0sez" data-callback="javascriptCallback" data-name="contact-form"></div>
               <Button className="contact-form__button--submit" variant="dark" type="submit">
                 Send Message
               </Button>
-              <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-              <div class="cf-turnstile" data-sitekey="0x4AAAAAAABlzym_jmQK0sez" data-callback="javascriptCallback"></div>
             </Form>
           </Col>
           <Col xs={1} />
