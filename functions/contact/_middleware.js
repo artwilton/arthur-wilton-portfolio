@@ -1,6 +1,7 @@
 const DEMO_SECRET_KEY = "1x0000000000000000000000000000000AA";
 
-async function handlePost(request) {
+async function onRequestPost(context) {
+  const { request }  = context;
   const body = await request.formData();
   // Turnstile injects a token in "cf-turnstile-response".
   const token = body.get("cf-turnstile-response");
@@ -26,6 +27,8 @@ async function handlePost(request) {
       "The provided Turnstile token was not valid! \n" + JSON.stringify(outcome)
     );
   }
+
+  console.log("MIDDLEWARE")
 
   return context.next();
 
