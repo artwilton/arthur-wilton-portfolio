@@ -40,7 +40,7 @@ const ContactPage = () => {
               </Row>
               <Form.Group className="mb-2" controlId="formGroupSubject">
                 <Form.Label column="lg">Subject</Form.Label>
-                <Form.Control type="email" placeholder="Subject (optional)" />
+                <Form.Control type="text" placeholder="Subject (optional)" />
               </Form.Group>
               <Form.Group className="mb-2 mb-md-3" controlId="formGroupMessage">
                 <Form.Label column="lg">Message *</Form.Label>
