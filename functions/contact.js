@@ -26,13 +26,15 @@ async function handlePost(request, SECRET_KEY) {
   return new Response('Turnstile token successfuly validated. \n' + JSON.stringify(outcome));
 }
 
-export const onRequest = staticFormsPlugin({
+export async function onRequest() {
+staticFormsPlugin({
   respondWith: ({ formData, name }) => {
     console.log('[LOGGING FROM /contact]', formData, name)
     const email = formData.get('email')
     return new Response(`Hello, ${email}! Thank you for submitting the ${name} form.`)
   }
 });
+}
 
 
 // export const onRequest = ({ request, env }) => {
