@@ -36,6 +36,8 @@ const handlePost = async (request, env) => {
 
 const sendEmail = async (env) => {
 
+    console.log(`EMAIL ADDRESS: ${env.EMAIL_ADDRESS}`);
+
     let send_request = new Request("https://api.mailchannels.net/tx/v1/send", {
         "method": "POST",
         "headers": {
