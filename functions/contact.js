@@ -28,16 +28,12 @@ const handlePost = async (request) => {
     );
   }
 
-  console.log("MIDDLEWARE");
-
-  return (
     staticFormsPlugin({
         respondWith: ({ formData, name }) => {
           const email = formData.get('email')
           return new Response(`Hello, ${email}! Thank you for submitting the ${name} form.`)
         }
-      })    
-  );
+      })
 
 //   return new Response(
 //     "Turnstile token successfuly validated. \n" + JSON.stringify(outcome)
