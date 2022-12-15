@@ -1,5 +1,4 @@
 // import mailChannelsPlugin from "@cloudflare/pages-plugin-mailchannels";
-import staticFormsPlugin from "@cloudflare/pages-plugin-static-forms";
 
 // export const onRequest = staticFormsPlugin({
 //   respondWith: ({ request }) => {
@@ -8,14 +7,6 @@ import staticFormsPlugin from "@cloudflare/pages-plugin-static-forms";
 //   },
 // });
 
-export const onRequest = staticFormsPlugin({
-    respondWith: ({ formData, name }) => {
-      console.log("[LOGGING FROM /contact]");
-      const email = formData.get('email')
-      return new Response(`Hello, ${email}! Thank you for submitting the ${name} form.`)
-    }
-  });
-  
 
 // export async function onRequest(context) {
 //   const { request }  = context;
