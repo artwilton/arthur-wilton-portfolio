@@ -23,9 +23,8 @@ const handlePost = async (request, env) => {
   const outcome = await result.json();
   if (!outcome.success) {
     return new Response(
-      "The provided Turnstile token was not valid! \n" +
-        JSON.stringify(outcome),
-      { status: 400 }
+      null,
+      { status: 400, statusText: "The provided Turnstile token was not valid!" }
     );
   }
 
@@ -33,7 +32,8 @@ const handlePost = async (request, env) => {
   console.log(`EMAIL ADDRESS: ${env.EMAIL_ADDRESS} FORM DATA: ${body}`);
 
   return new Response(
-    "Turnstile token successfuly validated. \n" + JSON.stringify(outcome)
+    null,
+    { status: 200, statusText: "Turnstile token successfuly validated." }
   );
 };
 
