@@ -23,51 +23,54 @@ const handlePost = async (request, env) => {
   const outcome = await result.json();
   if (!outcome.success) {
     return new Response(
-      "The provided Turnstile token was not valid! \n" + JSON.stringify(outcome),
+      "The provided Turnstile token was not valid! \n" +
+        JSON.stringify(outcome),
       { status: 400 }
     );
   }
 
-//   return await sendEmail(env);
+  //   return await sendEmail(env);
+  console.log(`EMAIL ADDRESS: ${env.EMAIL_ADDRESS} FORM DATA: ${request.formData()}`);
 
   return new Response(
     "Turnstile token successfuly validated. \n" + JSON.stringify(outcome)
   );
-}
+};
 
 const sendEmail = async (env) => {
+  console.log(`EMAIL ADDRESS: ${env.EMAIL_ADDRESS}`);
 
-    console.log(`EMAIL ADDRESS: ${env.EMAIL_ADDRESS}`);
-
-    let send_request = new Request("https://api.mailchannels.net/tx/v1/send", {
-        "method": "POST",
-        "headers": {
-            "content-type": "application/json",
+  let send_request = new Request("https://api.mailchannels.net/tx/v1/send", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      personalizations: [
+        {
+          to: [{ email: `${env.EMAIL_ADDRESS}`, name: "Test Recipient" }],
         },
-        "body": JSON.stringify({
-            "personalizations": [{ 
-                "to": [ {"email": `${env.EMAIL_ADDRESS}`,
-                          "name": "Test Recipient"}],
-            }],
-            "from": {
-                "email": `${env.EMAIL_ADDRESS}`,
-                "name": "Test Sender",
-            },
-    
-            "subject": "Test Subject",
-            "content": [{
-                "type": "text/plain",
-                "value": "Test message content",
-            }],
-        }),
-    });
+      ],
+      from: {
+        email: `${env.EMAIL_ADDRESS}`,
+        name: "Test Sender",
+      },
 
-    const resp = await fetch(send_request);
-    const respText = await resp.text();
+      subject: "Test Subject",
+      content: [
+        {
+          type: "text/plain",
+          value: "Test message content",
+        },
+      ],
+    }),
+  });
 
-    return new Response(resp.status + " " + resp.statusText + "\n\n" + respText);
-}
+  const resp = await fetch(send_request);
+  const respText = await resp.text();
 
+  return new Response(resp.status + " " + resp.statusText + "\n\n" + respText);
+};
 
 export const onRequestPost = async ({ request, env }) => {
   console.log(`NODE VERSION: ${env.NODE_VERSION}`);
