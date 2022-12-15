@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import Layout from "../components/layout";
 import HeaderWithBGImg from "../components/headerWithBGImg";
 import contactBannerImg from "../media/contact/contact-banner.jpg";
@@ -12,6 +13,32 @@ import Container from "react-bootstrap/Container";
 import "../styles/contact.scss";
 
 const ContactPage = () => {
+
+  const [name, setName ] = useState('');
+  const [email, setEmail ] = useState('');
+  const [subject, setSubject ] = useState('Optional');
+  const [message, setMessage ] = useState("Hi Arthur, I'd like to work with you on this project...");
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const formData = {name, email, subject, message}
+
+    fetch('/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
+
   return (
     <Layout>
       <Container fluid className="g-0">
@@ -20,7 +47,7 @@ const ContactPage = () => {
           <Col xs={1} />
           <Col className="contact-form mx-auto">
             <p className="contact-form__title--main">
-              Have a role you think I'd be a good fit for?
+              Interested in working with me?
             </p>
             <p className="contact-form__title--secondary mb-n1">
               Feel free to connect with me on{" "}
@@ -30,24 +57,26 @@ const ContactPage = () => {
             <Form
               data-static-form-name="contact"
               className="mt-3 mt-md-5"
-              method="post"
+              onSubmit={handleSubmit}
             >
               <Row>
                 <Form.Group className="mb-2" as={Col} sm={6} controlId="name">
                   <Form.Label column="lg">Name *</Form.Label>
-                  <Form.Control type="text" placeholder="Name" name="name" />
+                  <Form.Control type="text" name="name" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-2" as={Col} sm={6} controlId="email">
                   <Form.Label column="lg">Email *</Form.Label>
-                  <Form.Control type="text" placeholder="Email" name="email" />
+                  <Form.Control type="text" name="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 </Form.Group>
               </Row>
               <Form.Group className="mb-2" controlId="subject">
                 <Form.Label column="lg">Subject</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Subject (optional)"
                   name="subject"
+                  placeholder="Subject (optional)"
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
                 />
               </Form.Group>
               <Form.Group className="mb-2 mb-md-3" controlId="message">
@@ -55,8 +84,10 @@ const ContactPage = () => {
                 <Form.Control
                   as="textarea"
                   rows={8}
-                  placeholder="Hi Arthur, I'd like to work with you on this project..."
                   name="message"
+                  placeholder="Hi Arthur, I'd like to work with you on this project..."
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                 />
               </Form.Group>
               {/* <div class="cf-turnstile" data-sitekey="0x4AAAAAAABlzym_jmQK0sez" data-callback="javascriptCallback" data-name="contact-form"></div> */}

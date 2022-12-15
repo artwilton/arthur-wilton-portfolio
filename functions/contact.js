@@ -23,15 +23,16 @@ const handlePost = async (request, env) => {
   const outcome = await result.json();
   if (!outcome.success) {
     return new Response(
-      "The provided Turnstile token was not valid! \n" + JSON.stringify(outcome)
+      "The provided Turnstile token was not valid! \n" + JSON.stringify(outcome),
+      { status: 400 }
     );
   }
 
-  return await sendEmail(env);
+//   return await sendEmail(env);
 
-//   return new Response(
-//     "Turnstile token successfuly validated. \n" + JSON.stringify(outcome)
-//   );
+  return new Response(
+    "Turnstile token successfuly validated. \n" + JSON.stringify(outcome)
+  );
 }
 
 const sendEmail = async (env) => {
