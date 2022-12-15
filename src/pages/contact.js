@@ -22,7 +22,6 @@ const ContactPage = () => {
       method: 'POST',
       body: data,
     })
-      .then(res => res.json())
       .then((response) => response.json())
       .then((data) => {
           console.log('Success:', data);

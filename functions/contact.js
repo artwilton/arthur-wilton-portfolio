@@ -29,7 +29,7 @@ const handlePost = async (request, env) => {
   }
 
   //   return await sendEmail(env);
-  console.log(`EMAIL ADDRESS: ${env.EMAIL_ADDRESS} FORM DATA: ${body}`);
+  console.log(`FORM DATA: ${body.values()}`);
 
   return new Response(
     null,
