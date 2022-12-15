@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useRef } from "react";
 import Layout from "../components/layout";
 import HeaderWithBGImg from "../components/headerWithBGImg";
 import contactBannerImg from "../media/contact/contact-banner.jpg";
@@ -13,26 +13,21 @@ import Container from "react-bootstrap/Container";
 import "../styles/contact.scss";
 
 const ContactPage = () => {
-
-  const [name, setName ] = useState('');
-  const [email, setEmail ] = useState('');
-  const [subject, setSubject ] = useState('Optional');
-  const [message, setMessage ] = useState("Hi Arthur, I'd like to work with you on this project...");
+  const form = useRef(null)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const formData = {name, email, subject, message}
-
+    const data = new FormData(form.current)
     fetch('/contact', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
+      body: data,
     })
+      .then(res => res.json())
       .then((response) => response.json())
       .then((data) => {
-        console.log('Success:', data);
+        for (const [key, value] of data) {
+          console.log('Success:', `${key}: ${value}`);
+        }
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -55,18 +50,18 @@ const ContactPage = () => {
               contact me using the form below:
             </p>
             <Form
-              data-static-form-name="contact"
-              className="mt-3 mt-md-5"
+              ref={form}
               onSubmit={handleSubmit}
+              className="mt-3 mt-md-5"
             >
               <Row>
                 <Form.Group className="mb-2" as={Col} sm={6} controlId="name">
                   <Form.Label column="lg">Name *</Form.Label>
-                  <Form.Control type="text" name="name" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}/>
+                  <Form.Control type="text" name="name" placeholder="Name" defaultValue={""}/>
                 </Form.Group>
                 <Form.Group className="mb-2" as={Col} sm={6} controlId="email">
                   <Form.Label column="lg">Email *</Form.Label>
-                  <Form.Control type="text" name="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                  <Form.Control type="text" name="email" placeholder="Email" defaultValue={""}/>
                 </Form.Group>
               </Row>
               <Form.Group className="mb-2" controlId="subject">
@@ -75,8 +70,7 @@ const ContactPage = () => {
                   type="text"
                   name="subject"
                   placeholder="Subject (optional)"
-                  value={subject}
-                  onChange={(e) => setSubject(e.target.value)}
+                  defaultValue={""}
                 />
               </Form.Group>
               <Form.Group className="mb-2 mb-md-3" controlId="message">
@@ -86,8 +80,7 @@ const ContactPage = () => {
                   rows={8}
                   name="message"
                   placeholder="Hi Arthur, I'd like to work with you on this project..."
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
+                  defaultValue={""}
                 />
               </Form.Group>
               {/* <div class="cf-turnstile" data-sitekey="0x4AAAAAAABlzym_jmQK0sez" data-callback="javascriptCallback" data-name="contact-form"></div> */}
