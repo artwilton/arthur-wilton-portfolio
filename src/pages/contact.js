@@ -25,9 +25,7 @@ const ContactPage = () => {
       .then(res => res.json())
       .then((response) => response.json())
       .then((data) => {
-        for (const [key, value] of data) {
-          console.log('Success:', `${key}: ${value}`);
-        }
+          console.log('Success:', data);
       })
       .catch((error) => {
         console.error('Error:', error);
