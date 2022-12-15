@@ -30,7 +30,7 @@ const handlePost = async (request, env) => {
   }
 
   //   return await sendEmail(env);
-  awaitconsole.log(`EMAIL ADDRESS: ${env.EMAIL_ADDRESS} FORM DATA: ${body}`);
+  console.log(`EMAIL ADDRESS: ${env.EMAIL_ADDRESS} FORM DATA: ${body}`);
 
   return new Response(
     "Turnstile token successfuly validated. \n" + JSON.stringify(outcome)
