@@ -64,9 +64,7 @@ const sendEmail = async (env) => {
     const resp = await fetch(send_request);
     const respText = await resp.text();
 
-    respContent = resp.status + " " + resp.statusText + "\n\n" + respText;
-
-    return new Response(respContent);
+    return new Response(resp.status + " " + resp.statusText + "\n\n" + respText);
 }
 
 
