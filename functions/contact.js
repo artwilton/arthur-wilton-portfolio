@@ -1,7 +1,6 @@
-import staticFormsPlugin from "@cloudflare/pages-plugin-static-forms";
 const DEMO_SECRET_KEY = "1x0000000000000000000000000000000AA";
 
-const handlePost = async (request) => {
+const handlePost = async (request, env) => {
   const body = await request.formData();
   // Turnstile injects a token in "cf-turnstile-response".
   const token = body.get("cf-turnstile-response");
@@ -28,19 +27,48 @@ const handlePost = async (request) => {
     );
   }
 
-    staticFormsPlugin({
-        respondWith: ({ formData, name }) => {
-          const email = formData.get('email')
-          return new Response(`Hello, ${email}! Thank you for submitting the ${name} form.`)
-        }
-      })
+  return await sendEmail(env);
 
 //   return new Response(
 //     "Turnstile token successfuly validated. \n" + JSON.stringify(outcome)
 //   );
 }
 
+const sendEmail = async (env) => {
+
+    let send_request = new Request("https://api.mailchannels.net/tx/v1/send", {
+        "method": "POST",
+        "headers": {
+            "content-type": "application/json",
+        },
+        "body": JSON.stringify({
+            "personalizations": [{ 
+                "to": [ {"email": `${env.EMAIL_ADDRESS}`,
+                          "name": "Test Recipient"}],
+            }],
+            "from": {
+                "email": `${env.EMAIL_ADDRESS}`,
+                "name": "Test Sender",
+            },
+    
+            "subject": "Test Subject",
+            "content": [{
+                "type": "text/plain",
+                "value": "Test message content",
+            }],
+        }),
+    });
+
+    const resp = await fetch(send_request);
+    const respText = await resp.text();
+
+    respContent = resp.status + " " + resp.statusText + "\n\n" + respText;
+
+    return new Response(respContent);
+}
+
+
 export const onRequestPost = async ({ request, env }) => {
   console.log(`NODE VERSION: ${env.NODE_VERSION}`);
-  return await handlePost(request);
+  return await handlePost(request, env);
 };
