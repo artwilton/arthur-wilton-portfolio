@@ -13,28 +13,30 @@ import Container from "react-bootstrap/Container";
 import "../styles/contact.scss";
 
 const ContactPage = () => {
-  const form = useRef(null)
+  const form = useRef(null);
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    const data = new FormData(form.current)
-    fetch('/contact', {
-      method: 'POST',
+    e.preventDefault();
+    const data = new FormData(form.current);
+    fetch("/contact", {
+      method: "POST",
       body: data,
     })
       .then((response) => {
         if (response.ok) {
-          return response.json()
+          return response.json();
         }
-        throw new Error('Form submission error');
+        return Promise.reject(response);
       })
       .then((data) => {
-        console.log('Success:', data);
+        console.log("Success:", data);
       })
-      .catch((error) => {
-        console.error('Error Message:', error);
+      .catch((response) => {
+        response.json().then((error) => {
+          console.error("Error Message:", error);
+        });
       });
-  }
+  };
 
   return (
     <Layout>
@@ -51,19 +53,25 @@ const ContactPage = () => {
               <a href="https://www.linkedin.com/in/artwilton">LinkedIn</a>, or
               contact me using the form below:
             </p>
-            <Form
-              ref={form}
-              onSubmit={handleSubmit}
-              className="mt-3 mt-md-5"
-            >
+            <Form ref={form} onSubmit={handleSubmit} className="mt-3 mt-md-5">
               <Row>
                 <Form.Group className="mb-2" as={Col} sm={6} controlId="name">
                   <Form.Label column="lg">Name *</Form.Label>
-                  <Form.Control type="text" name="name" placeholder="Name" defaultValue={""}/>
+                  <Form.Control
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    defaultValue={""}
+                  />
                 </Form.Group>
                 <Form.Group className="mb-2" as={Col} sm={6} controlId="email">
                   <Form.Label column="lg">Email *</Form.Label>
-                  <Form.Control type="text" name="email" placeholder="Email" defaultValue={""}/>
+                  <Form.Control
+                    type="text"
+                    name="email"
+                    placeholder="Email"
+                    defaultValue={""}
+                  />
                 </Form.Group>
               </Row>
               <Form.Group className="mb-2" controlId="subject">
