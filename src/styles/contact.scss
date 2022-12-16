@@ -8,17 +8,30 @@
     &--main {
       font-weight: 300;
       @include font-size(2.4rem);
-      @include media-breakpoint-down(md) {
-        @include font-size(2.2rem);
+      @include media-breakpoint-down(sm) {
+        @include font-size(1.5rem);
+        font-weight: 400;
       }
     }
     &--secondary {
       @include font-size(1.2rem);
+      @include media-breakpoint-down(sm) {
+        @include font-size(1.05rem);
+      }
+    }
+  }
+  &__label {
+    @include font-size(1.2rem);
+    @include media-breakpoint-down(sm) {
+      @include font-size(1.1rem);
     }
   }
   &__button {
     &--submit {
-      @include font-size(1.3rem)
+      @include font-size(1.3rem);
+      @include media-breakpoint-down(sm) {
+        @include font-size(1.15rem);
+      }
     }
   }
 }
