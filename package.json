@@ -16,8 +16,6 @@
     "dev-m": "gatsby develop -H 0.0.0.0 -p 8000"
   },
   "dependencies": {
-    "@cloudflare/pages-plugin-mailchannels": "^0.1.1",
-    "@cloudflare/pages-plugin-static-forms": "^1.0.0",
     "bootstrap": "^5.2.3",
     "gatsby": "^4.25.0",
     "gatsby-omni-font-loader": "^2.0.2",
