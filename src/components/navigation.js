@@ -49,17 +49,22 @@ const Navigation = ({ navLinks, navbarBrand, socialMediaIcons }) => {
 
   const renderSocialMediaIcons = socialMediaIcons.map(
     ({ name, to, SVGComp }) => (
-      <Navbar.Brand href={to} aria-label={name} key={name}>
+      <Nav.Link
+      href={to}
+      aria-label={name}
+      key={name}
+        className={`${
+          offCanvasToggled
+            ? "custom-navbar__social-media-logo--off-canvas mb-1 mb-lg-0 mx-2 mx-lg-3"
+            : ""
+        } custom-navbar__social-media-logo`}
+      >
         <SVGComp
           role="img"
           alt={`${name} Icon`}
-          className={`${
-            offCanvasToggled
-              ? "custom-navbar__social-media-logo--off-canvas mb-4 mx-2 mx-lg-3"
-              : ""
-          } custom-navbar__link custom-navbar__social-media-logo d-inline-block align-text-top`}
+          className="d-inline-block align-text-top"
         />
-      </Navbar.Brand>
+      </Nav.Link>
     )
   );
 
@@ -134,7 +139,7 @@ const Navigation = ({ navLinks, navbarBrand, socialMediaIcons }) => {
               </Nav>
               <Nav
                 className={`${
-                  offCanvasToggled ? "pt-3 mt-auto flex-row" : "pt-1 pe-2"
+                  offCanvasToggled ? "pt-3 mt-auto flex-row" : "pe-3"
                 }`}
               >
                 {renderSocialMediaIcons}
