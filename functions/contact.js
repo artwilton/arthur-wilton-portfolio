@@ -20,21 +20,29 @@ const handlePost = async (request, env) => {
     }
   );
 
+  let resp = new Response()
+
   const outcome = await result.json();
   if (!outcome.success) {
-    return new Response(
-      {"success": false, "message": "Sorry there was an error in submitting the form."},
-      { "status": 400, "statusText": "The provided Turnstile token was not valid!" }
+    resp = (
+      JSON.stringify({success: false, message: "Sorry there was an error in submitting the form."}),
+      { "status": 400, "statusText": "The provided Turnstile token was not valid!", headers: { "Content-Type": "application/json" }}
+    );
+  } else {
+    resp = (
+      JSON.stringify({success: true, message: "Form successfully submitted, thanks!"}),
+      { "status": 200, "statusText": "Turnstile token successfuly validated.", headers: { "Content-Type": "application/json" }}
     );
   }
 
   //   return await sendEmail(env);
-  console.log(`FORM DATA: ${body.values()}`);
 
-  return new Response(
-    {"success": true, "message": "Form successfully submitted, thanks!"},
-    { "status": 200, "statusText": "Turnstile token successfuly validated." }
-  );
+  // log form data
+  for (const pair of body.entries()) {
+    console.log(`${pair[0]}, ${pair[1]}`);
+  }
+
+  return resp
 };
 
 const sendEmail = async (env) => {
