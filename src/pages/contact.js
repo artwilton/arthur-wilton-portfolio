@@ -51,9 +51,9 @@ const ContactPage = () => {
       <Container fluid className="g-0">
         <HeaderWithBGImg title="Contact Me" image={contactBannerImg} />
         <Row className="bg--light pt-4 pb-5 py-md-5 mx-auto">
-          <Col/>
-          <Col className="contact-form mx-auto">
-            <p className="contact-form__title--main">
+          <Col xs={1} />
+          <Col xs={10} className="contact-form mx-auto">
+            <p className="contact-form__title--main mb-1 mb-md-3">
               Interested in working with me?
             </p>
             <p className="contact-form__title--secondary mb-n1">
@@ -64,7 +64,7 @@ const ContactPage = () => {
             <Form ref={form} onSubmit={handleSubmit} className="mt-3 mt-md-5">
               <Row>
                 <Form.Group className="mb-2" as={Col} sm={6} controlId="name">
-                  <Form.Label column="lg">Name *</Form.Label>
+                  <Form.Label className="contact-form__label">Name *</Form.Label>
                   <Form.Control
                     type="text"
                     name="name"
@@ -73,7 +73,7 @@ const ContactPage = () => {
                   />
                 </Form.Group>
                 <Form.Group className="mb-2" as={Col} sm={6} controlId="email">
-                  <Form.Label column="lg">Email *</Form.Label>
+                  <Form.Label className="contact-form__label">Email *</Form.Label>
                   <Form.Control
                     type="text"
                     name="email"
@@ -83,7 +83,7 @@ const ContactPage = () => {
                 </Form.Group>
               </Row>
               <Form.Group className="mb-2" controlId="subject">
-                <Form.Label column="lg">Subject</Form.Label>
+                <Form.Label className="contact-form__label">Subject</Form.Label>
                 <Form.Control
                   type="text"
                   name="subject"
@@ -92,7 +92,7 @@ const ContactPage = () => {
                 />
               </Form.Group>
               <Form.Group className="mb-2 mb-md-3" controlId="message">
-                <Form.Label column="lg">Message *</Form.Label>
+                <Form.Label className="contact-form__label">Message *</Form.Label>
                 <Form.Control
                   as="textarea"
                   rows={8}
@@ -102,9 +102,9 @@ const ContactPage = () => {
                 />
               </Form.Group>
               {/* <div class="cf-turnstile" data-sitekey="0x4AAAAAAABlzym_jmQK0sez" data-callback="javascriptCallback" data-name="contact-form"></div> */}
-              <div class="checkbox mb-3">
+              <div class="mb-3">
                 <div
-                  class="cf-turnstile"
+                  className="cf-turnstile"
                   data-sitekey="1x00000000000000000000AA"
                   data-theme="light"
                 ></div>
@@ -118,7 +118,7 @@ const ContactPage = () => {
               </Button>
             </Form>
           </Col>
-          <Col/>
+          <Col xs={1} />
         </Row>
       </Container>
     </Layout>
