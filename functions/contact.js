@@ -26,12 +26,7 @@ const handlePost = async (request, env) => {
     return new Response(
       JSON.stringify({
         success: false,
-        errors: [
-          {
-            status: 400,
-            detail: "The provided Turnstile token was not valid!",
-          },
-        ],
+        errors: ["The provided Turnstile token was not valid!"],
       }),
       {
         status: 400,
@@ -40,22 +35,11 @@ const handlePost = async (request, env) => {
     );
   }
   // log form data
-  for (const pair of body.entries()) {
-    console.log(`${pair[0]}, ${pair[1]}`);
-  }
+  // for (const pair of body.entries()) {
+  //   console.log(`${pair[0]}, ${pair[1]}`);
+  // }
 
   return await sendEmail(env.EMAIL_ADDRESS, name, emailFrom, subject, message);
-
-  // return new Response(
-  //   JSON.stringify({
-  //     success: true,
-  //   }),
-  //   {
-  //     status: 200,
-  //     statusText: "Turnstile token successfuly validated.",
-  //     headers: { "Content-Type": "application/json" },
-  //   }
-  // );
 };
 
 const parseUserForm = (userFormData) => {
@@ -68,41 +52,38 @@ const parseUserForm = (userFormData) => {
 };
 
 const sendEmail = async (emailTo, name, emailFrom, subject, message) => {
-  console.log('SEND EMAIL', emailTo, name, emailFrom, subject, message);
 
-  let send_request = new Request("https://api.mailchannels.net/tx/v1/send?dry-run=true", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({
-      personalizations: [
-        {
-          to: [{ email: `${emailTo}`, name: name }],
+  let send_request = new Request(
+    "https://api.mailchannels.net/tx/v1/send?dry-run=true",
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        personalizations: [
+          {
+            to: [{ email: `${emailTo}`, name: name }],
+          },
+        ],
+        from: {
+          email: `${emailFrom}`,
+          name: name,
         },
-      ],
-      // from: {
-      //   email: `${emailFrom}`,
-      //   name: name,
-      // },
-      // subject: subject,
-      // content: [
-      //   {
-      //     type: "text/plain",
-      //     value: message,
-      //   },
-      // ],
-    }),
-  });
+        subject: subject,
+        content: [
+          {
+            type: "text/plain",
+            value: message,
+          },
+        ],
+      }),
+    }
+  );
 
-  const resp = await fetch(send_request);
-  // const respText = await resp.text();
-
-  // return new Response(resp.status + " " + resp.statusText + "\n\n" + respText);
-  return resp;
+  return await fetch(send_request);
 };
 
 export const onRequestPost = async ({ request, env }) => {
-  console.log(`NODE VERSION: ${env.NODE_VERSION}`);
   return await handlePost(request, env);
 };
