@@ -22,9 +22,14 @@ const ContactPage = () => {
       method: 'POST',
       body: data,
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) {
+          return response.json()
+        }
+        throw new Error('Form submission error');
+      })
       .then((data) => {
-          console.log('Success:', data);
+        console.log('Success:', data);
       })
       .catch((error) => {
         console.error('Error Message:', error);
