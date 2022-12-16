@@ -15,6 +15,7 @@ Referenced here - https://github.com/gatsbyjs/gatsby/issues/7310
 /* NavBar and OffCanvas */
 
 .custom-navbar {
+  $self: &;
   transition: $transform-transition, $bg-color-transition;
   will-change: transform;
   transform: translateY(0%);
@@ -53,6 +54,8 @@ Referenced here - https://github.com/gatsbyjs/gatsby/issues/7310
     }
   }
   &__social-media-logo {
+    @extend #{ $self }__link;
+    font-size: 1.56rem;
     &--off-canvas {
       @include font-size(3rem);
     }
