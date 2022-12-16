@@ -5,6 +5,7 @@ const handlePost = async (request, env) => {
   // Turnstile injects a token in "cf-turnstile-response".
   const token = body.get("cf-turnstile-response");
   const ip = request.headers.get("CF-Connecting-IP");
+  const { name, emailFrom, subject, message } = parseUserForm(body);
 
   // Validate the token by calling the "/siteverify" API.
   let formData = new FormData();
@@ -25,11 +26,15 @@ const handlePost = async (request, env) => {
     return new Response(
       JSON.stringify({
         success: false,
-        message: "Sorry there was an error in submitting the form.",
+        errors: [
+          {
+            status: 400,
+            detail: "The provided Turnstile token was not valid!",
+          },
+        ],
       }),
       {
         status: 400,
-        statusText: "The provided Turnstile token was not valid!",
         headers: { "Content-Type": "application/json" },
       }
     );
@@ -39,23 +44,33 @@ const handlePost = async (request, env) => {
     console.log(`${pair[0]}, ${pair[1]}`);
   }
 
-  return new Response(
-    JSON.stringify({
-      success: true,
-      message: "Form successfully submitted, thanks!",
-    }),
-    {
-      status: 200,
-      statusText: "Turnstile token successfuly validated.",
-      headers: { "Content-Type": "application/json" },
-    }
-  );
+  return await sendEmail(env.EMAIL_ADDRESS, name, emailFrom, subject, message);
+
+  // return new Response(
+  //   JSON.stringify({
+  //     success: true,
+  //   }),
+  //   {
+  //     status: 200,
+  //     statusText: "Turnstile token successfuly validated.",
+  //     headers: { "Content-Type": "application/json" },
+  //   }
+  // );
 };
 
-const sendEmail = async (env) => {
-  console.log(`EMAIL ADDRESS: ${env.EMAIL_ADDRESS}`);
+const parseUserForm = (userFormData) => {
+  const name = userFormData.get("name");
+  const emailFrom = userFormData.get("email");
+  const subject = userFormData.get("subject");
+  const message = userFormData.get("message");
 
-  let send_request = new Request("https://api.mailchannels.net/tx/v1/send", {
+  return { name, emailFrom, subject, message };
+};
+
+const sendEmail = async (emailTo, name, emailFrom, subject, message) => {
+  console.log('SEND EMAIL', emailTo, name, emailFrom, subject, message);
+
+  let send_request = new Request("https://api.mailchannels.net/tx/v1/send?dry-run=true", {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -63,28 +78,28 @@ const sendEmail = async (env) => {
     body: JSON.stringify({
       personalizations: [
         {
-          to: [{ email: `${env.EMAIL_ADDRESS}`, name: "Test Recipient" }],
+          to: [{ email: `${emailTo}`, name: name }],
         },
       ],
       from: {
-        email: `${env.EMAIL_ADDRESS}`,
-        name: "Test Sender",
+        email: `${emailFrom}`,
+        name: name,
       },
-
-      subject: "Test Subject",
+      subject: subject,
       content: [
         {
           type: "text/plain",
-          value: "Test message content",
+          value: message,
         },
       ],
     }),
   });
 
   const resp = await fetch(send_request);
-  const respText = await resp.text();
+  // const respText = await resp.text();
 
-  return new Response(resp.status + " " + resp.statusText + "\n\n" + respText);
+  // return new Response(resp.status + " " + resp.statusText + "\n\n" + respText);
+  return resp;
 };
 
 export const onRequestPost = async ({ request, env }) => {
