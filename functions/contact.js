@@ -81,17 +81,17 @@ const sendEmail = async (emailTo, name, emailFrom, subject, message) => {
           to: [{ email: `${emailTo}`, name: name }],
         },
       ],
-      from: {
-        email: `${emailFrom}`,
-        name: name,
-      },
-      subject: subject,
-      content: [
-        {
-          type: "text/plain",
-          value: message,
-        },
-      ],
+      // from: {
+      //   email: `${emailFrom}`,
+      //   name: name,
+      // },
+      // subject: subject,
+      // content: [
+      //   {
+      //     type: "text/plain",
+      //     value: message,
+      //   },
+      // ],
     }),
   });
 
