@@ -1,5 +1,7 @@
 import * as React from "react";
 import { useRef } from "react";
+import { Script } from "gatsby"
+
 import Layout from "../components/layout";
 import HeaderWithBGImg from "../components/headerWithBGImg";
 import contactBannerImg from "../media/contact/contact-banner.jpg";
@@ -39,6 +41,12 @@ const ContactPage = () => {
   };
 
   return (
+    <>
+    <Script
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+      async
+      defer
+    ></Script>
     <Layout>
       <Container fluid className="g-0">
         <HeaderWithBGImg title="Contact Me" image={contactBannerImg} />
@@ -114,18 +122,12 @@ const ContactPage = () => {
         </Row>
       </Container>
     </Layout>
+    </>
   );
 };
 
 export default ContactPage;
 
 export const Head = () => (
-  <>
     <title>Contact</title>
-    <script
-      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-      async
-      defer
-    ></script>
-  </>
 );
