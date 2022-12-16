@@ -51,7 +51,7 @@ const ContactPage = () => {
       <Container fluid className="g-0">
         <HeaderWithBGImg title="Contact Me" image={contactBannerImg} />
         <Row className="bg--light pt-4 pb-5 py-md-5 mx-auto">
-          <Col xs={1} />
+          <Col/>
           <Col className="contact-form mx-auto">
             <p className="contact-form__title--main">
               Interested in working with me?
@@ -118,7 +118,7 @@ const ContactPage = () => {
               </Button>
             </Form>
           </Col>
-          <Col xs={1} />
+          <Col/>
         </Row>
       </Container>
     </Layout>
