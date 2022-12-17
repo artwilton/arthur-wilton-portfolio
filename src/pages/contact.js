@@ -50,7 +50,7 @@ const ContactPage = () => {
     <Layout>
       <Container fluid className="g-0">
         <HeaderWithBGImg title="Contact Me" image={contactBannerImg} />
-        <Row className="bg--light pt-4 pb-5 py-md-5 mx-auto">
+        <Row className="bg--light pt-4 pb-5 py-md-5 mx-auto gx-0 gx-sm-2">
           <Col xs={1} />
           <Col xs={10} className="contact-form mx-auto">
             <p className="contact-form__title--main mb-1 mb-md-3">
