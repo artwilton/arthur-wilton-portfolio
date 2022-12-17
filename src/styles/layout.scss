@@ -71,6 +71,7 @@ Referenced here - https://github.com/gatsbyjs/gatsby/issues/7310
 /* Footer */
 .footer {
   &__social-media-logo {
+    color: $color--light;
     font-size: 1.3rem;
     padding-left: .3rem;
     padding-right: .3rem;
