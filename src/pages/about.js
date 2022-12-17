@@ -133,12 +133,13 @@ const AboutPage = () => {
             </div>
             <Row className="mt-3 mb-3 mb-sm-5">
               <Col className="col-auto mx-md-0">
-                <Link
-                  to="/work"
-                  className="about-banner__button mt-2 btn btn-light shadow-none"
+                <a
+                href={'arthur-wilton-resume.pdf'}
+                download
+                className="about-banner__button mt-2 btn btn-light shadow-none"
                 >
                   View My Resume
-                </Link>
+                </a>
               </Col>
               <Col className="col-auto mx-md-0">
                 <Link
