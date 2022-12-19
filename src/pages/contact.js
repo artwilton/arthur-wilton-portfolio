@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-import { Script } from "gatsby";
 import ContactAlertModal from "../components/contactAlertModal";
 
 import Layout from "../components/layout";
@@ -27,7 +26,6 @@ const ContactPage = () => {
 
   const form = useRef(null);
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData(form.current);
@@ -37,7 +35,8 @@ const ContactPage = () => {
     })
       .then((response) => {
         if (response.ok) return response.json();
-        return response.json()
+        return response
+          .json()
           .catch(() => {
             throw new Error(`${response.status}, ${response.statusText}`);
           })
@@ -54,14 +53,18 @@ const ContactPage = () => {
   const renderFormSuccessful = () => {
     resetForm();
     setModalSuccess(true);
-    setModalTitle("Thank you!")
-    setModalBody("Your message was submitted successfully and I'll get back to you as soon as I can.");
+    setModalTitle("Thank you!");
+    setModalBody(
+      "Your message was submitted successfully and I'll get back to you as soon as I can."
+    );
     setModalShow(true);
   };
 
   const renderFormFailed = (errorMessage) => {
     setModalSuccess(false);
-    setModalTitle("An error occurred during message submission, please try again!")
+    setModalTitle(
+      "An error occurred during message submission, please try again!"
+    );
     setModalBody(`Error Message: ${errorMessage}`);
     setModalShow(true);
   };
@@ -74,13 +77,7 @@ const ContactPage = () => {
   };
 
   return (
-    <>
-      <Script
-        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-        async
-        defer
-      ></Script>
-      <Layout>
+    <Layout>
       <ContactAlertModal
         show={modalShow}
         onHide={() => setModalShow(false)}
@@ -88,94 +85,85 @@ const ContactPage = () => {
         title={modalTitle}
         body={modalBody}
       />
-        <Container fluid className="g-0">
-          <HeaderWithBGImg title="Contact Me" image={contactBannerImg} />
-          <Row className="bg--light pt-4 pb-5 py-md-5 mx-auto gx-0 gx-sm-2">
-            <Col xs={1} />
-            <Col xs={10} className="contact-form mx-auto">
-              <p className="contact-form__title--main mb-1 mb-md-3">
-                Interested in working with me?
-              </p>
-              <p className="contact-form__title--secondary mb-n1">
-                Feel free to connect with me on{" "}
-                <a href="https://www.linkedin.com/in/artwilton">LinkedIn</a>, or
-                contact me using the form below:
-              </p>
-              <Form ref={form} onSubmit={handleSubmit} className="mt-3 mt-md-5">
-                <Row>
-                  <Form.Group className="mb-2" as={Col} sm={6} controlId="name">
-                    <Form.Label className="contact-form__label">
-                      Name *
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="name"
-                      placeholder="Name"
-                      defaultValue={name}
-                    />
-                  </Form.Group>
-                  <Form.Group
-                    className="mb-2"
-                    as={Col}
-                    sm={6}
-                    controlId="email"
-                  >
-                    <Form.Label className="contact-form__label">
-                      Email *
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="email"
-                      placeholder="Email"
-                      defaultValue={email}
-                    />
-                  </Form.Group>
-                </Row>
-                <Form.Group className="mb-2" controlId="subject">
+      <Container fluid className="g-0">
+        <HeaderWithBGImg title="Contact Me" image={contactBannerImg} />
+        <Row className="bg--light pt-4 pb-5 py-md-5 mx-auto gx-0 gx-sm-2">
+          <Col xs={1} />
+          <Col xs={10} className="contact-form mx-auto">
+            <p className="contact-form__title--main mb-1 mb-md-3">
+              Interested in working with me?
+            </p>
+            <p className="contact-form__title--secondary mb-n1">
+              Feel free to connect with me on{" "}
+              <a href="https://www.linkedin.com/in/artwilton">LinkedIn</a>, or
+              contact me using the form below:
+            </p>
+            <Form ref={form} onSubmit={handleSubmit} className="mt-3 mt-md-5">
+              <Row>
+                <Form.Group className="mb-2" as={Col} sm={6} controlId="name">
                   <Form.Label className="contact-form__label">
-                    Subject
+                    Name *
                   </Form.Label>
                   <Form.Control
                     type="text"
-                    name="subject"
-                    placeholder="Subject (optional)"
-                    defaultValue={subject}
+                    name="name"
+                    placeholder="Name"
+                    defaultValue={name}
                   />
                 </Form.Group>
-                <Form.Group className="mb-2 mb-md-3" controlId="message">
+                <Form.Group className="mb-2" as={Col} sm={6} controlId="email">
                   <Form.Label className="contact-form__label">
-                    Message *
+                    Email *
                   </Form.Label>
                   <Form.Control
-                    as="textarea"
-                    rows={8}
-                    name="message"
-                    placeholder="Hi Arthur, I'd like to work with you on this project..."
-                    defaultValue={message}
+                    type="text"
+                    name="email"
+                    placeholder="Email"
+                    defaultValue={email}
                   />
                 </Form.Group>
-                {/* <div class="cf-turnstile" data-sitekey="0x4AAAAAAABlzym_jmQK0sez" data-callback="javascriptCallback" data-name="contact-form"></div> */}
-                <div class="mb-3">
-                  <div
-                    className="cf-turnstile"
-                    data-sitekey="1x00000000000000000000AA"
-                    data-theme="light"
-                  ></div>
-                </div>
-                <Button
-                  className="contact-form__button--submit"
-                  variant="dark"
-                  type="submit"
-                >
-                  Send Message
-                </Button>
-              </Form>
-            </Col>
-            <Col xs={1} />
-          </Row>
-        </Container>
-      </Layout>
-    </>
+              </Row>
+              <Form.Group className="mb-2" controlId="subject">
+                <Form.Label className="contact-form__label">Subject</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="subject"
+                  placeholder="Subject (optional)"
+                  defaultValue={subject}
+                />
+              </Form.Group>
+              <Form.Group className="mb-2 mb-md-3" controlId="message">
+                <Form.Label className="contact-form__label">
+                  Message *
+                </Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={8}
+                  name="message"
+                  placeholder="Hi Arthur, I'd like to work with you on this project..."
+                  defaultValue={message}
+                />
+              </Form.Group>
+              <div class="mb-3">
+                <div
+                  className="cf-turnstile"
+                  data-sitekey="0x4AAAAAAABlzym_jmQK0sez"
+                  data-theme="light"
+                ></div>
+              </div>
+              <Button
+                className="contact-form__button--submit"
+                variant="dark"
+                type="submit"
+              >
+                Send Message
+              </Button>
+            </Form>
+          </Col>
+          <Col xs={1} />
+        </Row>
+      </Container>
+    </Layout>
   );
 };
 
