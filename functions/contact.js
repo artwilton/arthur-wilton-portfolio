@@ -45,12 +45,13 @@ const parseUserForm = (userFormData) => {
   const name = userFormData.get("name");
   const emailFrom = userFormData.get("email");
   const subject = userFormData.get("subject");
-  const message = userFormData.get("message");
-
+  let message = userFormData.get("message");
+  message = `From: ${emailFrom} \nMessage: ${message}`
+  
   return { name, emailFrom, subject, message };
 };
 
-const sendEmail = async (emailTo, name, emailFrom, subject, message) => {
+const sendEmail = async (email, name, subject, message) => {
 
   let send_request = new Request(
     "https://api.mailchannels.net/tx/v1/send",
@@ -62,11 +63,11 @@ const sendEmail = async (emailTo, name, emailFrom, subject, message) => {
       body: JSON.stringify({
         personalizations: [
           {
-            to: [{ email: `${emailTo}`, name: name }],
+            to: [{ email: `${email}`}],
           },
         ],
         from: {
-          email: `${emailFrom}`,
+          email: `${email}`,
           name: name,
         },
         subject: subject,
