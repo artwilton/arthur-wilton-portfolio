@@ -1,7 +1,11 @@
-import PlayIcon from './play.svg';
 import AWLogo from './aw-logo.svg';
+import CheckCircle from './check-circle.svg'
+import ExclamationCircle from './exclamation-circle.svg'
+import PlayIcon from './play.svg';
 
 export {
-    PlayIcon,
     AWLogo,
+    CheckCircle,
+    ExclamationCircle,
+    PlayIcon,
 };
