@@ -4,7 +4,7 @@ const handlePost = async (request, env) => {
   // Turnstile injects a token in "cf-turnstile-response".
   const token = body.get("cf-turnstile-response");
   const ip = request.headers.get("CF-Connecting-IP");
-  const { name, emailFrom, subject, message } = parseUserForm(body);
+  const { name, subject, message } = parseUserForm(body);
 
   // Validate the token by calling the "/siteverify" API.
   let formData = new FormData();
@@ -38,7 +38,7 @@ const handlePost = async (request, env) => {
   //   console.log(`${pair[0]}, ${pair[1]}`);
   // }
 
-  return await sendEmail(env.EMAIL_ADDRESS, name, emailFrom, subject, message);
+  return await sendEmail(env.EMAIL_ADDRESS, name, subject, message);
 };
 
 const parseUserForm = (userFormData) => {
@@ -48,7 +48,7 @@ const parseUserForm = (userFormData) => {
   let message = userFormData.get("message");
   message = `From: ${emailFrom} \nMessage: ${message}`
   
-  return { name, emailFrom, subject, message };
+  return { name, subject, message };
 };
 
 const sendEmail = async (email, name, subject, message) => {
