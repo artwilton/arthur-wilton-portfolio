@@ -1,6 +1,5 @@
-const DEMO_SECRET_KEY = "1x0000000000000000000000000000000AA";
-
 const handlePost = async (request, env) => {
+  const SECRET_KEY = env.TURNSTILE_SECRET_KEY
   const body = await request.formData();
   // Turnstile injects a token in "cf-turnstile-response".
   const token = body.get("cf-turnstile-response");
@@ -9,7 +8,7 @@ const handlePost = async (request, env) => {
 
   // Validate the token by calling the "/siteverify" API.
   let formData = new FormData();
-  formData.append("secret", DEMO_SECRET_KEY);
+  formData.append("secret", SECRET_KEY);
   formData.append("response", token);
   formData.append("remoteip", ip);
 
@@ -54,7 +53,7 @@ const parseUserForm = (userFormData) => {
 const sendEmail = async (emailTo, name, emailFrom, subject, message) => {
 
   let send_request = new Request(
-    "https://api.mailchannels.net/tx/v1/send?dry-run=true",
+    "https://api.mailchannels.net/tx/v1/send",
     {
       method: "POST",
       headers: {
