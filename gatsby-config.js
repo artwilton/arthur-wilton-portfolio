@@ -1,4 +1,5 @@
 module.exports = {
+  jsxRuntime: "automatic",
   siteMetadata: {
     title: `Arthur Wilton Portfolio`,
     siteUrl: `https://www.yourdomain.tld`,
