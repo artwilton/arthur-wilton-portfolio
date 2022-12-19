@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { Script } from "gatsby";
+import ContactAlertModal from "../components/contactAlertModal";
 
 import Layout from "../components/layout";
 import HeaderWithBGImg from "../components/headerWithBGImg";
@@ -18,7 +19,14 @@ const ContactPage = () => {
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+
+  const [modalSuccess, setModalSuccess] = useState(false);
+  const [modalTitle, setModalTitle] = useState("");
+  const [modalBody, setModalBody] = useState("");
+  const [modalShow, setModalShow] = useState(false);
+
   const form = useRef(null);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,7 +39,7 @@ const ContactPage = () => {
         if (response.ok) return response.json();
         return response.json()
           .catch(() => {
-            throw new Error(response.statusText);
+            throw new Error(`${response.status}, ${response.statusText}`);
           })
           .then((response) => {
             throw new Error(response.errors);
@@ -45,11 +53,17 @@ const ContactPage = () => {
 
   const renderFormSuccessful = () => {
     resetForm();
-    alert("Form submission successful");
+    setModalSuccess(true);
+    setModalTitle("Thank you!")
+    setModalBody("Your message was submitted successfully and I'll get back to you as soon as I can.");
+    setModalShow(true);
   };
 
   const renderFormFailed = (errorMessage) => {
-    alert(`Form submission failed \nError: ${errorMessage}`);
+    setModalSuccess(false);
+    setModalTitle("An error occurred during message submission, please try again!")
+    setModalBody(`Error Message: ${errorMessage}`);
+    setModalShow(true);
   };
 
   const resetForm = () => {
@@ -67,6 +81,13 @@ const ContactPage = () => {
         defer
       ></Script>
       <Layout>
+      <ContactAlertModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        success={modalSuccess}
+        title={modalTitle}
+        body={modalBody}
+      />
         <Container fluid className="g-0">
           <HeaderWithBGImg title="Contact Me" image={contactBannerImg} />
           <Row className="bg--light pt-4 pb-5 py-md-5 mx-auto gx-0 gx-sm-2">
