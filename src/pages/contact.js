@@ -24,25 +24,24 @@ const ContactPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData(form.current);
-    fetch("/contact", {
+    fetch("https://arthur-wilton-portfolio.pages.dev/contact/", {
       method: "POST",
       body: data,
     })
       .then((response) => {
-        console.dir("FULL RESPONSE", response)
-        if (!response.ok) {
-          throw new Error(response.statusText);
-        }
-        return response.json();
+        if (response.ok) return response.json();
+        return response.json()
+          .catch(() => {
+            throw new Error(response.statusText);
+          })
+          .then((response) => {
+            throw new Error(response.errors);
+          });
       })
-      .then((data) => {
-        console.log("Success: ", data);
+      .then(() => {
         renderFormSuccessful();
       })
-      .catch((error) => {
-        console.dir("Error message: ", error);
-        renderFormFailed(error.message);
-      });
+      .catch((error) => renderFormFailed(error.message));
   };
 
   const renderFormSuccessful = () => {
