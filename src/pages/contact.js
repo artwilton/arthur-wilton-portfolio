@@ -14,11 +14,6 @@ import Container from "react-bootstrap/Container";
 import "../styles/contact.scss";
 
 const ContactPage = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
-
   const [modalSuccess, setModalSuccess] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [modalBody, setModalBody] = useState("");
@@ -51,7 +46,7 @@ const ContactPage = () => {
   };
 
   const renderFormSuccessful = () => {
-    resetForm();
+    form.current.reset();
     setModalSuccess(true);
     setModalTitle("Thank you!");
     setModalBody(
@@ -67,13 +62,6 @@ const ContactPage = () => {
     );
     setModalBody(`Error Message: ${errorMessage}`);
     setModalShow(true);
-  };
-
-  const resetForm = () => {
-    setName("");
-    setEmail("");
-    setSubject("");
-    setMessage("");
   };
 
   return (
@@ -108,7 +96,8 @@ const ContactPage = () => {
                     type="text"
                     name="name"
                     placeholder="Name"
-                    defaultValue={name}
+                    defaultValue=""
+                    required
                   />
                 </Form.Group>
                 <Form.Group className="mb-2" as={Col} sm={6} controlId="email">
@@ -116,10 +105,11 @@ const ContactPage = () => {
                     Email *
                   </Form.Label>
                   <Form.Control
-                    type="text"
+                    type="email"
                     name="email"
                     placeholder="Email"
-                    defaultValue={email}
+                    defaultValue=""
+                    required
                   />
                 </Form.Group>
               </Row>
@@ -129,7 +119,7 @@ const ContactPage = () => {
                   type="text"
                   name="subject"
                   placeholder="Subject (optional)"
-                  defaultValue={subject}
+                  defaultValue=""
                 />
               </Form.Group>
               <Form.Group className="mb-2 mb-md-3" controlId="message">
@@ -141,7 +131,8 @@ const ContactPage = () => {
                   rows={8}
                   name="message"
                   placeholder="Hi Arthur, I'd like to work with you on this project..."
-                  defaultValue={message}
+                  defaultValue=""
+                  required
                 />
               </Form.Group>
               <div class="mb-3">
