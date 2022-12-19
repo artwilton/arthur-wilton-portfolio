@@ -1,4 +1,3 @@
-import * as React from "react"
 import Card from "react-bootstrap/Card";
 
 const TitleCard = (props) => {

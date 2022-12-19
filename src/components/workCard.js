@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Link } from "gatsby";
 
 import Row from "react-bootstrap/Row";

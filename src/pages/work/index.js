@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { graphql } from 'gatsby'
 import { Layout, WorkCard } from "../../components";
 import HeaderWithBGImg from "../../components/headerWithBGImg";

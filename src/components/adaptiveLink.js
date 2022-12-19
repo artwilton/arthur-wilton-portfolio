@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Link as GatsbyLink } from "gatsby";
 
 // Allows for links to easily reference external websites if required, in a reusable component

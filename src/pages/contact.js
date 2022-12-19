@@ -1,4 +1,3 @@
-import * as React from "react";
 import { useState, useRef } from "react";
 import { Script } from "gatsby";
 
@@ -24,7 +23,7 @@ const ContactPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData(form.current);
-    fetch("https://arthur-wilton-portfolio.pages.dev/contact/", {
+    fetch("/contact", {
       method: "POST",
       body: data,
     })
