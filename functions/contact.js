@@ -25,11 +25,11 @@ const handlePost = async (request, env) => {
   if (!outcome.success) {
     return new Response(
       JSON.stringify({
-        success: false,
         errors: ["The provided Turnstile token was not valid!"],
       }),
       {
         status: 400,
+        statusText: "The provided Turnstile token was not valid!",
         headers: { "Content-Type": "application/json" },
       }
     );
