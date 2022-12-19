@@ -44,8 +44,9 @@ const handlePost = async (request, env) => {
 const parseUserForm = (userFormData) => {
   const name = userFormData.get("name");
   const emailFrom = userFormData.get("email");
-  const subject = userFormData.get("subject");
+  let subject = userFormData.get("subject");
   let message = userFormData.get("message");
+  subject = `New Form Submission - ${subject}`
   message = `From: ${emailFrom} \nMessage: ${message}`
   
   return { name, subject, message };
