@@ -103,8 +103,9 @@ const AboutPage = () => {
         <Row className="about-banner pt-3 pe-md-0 pb-md-5 g-0 pb-3">
           <div className="about-banner__gradient-overlay"></div>
           <img
-            src={aboutBannerImg}
             class="img-fluid background-element--top-left"
+            src={aboutBannerImg}
+            alt="Arthur in foreground with a blue and orange sky in the background."
           ></img>
           <Col xs="1" sm="5" />
           <Col xs="10" sm="6" className="mt-20 my-sm-auto">
