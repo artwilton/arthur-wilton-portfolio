@@ -6,7 +6,7 @@ const HeaderWithBGImg = ({title, image}) => {
         <Row className="header-with-bg-img pt-5 pb-4 py-md-5 g-0">
           <div className="header-with-bg-img__gradient-overlay"></div>
           <img
-            class="img-fluid background-element--center-bottom"
+            className="img-fluid background-element--center-bottom"
             src={image}
             alt={`${title} background`}
           ></img>
