@@ -1,5 +1,3 @@
-import { Script } from "gatsby";
-
 import Navigation from "./navigation";
 import Footer from "./footer";
 import { GitHubIcon, LinkedInIcon, BehanceIcon } from "../media/icons/social_media";
@@ -39,11 +37,6 @@ const SOCIAL_MEDIA_ICONS = [
 const Layout = ({ children }) => {
   return (
     <>
-      <Script
-        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-        async
-        defer
-      ></Script>
       <Navigation
         navLinks={NAV_LINKS}
         navbarBrand={NAVBAR_BRAND}
