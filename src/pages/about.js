@@ -1,4 +1,4 @@
-import { Link } from "gatsby";
+import AdaptiveLink from "../components/adaptiveLink";
 import Layout from "../components/layout";
 
 import Container from "react-bootstrap/Container";
@@ -80,18 +80,21 @@ const VIDEO_SKILLS = [
 const AboutPage = () => {
   const renderSkills = (skillsArray, shortened = false) =>
     skillsArray.map(({ nameFull, nameShort, SVGComp }) => {
+      let nameRendered;
       if (shortened && nameShort) {
-        nameFull = nameShort;
+        nameRendered = nameShort;
+      } else {
+        nameRendered = nameFull;
       }
       return (
-        <Col>
+        <Col key={nameRendered}>
           <p className="about-skills-section__skill text-nowrap">
             <SVGComp
               className="about-skills-section__icon me-1 me-lg-2"
               role="img"
-              alt={`${nameFull} Icon`}
+              alt={`${nameRendered} Icon`}
             />
-            {`${nameFull}`}
+            {`${nameRendered}`}
           </p>
         </Col>
       );
@@ -103,7 +106,7 @@ const AboutPage = () => {
         <Row className="about-banner pt-3 pe-md-0 pb-md-5 g-0 pb-3">
           <div className="about-banner__gradient-overlay"></div>
           <img
-            class="img-fluid background-element--top-left"
+            className="img-fluid background-element--top-left"
             src={aboutBannerImg}
             alt="Arthur in foreground with a blue and orange sky in the background."
           ></img>
@@ -133,21 +136,20 @@ const AboutPage = () => {
             </div>
             <Row className="mt-3 mb-3 mb-sm-5">
               <Col className="col-auto mx-md-0">
-                <a
-                href={'arthur-wilton-resume.pdf'}
-                download
+                <AdaptiveLink
+                to={'arthur-wilton-resume.pdf'}
                 className="about-banner__button mt-2 btn btn-light shadow-none"
                 >
                   View My Resume
-                </a>
+                </AdaptiveLink>
               </Col>
               <Col className="col-auto mx-md-0">
-                <Link
+                <AdaptiveLink
                   to="/contact"
                   className="about-banner__button mt-2 btn btn-outline-light"
                 >
                   Contact Me
-                </Link>
+                </AdaptiveLink>
               </Col>
             </Row>
           </Col>
@@ -162,13 +164,13 @@ const AboutPage = () => {
               Whether it's writing front-end or back-end code, automating tasks with shell scripts, or building
               PCs, I love solving problems using technology.
             </p>
-            <Link
+            <AdaptiveLink
               to="/work"
               className="mt-2 mb-5 mb-md-0 btn btn-outline-light"
               state={{ fromLink: "Software" }}
             >
               Software Projects
-            </Link>
+            </AdaptiveLink>
           </Col>
           <Col />
           <Col xs="12" md="7" className="my-auto">
@@ -189,13 +191,13 @@ const AboutPage = () => {
               {" "}
               With a background in Editing and Media Asset Management, I've worked across a variety of industries from Advertising to Film and Television. My skills also include Color Correction, VFX, Motion Graphics, and Camera Operation.
             </p>
-            <Link
+            <AdaptiveLink
               to="/work"
               className="mt-2 mb-5 mb-md-0 btn btn-outline-dark"
               state={{ fromLink: "Video" }}
             >
               Video Projects
-            </Link>
+            </AdaptiveLink>
           </Col>
           <Col xs="12" md="7" className="my-auto">
             <Row xs="2" xl="3" className="d-none d-md-flex g-0">
