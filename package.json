@@ -19,6 +19,7 @@
     "bootstrap": "^5.2.3",
     "gatsby": "^4.25.0",
     "gatsby-omni-font-loader": "^2.0.2",
+    "gatsby-plugin-manifest": "^4.25.0",
     "gatsby-plugin-purgecss": "^6.1.2",
     "gatsby-plugin-react-svg": "^3.3.0",
     "gatsby-plugin-sass": "^5.24.0",
