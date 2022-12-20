@@ -27,10 +27,11 @@ const ContactPage = () => {
     if (!form.current.checkValidity()) {
       event.preventDefault();
       event.stopPropagation();
+      setValidated(true);
     } else {
+      setValidated(false);
       handleFetch(event);
     }
-    setValidated(true);
   };
 
   const handleFetch = (event) => {
