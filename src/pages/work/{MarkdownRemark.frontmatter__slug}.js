@@ -1,4 +1,5 @@
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
+import AdaptiveLink from "../../components/adaptiveLink";
 import Layout from "../../components/layout";
 import { GitHubIcon } from "../../media/icons/social_media";
 
@@ -20,23 +21,23 @@ const WorkProjectPage = ({ data }) => {
               {frontmatter.description?.full}
             </p>
             {frontmatter.github ? (
-              <Link
+              <AdaptiveLink
                 className="btn btn-outline-light"
                 role="button"
                 block
                 to={frontmatter.github}
               >
                 View on GitHub {<GitHubIcon className="ms-2 mb-2" />}
-              </Link>
+              </AdaptiveLink>
             ) : (
-              <Link
+              <AdaptiveLink
                 className="btn btn-outline-light"
                 role="button"
                 block
                 to={frontmatter.altLink.to}
               >
                 {frontmatter.altLink.name}
-              </Link>
+              </AdaptiveLink>
             )}
           </Col>
         </Row>

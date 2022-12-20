@@ -1,5 +1,4 @@
-import { Link } from "gatsby";
-
+import AdaptiveLink from "./adaptiveLink";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
@@ -25,6 +24,7 @@ const WorkCard = ({
         <div>
           {tags?.map((tag) => (
             <Button
+              key={tag}
               className="d-inline-block mb-2 me-1 tag__small border-0 btn-secondary rounded-pill"
               disabled
             >
@@ -38,28 +38,28 @@ const WorkCard = ({
         <Card.Text className="work-card__description">{description}</Card.Text>
         <Row className="mt-auto">
           <Col className="col-auto mx-md-0">
-            <Link
+            <AdaptiveLink
               to={link}
               className="work-card__button mt-2 btn btn-sm btn-dark shadow-none"
             >
               Read More
-            </Link>
+            </AdaptiveLink>
           </Col>
           <Col className="col-auto mx-md-0">
             {demo ? (
-              <Link
+              <AdaptiveLink
                 to={demo}
                 className="work-card__button mt-2 btn btn-outline-dark btn-sm"
               >
                 Demo {<PlayIcon className="mb-1" />}
-              </Link>
+              </AdaptiveLink>
             ) : (
-              <Link
+              <AdaptiveLink
                 to={altLinkTo}
                 className="work-card__button mt-2 btn btn-outline-dark btn-sm"
               >
                 {altLinkName}
-              </Link>
+              </AdaptiveLink>
             )}
           </Col>
         </Row>

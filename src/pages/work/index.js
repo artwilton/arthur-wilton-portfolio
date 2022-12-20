@@ -42,9 +42,8 @@ const WorkPage = ({ location, data }) => {
 
   const workCardsFiltered = data.work.nodes.filter(FILTER_MAP[filter]).map(
     ({id, frontmatter: {name, demo, description, category, img, altLink, tags, slug}}) => (
-      <Col className="gy-4 gx-3">
+      <Col key={id} className="gy-4 gx-3">
         <WorkCard
-          key={id}
           name={name ?? 'Project Name'}
           demo={demo}
           tags={tags}
