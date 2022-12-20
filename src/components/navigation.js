@@ -50,7 +50,8 @@ const Navigation = ({ navLinks, navbarBrand, socialMediaIcons }) => {
   const renderSocialMediaIcons = socialMediaIcons.map(
     ({ name, to, SVGComp }) => (
       <Nav.Link
-      href={to}
+      as={AdaptiveLink}
+      to={to}
       aria-label={name}
       key={name}
         className={`${
