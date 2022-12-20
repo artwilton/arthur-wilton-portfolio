@@ -1,22 +1,20 @@
 import Nav from "react-bootstrap/Nav";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import AdaptiveLink from "./adaptiveLink";
 
 const Footer = (props) => {
   const socialMediaIcons = props.socialMediaIcons;
   const renderSocialMediaIcons = socialMediaIcons.map(
     ({ name, to, SVGComp }) => (
       <Nav.Link
-      href={to}
-      aria-label={name}
-      key={name}
+        as={AdaptiveLink}
+        to={to}
+        aria-label={name}
+        key={name}
         className="footer__social-media-logo"
       >
-        <SVGComp
-          role="img"
-          alt={`${name} Icon`}
-          className="d-inline-block"
-        />
+        <SVGComp role="img" alt={`${name} Icon`} className="d-inline-block" />
       </Nav.Link>
     )
   );
@@ -29,9 +27,7 @@ const Footer = (props) => {
       <Col>
         <div className="text-muted">© 2022 Arthur Wilton</div>
       </Col>
-      <Nav className="col justify-content-end ">
-        {renderSocialMediaIcons}
-        </Nav>
+      <Nav className="col justify-content-end ">{renderSocialMediaIcons}</Nav>
     </Row>
   );
 };
