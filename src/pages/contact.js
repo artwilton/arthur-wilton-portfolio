@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import ContactAlertModal from "../components/contactAlertModal";
 
 import Layout from "../components/layout";
@@ -14,6 +14,7 @@ import Container from "react-bootstrap/Container";
 import "../styles/contact.scss";
 
 const ContactPage = () => {
+  const [validated, setValidated] = useState(false);
   const [modalSuccess, setModalSuccess] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [modalBody, setModalBody] = useState("");
@@ -21,8 +22,18 @@ const ContactPage = () => {
 
   const form = useRef(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleForm = (event) => {
+    if (!form.current.checkValidity()) {
+      event.preventDefault();
+      event.stopPropagation();
+    } else {
+      handleFetch(event);
+    }
+    setValidated(true);
+  };
+
+  const handleFetch = (event) => {
+    event.preventDefault();
     const data = new FormData(form.current);
     fetch("/contact", {
       method: "POST",
@@ -86,7 +97,13 @@ const ContactPage = () => {
               <a href="https://www.linkedin.com/in/artwilton">LinkedIn</a>, or
               contact me using the form below:
             </p>
-            <Form ref={form} onSubmit={handleSubmit} className="mt-3 mt-md-5">
+            <Form
+              noValidate
+              validated={validated}
+              ref={form}
+              onSubmit={handleForm}
+              className="mt-3 mt-md-5"
+            >
               <Row>
                 <Form.Group className="mb-2" as={Col} sm={6} controlId="name">
                   <Form.Label className="contact-form__label">
@@ -99,6 +116,9 @@ const ContactPage = () => {
                     defaultValue=""
                     required
                   />
+                  <Form.Control.Feedback type="invalid">
+                    Name field required
+                  </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group className="mb-2" as={Col} sm={6} controlId="email">
                   <Form.Label className="contact-form__label">
@@ -111,6 +131,9 @@ const ContactPage = () => {
                     defaultValue=""
                     required
                   />
+                  <Form.Control.Feedback type="invalid">
+                    Email address required
+                  </Form.Control.Feedback>
                 </Form.Group>
               </Row>
               <Form.Group className="mb-2" controlId="subject">
@@ -134,11 +157,15 @@ const ContactPage = () => {
                   defaultValue=""
                   required
                 />
+                <Form.Control.Feedback type="invalid">
+                  Message required
+                </Form.Control.Feedback>
               </Form.Group>
-              <div class="mb-3">
+              <div className="mb-3">
                 <div
                   className="cf-turnstile"
                   data-sitekey="0x4AAAAAAABlzym_jmQK0sez"
+                  // data-sitekey="1x00000000000000000000AA"
                   data-theme="light"
                 ></div>
               </div>
