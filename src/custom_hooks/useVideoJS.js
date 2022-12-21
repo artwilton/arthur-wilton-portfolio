@@ -4,7 +4,7 @@ import "video.js/dist/video-js.css";
 
 // Referenced from https://joelhooks.com/usevideojs-a-react-hooks-for-videojs/
 
-export const useVideoJS = (videoJsOptions) => {
+const useVideoJS = (videoJsOptions) => {
   const videoNode = useRef(null);
   const player = useRef(null);
 
@@ -30,3 +30,5 @@ export const useVideoJS = (videoJsOptions) => {
   );
   return { Video, player: player.current };
 };
+
+export default useVideoJS;
