@@ -1,16 +1,17 @@
-import AdaptiveLink from "./adaptiveLink";
+import AdaptiveLink from "../adaptiveLink";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-import { PlayIcon } from "../media/icons/generic";
+import { PlayIcon } from "../../media/icons/generic";
 
 const WorkCard = ({
   name,
   description,
   link,
   demo,
+  demoCallback,
   tags,
   imgSource,
   imgAlt,
@@ -46,13 +47,21 @@ const WorkCard = ({
             </AdaptiveLink>
           </Col>
           <Col className="col-auto mx-md-0">
-            {demo ? (
-              <AdaptiveLink
-                to={demo}
-                className="work-card__button mt-2 btn btn-outline-dark btn-sm"
+            {demo? (
+              <Button
+                onClick={() => demoCallback(demo)}
+                size="sm"
+                variant="outline-dark"
+                className="work-card__button mt-2"
               >
                 Demo {<PlayIcon className="mb-1" />}
-              </AdaptiveLink>
+              </Button>
+              // <AdaptiveLink
+              //   to={demo}
+              //   className="work-card__button mt-2 btn btn-outline-dark btn-sm"
+              // >
+              //   Demo {<PlayIcon className="mb-1" />}
+              // </AdaptiveLink>
             ) : (
               <AdaptiveLink
                 to={altLinkTo}
