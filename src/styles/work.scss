@@ -77,3 +77,8 @@
     }
   }
 }
+
+.work-video-modal {
+  width: 80%;
+  max-width: calc(var(--aspect-ratio) * 90vh) !important;
+}
