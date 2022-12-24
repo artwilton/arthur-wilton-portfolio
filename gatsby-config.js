@@ -19,7 +19,7 @@ module.exports = {
         printRejected: true,
         develop: true,
         purgeCSSOptions: {
-          safelist: ["___gatsby", "gatsby-focus-wrapper", /^row/, /^col/, /^container/, /^btn/, /^card/, /^nav/, /^offcanvas/, /^fixed/, /^form/, /^shadow/, /^modal/, /invalid/, "was-validated", "fade", "show", "h5"],
+          safelist: ["___gatsby", "gatsby-focus-wrapper", /^row/, /^col/, /^container/, /^btn/, /^card/, /^nav/, /^offcanvas/, /^fixed/, /^form/, /^shadow/, /^modal/, /invalid/, /^video-js/, /^vjs/, "was-validated", "fade", "show", "h5"],
         },
       },
     },
