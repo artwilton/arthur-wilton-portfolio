@@ -6,7 +6,7 @@ description:
     short: "Automate repetitive tasks in Animal Crossing New Horizons using Python."
     full: "Automates repetitive tasks in Animal Crossing New Horizons using Python. The joycontrol library is used for emulating a Nintendo Switch controller over Bluetooth."
 github: "https://github.com/artwilton/joycontrol-acnh-automator"
-demo: "https://youtu.be/vURoaECIB4M"
+demo: "https://user-images.githubusercontent.com/69938486/209448850-7c3276af-3160-4889-8737-b6b62cb2f2e7.mp4"
 img:
     src: ../src/media/work/anch-automator-work-card-img.jpg
     alt: "ACNH Automator Project"
