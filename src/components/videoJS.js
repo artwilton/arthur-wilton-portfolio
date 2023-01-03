@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import videojs from 'video.js'
-import '../../node_modules/video.js/dist/video-js.min.css'
+import 'video.js/dist/video-js.css'
 
 // referenced from https://videojs.com/guides/react/
 
