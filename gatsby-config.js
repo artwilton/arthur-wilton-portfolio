@@ -18,8 +18,12 @@ module.exports = {
       options: {
         printRejected: true,
         develop: true,
+        ignore: [
+          'prismjs/themes/prism-okaidia.css',
+          'video.js/dist/video-js.css'
+        ],
         purgeCSSOptions: {
-          safelist: ["___gatsby", "gatsby-focus-wrapper", /^row/, /^col/, /^container/, /^btn/, /^card/, /^nav/, /^offcanvas/, /^fixed/, /^form/, /^shadow/, /^modal/, /invalid/, /^video-js/, /^vjs/, "was-validated", "fade", "show", "h5"],
+          safelist: ["___gatsby", "gatsby-focus-wrapper", /^row/, /^col/, /^container/, /^btn/, /^card/, /^nav/, /^offcanvas/, /^fixed/, /^form/, /^shadow/, /^modal/, /invalid/, "was-validated", "fade", "show", "h5"],
         },
       },
     },
@@ -37,7 +41,22 @@ module.exports = {
         path: `${__dirname}/src/media`,
       }
     },
-    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: "language-",
+              inlineCodeMarker: '›',
+              showLineNumbers: false,
+              noInlineHighlight: false,
+            },
+          },
+        ],
+      },
+    },
     {
       resolve: "gatsby-plugin-react-svg",
       options: {
