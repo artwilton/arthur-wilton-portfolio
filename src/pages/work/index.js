@@ -56,7 +56,7 @@ const WorkPage = ({ location, data }) => {
           demo,
           description,
           category,
-          img,
+          cardImg,
           altLink,
           tags,
           slug,
@@ -71,8 +71,8 @@ const WorkPage = ({ location, data }) => {
             description={description?.short ?? "Project Description"}
             category={category}
             link={`/work/${slug ?? ""}`}
-            imgSource={img?.src?.publicURL}
-            imgAlt={img?.alt ?? "Project Icon"}
+            imgSource={cardImg?.publicURL}
+            imgAlt={cardImg?.alt ?? "Project Icon"}
             altLinkTo={altLink?.to}
             altLinkName={altLink?.name ?? "Project Demo"}
           ></WorkCard>
@@ -113,7 +113,7 @@ const WorkPage = ({ location, data }) => {
 
 export const query = graphql`
   {
-    work: allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
+    work: allMdx(sort: { fields: frontmatter___date, order: DESC }) {
       nodes {
         frontmatter {
           date(formatString: "MMMM D, YYYY")
@@ -124,11 +124,11 @@ export const query = graphql`
             full
           }
           demo
-          img {
-            src {
-              publicURL
+          cardImg {
+            publicURL
+            childImageSharp {
+              gatsbyImageData
             }
-            alt
           }
           altLink {
             to

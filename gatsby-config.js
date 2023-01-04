@@ -5,6 +5,63 @@ module.exports = {
     siteUrl: `https://www.yourdomain.tld`,
   },
   plugins: [
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    // {
+    //   resolve: `gatsby-transformer-remark`,
+    //   options: {
+    //     plugins: [
+    //       {
+    //         resolve: `gatsby-remark-images`,
+    //       },
+    //       {
+    //         resolve: `gatsby-remark-prismjs`,
+    //         options: {
+    //           classPrefix: "language-",
+    //           inlineCodeMarker: '›',
+    //           showLineNumbers: false,
+    //           noInlineHighlight: false,
+    //         },
+    //       },
+    //     ],
+    //   },
+    // },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+          },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: "language-",
+              inlineCodeMarker: '›',
+              showLineNumbers: false,
+              noInlineHighlight: false,
+            },
+          },
+        ],
+      },
+    },
+       {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: `work`,
+        path: `${__dirname}/work`,
+      }
+    },
+
+    // {
+    //   resolve: "gatsby-source-filesystem",
+    //   options: {
+    //     name: `media`,
+    //     path: `${__dirname}/src/media/work`,
+    //   }
+    // },
+
     {
       resolve: `gatsby-plugin-sass`,
       options: {
@@ -25,36 +82,6 @@ module.exports = {
         purgeCSSOptions: {
           safelist: ["___gatsby", "gatsby-focus-wrapper", /^row/, /^col/, /^container/, /^btn/, /^card/, /^nav/, /^offcanvas/, /^fixed/, /^form/, /^shadow/, /^modal/, /invalid/, "was-validated", "fade", "show", "h5"],
         },
-      },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: `work`,
-        path: `${__dirname}/work`,
-      }
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: `work`,
-        path: `${__dirname}/src/media`,
-      }
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              classPrefix: "language-",
-              inlineCodeMarker: '›',
-              showLineNumbers: false,
-              noInlineHighlight: false,
-            },
-          },
-        ],
       },
     },
     {

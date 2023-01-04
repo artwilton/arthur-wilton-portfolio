@@ -1,4 +1,5 @@
 import { graphql } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import AdaptiveLink from "../../components/adaptiveLink";
 import Layout from "../../components/layout";
 import { GitHubIcon } from "../../media/icons/social_media";
@@ -7,12 +8,15 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-const WorkProjectPage = ({ data }) => {
-  const { markdownRemark } = data;
-  const { frontmatter, html } = markdownRemark;
+const WorkProjectPage = ({ data, children }) => {
+  const frontmatter = data.mdx.frontmatter;
+  const headerImg = getImage(frontmatter.headerImg)
+
+  console.log("FRONTMATTER", data)
 
   return (
     <Layout>
+      <GatsbyImage image={headerImg} alt={frontmatter.name} />
       <Container fluid>
         <Row className="bg--dark pt-5 pb-4 py-md-5 text-center">
           <Col xs="10" md="7" className="mx-auto mt-4 mb-2 mt-md-5 mb-md-3">
@@ -43,7 +47,7 @@ const WorkProjectPage = ({ data }) => {
         </Row>
         <Row className="bg--light py-5">
           <Col xs="10" md="8" className="mx-auto">
-            <div dangerouslySetInnerHTML={{ __html: html }} />
+            <div>{children}</div>
           </Col>
         </Row>
       </Container>
@@ -53,8 +57,7 @@ const WorkProjectPage = ({ data }) => {
 
 export const query = graphql`
   query ($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      html
+    mdx(id: { eq: $id }) {
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         name
@@ -62,6 +65,11 @@ export const query = graphql`
           full
         }
         demo
+        cardImg {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
         github
         altLink
         {
@@ -75,7 +83,7 @@ export const query = graphql`
 `;
 
 export const Head = ({ data }) => (
-  <title>{data.markdownRemark.frontmatter.name}</title>
+  <title>{data.mdx.frontmatter.name}</title>
 );
 
 export default WorkProjectPage;
