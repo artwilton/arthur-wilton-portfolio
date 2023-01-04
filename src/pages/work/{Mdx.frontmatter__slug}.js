@@ -65,9 +65,12 @@ export const query = graphql`
           full
         }
         demo
-        cardImg {
+        headerImg {
           childImageSharp {
-            gatsbyImageData
+            gatsbyImageData(
+              quality: 100
+              layout: FULL_WIDTH
+            )
           }
         }
         github
