@@ -1,4 +1,5 @@
 @import "./mixins-and-vars";
+@import "/node_modules/rfs/scss";
 
 /* Work Page */
 .work-card-group {
@@ -59,7 +60,11 @@
 
 .work-project-page {
   &__lead {
-    font-size: 1.5rem;
+    @include font-size(1.5rem);
+    font-weight: 200;
+    @include media-breakpoint-down(sm) {
+      @include font-size(1.2rem);
+    }
   }
 }
 
