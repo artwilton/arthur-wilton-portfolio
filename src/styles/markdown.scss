@@ -1,0 +1,31 @@
+@import "./mixins-and-vars";
+@import "/node_modules/rfs/scss";
+
+.markdown {
+  &__paragraph {
+    @include font-size(1.2rem);
+    @include media-breakpoint-down(sm) {
+      @include font-size(1rem);
+    }
+  }
+
+  &__code-block {
+    background-color: $color--dark;
+    padding: 1.2rem;
+    @include font-size(1rem);
+    border-radius: .4rem;
+    @include media-breakpoint-down(sm) {
+      @include font-size(.9rem);
+    }
+  }
+
+  &__inline-code {
+    background-color: $color--dark;
+    color:rgb(235, 235, 235);
+    padding: .18rem;
+    padding-left: .38rem;
+    padding-right: .38rem;
+    border-radius: .3rem;
+
+  }
+}
