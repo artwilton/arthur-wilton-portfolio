@@ -8,39 +8,15 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    // {
-    //   resolve: `gatsby-transformer-remark`,
-    //   options: {
-    //     plugins: [
-    //       {
-    //         resolve: `gatsby-remark-images`,
-    //       },
-    //       {
-    //         resolve: `gatsby-remark-prismjs`,
-    //         options: {
-    //           classPrefix: "language-",
-    //           inlineCodeMarker: '›',
-    //           showLineNumbers: false,
-    //           noInlineHighlight: false,
-    //         },
-    //       },
-    //     ],
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
-          },
-          {
-            resolve: `gatsby-remark-prismjs`,
             options: {
-              classPrefix: "language-",
-              inlineCodeMarker: '›',
-              showLineNumbers: false,
-              noInlineHighlight: false,
+              maxWidth: 1200,
+              linkImagesToOriginal: false,
             },
           },
         ],
@@ -53,15 +29,6 @@ module.exports = {
         path: `${__dirname}/work`,
       }
     },
-
-    // {
-    //   resolve: "gatsby-source-filesystem",
-    //   options: {
-    //     name: `media`,
-    //     path: `${__dirname}/src/media/work`,
-    //   }
-    // },
-
     {
       resolve: `gatsby-plugin-sass`,
       options: {
