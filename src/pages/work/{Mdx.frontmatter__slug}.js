@@ -1,7 +1,7 @@
 import { graphql } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import AdaptiveLink from "../../components/adaptiveLink";
-import Layout from "../../components/layout";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import MarkdownLayout from "../../components/markdown/markdownLayout";
+import { AdaptiveLink, HeaderWithBGImg, Layout } from "../../components";
 import { GitHubIcon } from "../../media/icons/social_media";
 
 import Container from "react-bootstrap/Container";
@@ -10,44 +10,52 @@ import Col from "react-bootstrap/Col";
 
 const WorkProjectPage = ({ data, children }) => {
   const frontmatter = data.mdx.frontmatter;
-  const headerImg = getImage(frontmatter.headerImg)
+  // const headerImg = getImage(frontmatter.headerImg)
+  const headerImg = frontmatter.headerImg?.publicURL;
 
-  console.log("FRONTMATTER", data)
+  const renderHeaderButton = (frontmatter) => {
+    let buttonLink;
+    let buttonContent;
+
+    if (frontmatter.github) {
+      buttonLink = frontmatter.github
+      buttonContent = <>View on GitHub {<GitHubIcon className="ms-2 mb-2" />}</>
+    } else {
+      buttonLink = frontmatter.altLink.to
+      buttonContent = frontmatter.altLink.name
+    }
+
+    return (
+      <AdaptiveLink
+        className="btn btn-outline-light"
+        role="button"
+        block
+        to={buttonLink}
+      >
+        {buttonContent}
+      </AdaptiveLink>
+    );
+  };
 
   return (
     <Layout>
-      <GatsbyImage image={headerImg} alt={frontmatter.name} />
-      <Container fluid>
-        <Row className="bg--dark pt-5 pb-4 py-md-5 text-center">
-          <Col xs="10" md="7" className="mx-auto mt-4 mb-2 mt-md-5 mb-md-3">
-            <h2>{frontmatter.name}</h2>
-            <p className="work-project-page__lead lead pt-md-2 pb-md-3">
-              {frontmatter.description?.full}
-            </p>
-            {frontmatter.github ? (
-              <AdaptiveLink
-                className="btn btn-outline-light"
-                role="button"
-                block
-                to={frontmatter.github}
-              >
-                View on GitHub {<GitHubIcon className="ms-2 mb-2" />}
-              </AdaptiveLink>
-            ) : (
-              <AdaptiveLink
-                className="btn btn-outline-light"
-                role="button"
-                block
-                to={frontmatter.altLink.to}
-              >
-                {frontmatter.altLink.name}
-              </AdaptiveLink>
-            )}
-          </Col>
-        </Row>
+      {/* <GatsbyImage image={headerImg} alt={frontmatter.name} /> */}
+      <Container fluid className="g-0">
+        <HeaderWithBGImg
+          title={frontmatter.name}
+          image={headerImg}
+          children={
+            <>
+              <p className="work-project-page__lead pt-md-2 pb-md-3">
+                {frontmatter.description?.full}
+              </p>
+              {renderHeaderButton(frontmatter)}
+            </>
+          }
+        ></HeaderWithBGImg>
         <Row className="bg--light py-5">
           <Col xs="10" md="8" className="mx-auto">
-            <div>{children}</div>
+            <MarkdownLayout>{children}</MarkdownLayout>
           </Col>
         </Row>
       </Container>
@@ -66,16 +74,13 @@ export const query = graphql`
         }
         demo
         headerImg {
+          publicURL
           childImageSharp {
-            gatsbyImageData(
-              quality: 100
-              layout: FULL_WIDTH
-            )
+            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
           }
         }
         github
-        altLink
-        {
+        altLink {
           to
           name
         }
@@ -85,8 +90,6 @@ export const query = graphql`
   }
 `;
 
-export const Head = ({ data }) => (
-  <title>{data.mdx.frontmatter.name}</title>
-);
+export const Head = ({ data }) => <title>{data.mdx.frontmatter.name}</title>;
 
 export default WorkProjectPage;
