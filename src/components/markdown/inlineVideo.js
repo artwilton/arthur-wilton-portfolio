@@ -1,6 +1,6 @@
 import { VideoJS } from "../";
 
-const InlineVideo = (props) => {
+const InlineVideo = ( {video, caption} ) => {
   const videoJsOptions = {
     autoplay: false,
     controls: true,
@@ -8,13 +8,18 @@ const InlineVideo = (props) => {
     responsive: true,
     sources: [
       {
-        src: props.video,
+        src: video,
         type: "video/mp4",
       },
     ],
   };
 
-  return <VideoJS {...props} options={videoJsOptions} />;
+  return (
+    <div className="my-4">
+      <VideoJS video={video} options={videoJsOptions} />
+      <p className="markdown__caption">{caption}</p>
+    </div>
+  );
 };
 
 export default InlineVideo;

@@ -44,17 +44,18 @@ const WorkProjectPage = ({ data, children }) => {
         <HeaderWithBGImg
           title={frontmatter.name}
           image={headerImg}
+          small={true}
           children={
             <>
-              <p className="work-project-page__lead pt-md-2 pb-md-3">
+              <p className="work-project-page__lead mx-auto pt-md-2 pb-md-3">
                 {frontmatter.description?.full}
               </p>
               {renderHeaderButton(frontmatter)}
             </>
           }
         ></HeaderWithBGImg>
-        <Row className="bg--light py-5">
-          <Col xs="10" md="8" className="mx-auto">
+        <Row className="bg--light py-4 g-0">
+          <Col xs="10" className="mx-auto" style={{maxWidth: 950}}>
             <MarkdownLayout>{children}</MarkdownLayout>
           </Col>
         </Row>

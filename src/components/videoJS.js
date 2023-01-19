@@ -4,10 +4,9 @@ import 'video.js/dist/video-js.css'
 
 // referenced from https://videojs.com/guides/react/
 
-const VideoJS = (props) => {
+const VideoJS = ({ options, onReady }) => {
   const videoRef = useRef(null);
   const playerRef = useRef(null);
-  const {options, className, onReady} = props;
 
   useEffect(() => {
 
@@ -44,7 +43,7 @@ const VideoJS = (props) => {
   }, [playerRef]);
 
   return (
-    <div data-vjs-player className={className}>
+    <div data-vjs-player>
       <div ref={videoRef} />
     </div>
   );

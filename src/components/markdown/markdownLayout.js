@@ -4,7 +4,7 @@ import "../../styles/markdown.scss";
 
 const components = {
   pre: (props) => (
-    <pre {...props} className="markdown__code-block shadow-light" />
+    <pre {...props} className="markdown__code-block shadow-light my-4" />
   ),
   code: ({ children, className }) => {
     return className ? (
@@ -14,7 +14,7 @@ const components = {
     );
   },
   p: (props) => <p {...props} className="markdown__paragraph" />,
-  InlineVideo: (props) => <InlineVideo {...props} className="my-3 my-md-4"/>
+  InlineVideo: (props) => <InlineVideo {...props}/>
 };
 
 const MarkdownLayout = ({ children }) => (
