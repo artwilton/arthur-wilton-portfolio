@@ -87,7 +87,7 @@ Referenced here - https://github.com/gatsbyjs/gatsby/issues/7310
     @include font-smoothing;
     font-weight: 700;
     display: inline-block;
-    max-width: 800px;
+    max-width: $markdown-max-width;
     &--small {
       @extend #{ $self }__title;
       @include font-size(3.6rem);

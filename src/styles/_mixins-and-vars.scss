@@ -12,6 +12,9 @@
 $color--light: #f0f0f0;
 $color--dark: #161619;
 
+/* Page Size */
+$markdown-max-width: 950px;
+
 /* Animations */
 @mixin fade-in {
   opacity: 1;
