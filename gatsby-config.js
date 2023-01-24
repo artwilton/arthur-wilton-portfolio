@@ -15,8 +15,10 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 1200,
+              maxWidth: 850,
+              quality: 90,
               linkImagesToOriginal: false,
+              showCaptions: ['title'],
             },
           },
         ],
@@ -43,11 +45,11 @@ module.exports = {
         printRejected: true,
         develop: true,
         ignore: [
-          'prismjs/themes/prism-okaidia.css',
-          'video.js/dist/video-js.css'
+          'video.js/dist/video-js.css',
+          'src/styles/vjs-custom.scss'
         ],
         purgeCSSOptions: {
-          safelist: ["___gatsby", "gatsby-focus-wrapper", /^row/, /^col/, /^container/, /^btn/, /^card/, /^nav/, /^offcanvas/, /^fixed/, /^form/, /^shadow/, /^modal/, /invalid/, "was-validated", "fade", "show", "h5"],
+          safelist: [/^row/, /^col/, /^container/, /^btn/, /^card/, /^nav/, /^offcanvas/, /^fixed/, /^form/, /^shadow/, /^modal/, /invalid/, "figure", "was-validated", "fade", "show", "h5"],
         },
       },
     },
