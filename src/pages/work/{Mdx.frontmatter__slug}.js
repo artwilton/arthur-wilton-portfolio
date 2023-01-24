@@ -55,7 +55,7 @@ const WorkProjectPage = ({ data, children }) => {
           }
         ></HeaderWithBGImg>
         <Row className="bg--light py-4 g-0">
-          <Col xs="10" className="mx-auto" style={{maxWidth: 950}}>
+          <Col xs="10" className="mx-auto">
             <MarkdownLayout>{children}</MarkdownLayout>
           </Col>
         </Row>

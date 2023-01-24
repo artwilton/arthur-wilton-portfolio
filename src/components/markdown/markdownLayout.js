@@ -18,7 +18,9 @@ const components = {
 };
 
 const MarkdownLayout = ({ children }) => (
-  <MDXProvider components={components}>{children}</MDXProvider>
+  <div className="markdown mx-auto">
+    <MDXProvider components={components}>{children}</MDXProvider>
+  </div>
 );
 
 export default MarkdownLayout;
