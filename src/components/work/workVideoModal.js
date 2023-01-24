@@ -15,7 +15,6 @@ const WorkVideoModal = ({ onHide, show, video, title }) => {
     controls: true,
     fluid: true,
     // playbackRates: [0.5, 1, 1.5, 2],
-    responsive: true,
     sources: [
       {
         src: video,
