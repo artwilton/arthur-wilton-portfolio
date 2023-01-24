@@ -19,7 +19,7 @@ const WorkCard = ({
   altLinkName,
 }) => {
   return (
-    <Card className="work-card text-start border-0 shadow-sm h-100 g-2">
+    <Card className="work-card text-start border-0 shadow-light h-100">
       <Card.Img className="work-card__image" src={imgSource} alt={imgAlt} />
       <Card.Body className="d-flex flex-column border-top border-secondary border-1">
         <div>

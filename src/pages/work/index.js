@@ -62,7 +62,7 @@ const WorkPage = ({ location, data }) => {
           slug,
         },
       }) => (
-        <Col key={id} className="gy-4 gx-3">
+        <Col key={id} className="gy-4 gx-4">
           <WorkCard
             name={name ?? "Project Name"}
             demo={demo}
