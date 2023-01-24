@@ -2,6 +2,10 @@
 @import "./mixins-and-vars";
 @import "./background-element";
 
+/* purgecss start ignore */
+
+/* Global Selectors */
+
 /*
 Used for keeping footer at bottom of page
 Referenced here - https://github.com/gatsbyjs/gatsby/issues/7310
@@ -11,6 +15,12 @@ Referenced here - https://github.com/gatsbyjs/gatsby/issues/7310
     height: 100% !important;
     display: flex !important;
   }
+
+figcaption {
+  color: $secondary;
+  text-align: center;
+  font-size: .9em;
+}
 
 /* NavBar and OffCanvas */
 
@@ -112,3 +122,4 @@ Referenced here - https://github.com/gatsbyjs/gatsby/issues/7310
   background-color: $color--light;
   color: $color--dark;
 }
+/* purgecss end ignore */
