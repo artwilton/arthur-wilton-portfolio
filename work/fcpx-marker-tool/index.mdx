@@ -16,6 +16,49 @@ tags:
 slug: "fcpx-marker-tool"
 ---
 
+import demoPoster from "./fcpx-marker-tool-poster.jpg"
+
+#### Project Demo:
+
+<InlineVideo
+  video="https://user-images.githubusercontent.com/69938486/172484701-ef0404ae-5c49-4d5a-bcdc-8e336846d4b5.mp4"
+  poster={demoPoster}
+>
+</InlineVideo>
+
+![FCPX Marker Tool](./fcpx-marker-tool-card.jpg "Test here")
+
+```jsx
+const CodeBlock = ({ children, className }) => {
+  const language = className.replace(/language-/gm, "") || "";
+
+  return (
+    <Highlight {...defaultProps}
+    code={children}
+    language={language}
+    theme={vsDark}
+    >
+      {({ className, style, tokens, getLineProps, getTokenProps }) => (
+        <pre className={className} style={{ ...style }}>
+          {tokens.map((line, index) => {
+            const lineProps = getLineProps({ line, key: index });
+            return (
+              <div key={index} {...lineProps}>
+                {line.map((token, key) => (
+                  <span key={key} {...getTokenProps({ token, key })} />
+                ))}
+              </div>
+            );
+          })}
+        </pre>
+      )}
+    </Highlight>
+  );
+};
+
+export default CodeBlock;
+```
+
 This package allows for parsing, displaying, and saving marker metadata from FCPXML files in both .fcpxml and .fcpxmld formats.
 
 Version 2 has now been released, and was completely rewritten and redesigned to allow for new features to be added much more easily. One notable addition is the ability to export a YouTube chapter list.
@@ -28,17 +71,15 @@ First cd into the repo directory aftering cloning or downloading, and run `pip i
 
 Now you can simply run `fcpx-marker-tool` in your terminal, which by default will bring up a command prompt where you can drag-and-drop or copy-and-paste the path to an FCPXML file when presented with the `Enter xml file path:` prompt.
 
-### Run Module Without Installing:
+#### Run Module Without Installing:
 
 Future updates will allow passing arguments directly to `fcpx-marker-tool` but if the built in menu options are all you need simply install necessary requirements with `pip install -r requirements.txt`
 
 Then run the module directly using `Python -m fcpx_marker_tool`
 
-### Demo
+#### Demo
 
 https://user-images.githubusercontent.com/69938486/172484701-ef0404ae-5c49-4d5a-bcdc-8e336846d4b5.mp4
-
-
 
 ---
 
