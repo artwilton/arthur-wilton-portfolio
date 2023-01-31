@@ -68,7 +68,7 @@ const WorkPage = ({ location, data }) => {
             demo={demo}
             demoCallback={demoCallback}
             tags={tags}
-            description={description?.short ?? "Project Description"}
+            description={description ?? "Project Description"}
             category={category}
             link={`/work/${slug ?? ""}`}
             imgSource={cardImg?.publicURL}
@@ -119,10 +119,7 @@ export const query = graphql`
           date(formatString: "MMMM D, YYYY")
           name
           category
-          description {
-            short
-            full
-          }
+          description
           demo
           cardImg {
             publicURL

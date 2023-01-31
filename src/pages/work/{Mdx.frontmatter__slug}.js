@@ -48,7 +48,7 @@ const WorkProjectPage = ({ data, children }) => {
           children={
             <>
               <p className="work-project-page__lead mx-auto pt-md-2 pb-md-3">
-                {frontmatter.description?.full}
+                {frontmatter.description}
               </p>
               {renderHeaderButton(frontmatter)}
             </>
@@ -70,9 +70,7 @@ export const query = graphql`
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         name
-        description {
-          full
-        }
+        description
         demo
         headerImg {
           publicURL
