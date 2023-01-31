@@ -55,7 +55,6 @@
 .work-project-page {
   &__lead {
     @include font-size(1.6rem);
-    max-width: $markdown-max-width;
     font-weight: 200;
     @include media-breakpoint-down(sm) {
       @include font-size(1.2rem);

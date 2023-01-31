@@ -1,6 +1,9 @@
 @import "./mixins-and-vars";
 @import "/node_modules/rfs/scss";
 
+$markdown-max-width: 900px;
+$markdown-border-radius: 10px;
+
 .markdown {
   max-width: $markdown-max-width;
 
