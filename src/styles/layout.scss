@@ -5,16 +5,12 @@
 /* purgecss start ignore */
 
 /* Global Selectors */
-
-/*
-Used for keeping footer at bottom of page
-Referenced here - https://github.com/gatsbyjs/gatsby/issues/7310
-*/
-#___gatsby, #gatsby-focus-wrapper {
-    flex-direction: column !important;
-    height: 100% !important;
-    display: flex !important;
-  }
+.main-layout {
+  flex-direction: column;
+  display: flex;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
 
 figcaption {
   color: $secondary;
@@ -23,7 +19,6 @@ figcaption {
 }
 
 /* NavBar and OffCanvas */
-
 .custom-navbar {
   $self: &;
   transition: $transform-transition, $bg-color-transition;
