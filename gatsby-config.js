@@ -46,7 +46,8 @@ module.exports = {
         develop: true,
         ignore: [
           'video.js/dist/video-js.css',
-          'src/styles/vjs-custom.scss'
+          'src/styles/vjs-custom.scss',
+          'src/styles/markdown.scss',
         ],
         purgeCSSOptions: {
           safelist: [/^row/, /^col/, /^container/, /^btn/, /^card/, /^nav/, /^offcanvas/, /^fixed/, /^form/, /^shadow/, /^modal/, /invalid/, "figure", "was-validated", "fade", "show", "h5"],

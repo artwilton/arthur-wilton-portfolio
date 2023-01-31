@@ -3,10 +3,60 @@
 
 .markdown {
   max-width: $markdown-max-width;
-  &__paragraph {
+
+  h2 {
+    @include font-size(2.1rem);
+    font-weight: 600;
+  }
+
+  h3 {
+    @include font-size(1.8rem);
+    font-weight: 600;
+  }
+
+  h4 {
+    @include font-size(1.6rem);
+    font-weight: 600;
+  }
+
+  h5 {
+    @include font-size(1.4rem);
+    font-weight: 600;
+  }
+
+  .gatsby-resp-image-background-image {
+    border-radius: $markdown-border-radius;
+  }
+  img {
+    border-radius: $markdown-border-radius;
+  }
+
+  video {
+    border-radius: $markdown-border-radius;
+  }
+  
+  video-js {
+    background-color: transparent;
+    .vjs-poster {
+      border-radius: $markdown-border-radius;
+    }
+    .vjs-control-bar {
+      border-bottom-left-radius: $markdown-border-radius;
+      border-bottom-right-radius: $markdown-border-radius;
+    }
+  }
+  
+  p {
     @include font-size(1.2rem);
     @include media-breakpoint-down(sm) {
-      @include font-size(1rem);
+      @include font-size(1.1rem);
+    }
+  }
+
+  li {
+    @include font-size(1.15rem);
+    @include media-breakpoint-down(sm) {
+      @include font-size(1.05rem);
     }
   }
 
@@ -14,9 +64,9 @@
     background-color: $color--dark;
     padding: 1.2rem;
     @include font-size(1rem);
-    border-radius: .4rem;
+    border-radius: $markdown-border-radius;
     @include media-breakpoint-down(sm) {
-      @include font-size(.9rem);
+      @include font-size(.92rem);
     }
   }
 

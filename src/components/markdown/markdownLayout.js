@@ -13,7 +13,6 @@ const components = {
       <code className="markdown__inline-code">{children}</code>
     );
   },
-  p: (props) => <p {...props} className="markdown__paragraph" />,
   InlineVideo: (props) => <InlineVideo {...props}/>
 };
 
