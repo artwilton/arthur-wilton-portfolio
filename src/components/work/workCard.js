@@ -20,7 +20,9 @@ const WorkCard = ({
 }) => {
   return (
     <Card className="work-card text-start border-0 shadow-light h-100">
-      <Card.Img className="work-card__image" src={imgSource} alt={imgAlt} />
+      <AdaptiveLink to={link}>
+        <Card.Img className="work-card__image" src={imgSource} alt={imgAlt}/>
+      </AdaptiveLink>
       <Card.Body className="d-flex flex-column border-top border-secondary border-1">
         <div>
           {tags?.map((tag) => (
@@ -56,12 +58,6 @@ const WorkCard = ({
               >
                 Demo {<PlayIcon className="mb-1" />}
               </Button>
-              // <AdaptiveLink
-              //   to={demo}
-              //   className="work-card__button mt-2 btn btn-outline-dark btn-sm"
-              // >
-              //   Demo {<PlayIcon className="mb-1" />}
-              // </AdaptiveLink>
             ) : (
               <AdaptiveLink
                 to={altLinkTo}
