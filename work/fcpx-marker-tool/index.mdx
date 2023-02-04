@@ -2,9 +2,7 @@
 name: "FCPX Marker Tool"
 date: "2022-10-19"
 category: "Software"
-description:
-    short: "Parse, display, and save marker metadata from FCPXML files."
-    full: "Written in Python, FCPX Marker Tool allows users to parse, display, and save marker metadata from FCPXML files in both .fcpxml and .fcpxmld formats."
+description: "Parse, display, and save marker metadata from FCPXML files."
 github: "https://github.com/artwilton/fcpx-marker-tool"
 demo: "https://user-images.githubusercontent.com/69938486/172484701-ef0404ae-5c49-4d5a-bcdc-8e336846d4b5.mp4"
 cardImg: ./fcpx-marker-tool-card.jpg
@@ -18,7 +16,13 @@ slug: "fcpx-marker-tool"
 
 import demoPoster from "./fcpx-marker-tool-poster.jpg"
 
-#### Project Demo:
+## Project Overview
+
+Final Cut Pro X is an awesome video editing tool, but it's still missing a key feature that was present in FCP7: the ability to export Chapter Marker information.
+
+To solve this I created FCPX Marker Tool. Written in Python, it allows users to parse, display, and save marker metadata from FCPXML files. It supports both the older .fcpxml and newer .fcpxmld formats.
+
+### FCPX Marker Tool in Action
 
 <InlineVideo
   video="https://user-images.githubusercontent.com/69938486/172484701-ef0404ae-5c49-4d5a-bcdc-8e336846d4b5.mp4"
@@ -26,7 +30,27 @@ import demoPoster from "./fcpx-marker-tool-poster.jpg"
 >
 </InlineVideo>
 
-![FCPX Marker Tool](./fcpx-marker-tool-card.jpg "Test here")
+Version 2 has now been released and was completely re-written, allowing for more parsers and export options to be easily added. One notable addition is the ability to export a YouTube chapter list.
+
+Combining my experience in both video editing and software development was really fun as I worked on this project, and I've even been able to use it for several client video projects.
+
+### What I Learned While Working on This Project
+
+FCPX Marker Tool was actually one of the first entries into an "App Ideas" list I started several years before learning to code, and I learned so many great lessons working on this project.
+
+**Some notable topics I learned about included:**
+- Parsing XML files using the xml.etree.ElementTree module
+- Examining how Apple structures data in FCPXML files
+- Using rational numbers to store timecode data more accurately.<br></br>**Ex:** representing the frame rate of 23.976 as (24000/1001).
+- Properly structuring a Python project:
+  - Setting up a virtual environment
+  - Creating a setup.py file for configuring version information and entry points
+<br></br>
+---
+<br></br>
+[Check out the project on GitHub](https://github.com/artwilton/fcpx-marker-tool) for more information and installation instructions.
+
+{/* ![FCPX Marker Tool](./fcpx-marker-tool-card.jpg "Test here")
 
 ```jsx
 const CodeBlock = ({ children, className }) => {
@@ -57,32 +81,4 @@ const CodeBlock = ({ children, className }) => {
 };
 
 export default CodeBlock;
-```
-
-This package allows for parsing, displaying, and saving marker metadata from FCPXML files in both .fcpxml and .fcpxmld formats.
-
-Version 2 has now been released, and was completely rewritten and redesigned to allow for new features to be added much more easily. One notable addition is the ability to export a YouTube chapter list.
-
-In future updates users will be able to `import fcpx_marker_tool` for use in their own scripts, as this module extracts and formats metadata pertaining to all timelines, clips, and markers found in the FCPXML file. (Note: this is technically possible now but the API is subject to change until a future release.)
-
-#### Installation
-
-First cd into the repo directory aftering cloning or downloading, and run `pip install .` which will run `setup.py` and install necessary dependencies along with the `fcpx-marker-tool` package.
-
-Now you can simply run `fcpx-marker-tool` in your terminal, which by default will bring up a command prompt where you can drag-and-drop or copy-and-paste the path to an FCPXML file when presented with the `Enter xml file path:` prompt.
-
-#### Run Module Without Installing:
-
-Future updates will allow passing arguments directly to `fcpx-marker-tool` but if the built in menu options are all you need simply install necessary requirements with `pip install -r requirements.txt`
-
-Then run the module directly using `Python -m fcpx_marker_tool`
-
-#### Demo
-
-https://user-images.githubusercontent.com/69938486/172484701-ef0404ae-5c49-4d5a-bcdc-8e336846d4b5.mp4
-
----
-
-#### Python Modules Used:
-
-timecode - https://github.com/eoyilmaz/timecode
+``` */}
