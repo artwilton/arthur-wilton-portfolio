@@ -12,11 +12,18 @@
 .work-card {
   margin-left: auto;
   margin-right: auto;
+
   &__image {
     max-height: 360px;
     object-fit: cover;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
+  }
+}
+
+.work-card-body {
+  @include media-breakpoint-down(sm) {
+    padding: .75rem .75rem;
   }
   &__title {
     @include font-size(1.9rem);
@@ -40,6 +47,7 @@
     }
   }
 }
+
 
 .filter-button-group {
   &__button {

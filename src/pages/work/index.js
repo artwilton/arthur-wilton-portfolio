@@ -89,7 +89,7 @@ const WorkPage = ({ location, data }) => {
       />
       <Container fluid className="g-0">
         <HeaderWithBGImg title="My Work" image={workBannerImg} />
-        <Row className="bg--light px-3 py-4 py-md-5 justify-content-center text-center px-md-5 g-0">
+        <Row className="bg--light px-2 py-4 py-md-5 justify-content-center text-center px-md-5 g-0">
           <Row className="g-0">
             <Col xs="12" className="mx-auto py-md-1 pb-md-2">
               <ToggleButtonGroup
@@ -102,7 +102,7 @@ const WorkPage = ({ location, data }) => {
               </ToggleButtonGroup>
             </Col>
           </Row>
-          <Row xs="1" md="2" xl="3" className="work-card-group">
+          <Row xs="1" md="2" xl="3" className="work-card-group gx-0 gx-md-4">
             {workCardsFiltered}
           </Row>
         </Row>
