@@ -1,0 +1,20 @@
+@import "/node_modules/rfs/scss";
+
+.vjs-custom {
+    .vjs-big-play-button {
+        border: none;
+        border-radius: 50%;
+        margin-left: -.75em;
+        margin-top: -.75em;
+        @include font-size(4.5rem);
+        line-height: 1.5em;
+        height: 1.5em;
+        width: 1.5em;
+        background-color: rgba(43, 51, 63, 0.9);
+        transition: background 0.4s ease 0s;
+    }
+
+    .vjs-poster {
+        background-color: transparent;
+    }
+}

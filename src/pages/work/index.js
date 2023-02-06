@@ -56,23 +56,23 @@ const WorkPage = ({ location, data }) => {
           demo,
           description,
           category,
-          img,
+          cardImg,
           altLink,
           tags,
           slug,
         },
       }) => (
-        <Col key={id} className="gy-4 gx-3">
+        <Col key={id} className="gy-4 gx-4">
           <WorkCard
             name={name ?? "Project Name"}
             demo={demo}
             demoCallback={demoCallback}
             tags={tags}
-            description={description?.short ?? "Project Description"}
+            description={description ?? "Project Description"}
             category={category}
             link={`/work/${slug ?? ""}`}
-            imgSource={img?.src?.publicURL}
-            imgAlt={img?.alt ?? "Project Icon"}
+            imgSource={cardImg?.publicURL}
+            imgAlt={cardImg?.alt ?? "Project Icon"}
             altLinkTo={altLink?.to}
             altLinkName={altLink?.name ?? "Project Demo"}
           ></WorkCard>
@@ -89,7 +89,7 @@ const WorkPage = ({ location, data }) => {
       />
       <Container fluid className="g-0">
         <HeaderWithBGImg title="My Work" image={workBannerImg} />
-        <Row className="bg--light px-3 py-4 py-md-5 justify-content-center text-center px-md-5 g-0">
+        <Row className="bg--light px-2 py-4 py-md-5 justify-content-center text-center px-md-5 g-0">
           <Row className="g-0">
             <Col xs="12" className="mx-auto py-md-1 pb-md-2">
               <ToggleButtonGroup
@@ -102,7 +102,7 @@ const WorkPage = ({ location, data }) => {
               </ToggleButtonGroup>
             </Col>
           </Row>
-          <Row xs="1" md="2" xl="3" className="work-card-group">
+          <Row xs="1" md="2" xl="3" className="work-card-group gx-0 gx-md-4">
             {workCardsFiltered}
           </Row>
         </Row>
@@ -113,22 +113,19 @@ const WorkPage = ({ location, data }) => {
 
 export const query = graphql`
   {
-    work: allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
+    work: allMdx(sort: { fields: frontmatter___date, order: DESC }) {
       nodes {
         frontmatter {
           date(formatString: "MMMM D, YYYY")
           name
           category
-          description {
-            short
-            full
-          }
+          description
           demo
-          img {
-            src {
-              publicURL
+          cardImg {
+            publicURL
+            childImageSharp {
+              gatsbyImageData
             }
-            alt
           }
           altLink {
             to

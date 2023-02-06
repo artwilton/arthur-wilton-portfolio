@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 
 import Modal from "react-bootstrap/Modal";
-import VideoJS from "../videoJS";
+import { VideoJS } from "../";
 
 const WorkVideoModal = ({ onHide, show, video, title }) => {
   const [aspectRatio, setAspectRatio] = useState(16/9);
@@ -15,7 +15,6 @@ const WorkVideoModal = ({ onHide, show, video, title }) => {
     controls: true,
     fluid: true,
     // playbackRates: [0.5, 1, 1.5, 2],
-    responsive: true,
     sources: [
       {
         src: video,

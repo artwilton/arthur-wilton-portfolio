@@ -36,7 +36,7 @@ const SOCIAL_MEDIA_ICONS = [
 
 const Layout = ({ children }) => {
   return (
-    <>
+    <div className="main-layout">
       <Navigation
         navLinks={NAV_LINKS}
         navbarBrand={NAVBAR_BRAND}
@@ -44,7 +44,7 @@ const Layout = ({ children }) => {
       />
       <main>{children}</main>
       <Footer socialMediaIcons={SOCIAL_MEDIA_ICONS} />
-    </>
+    </div>
   );
 };
 

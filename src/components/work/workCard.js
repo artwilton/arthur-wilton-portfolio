@@ -19,9 +19,11 @@ const WorkCard = ({
   altLinkName,
 }) => {
   return (
-    <Card className="work-card text-start border-0 shadow-sm h-100 g-2">
-      <Card.Img className="work-card__image" src={imgSource} alt={imgAlt} />
-      <Card.Body className="d-flex flex-column border-top border-secondary border-1">
+    <Card className="work-card text-start border-0 shadow-light h-100">
+      <AdaptiveLink to={link}>
+        <Card.Img className="work-card__image" src={imgSource} alt={imgAlt}/>
+      </AdaptiveLink>
+      <Card.Body className="work-card-body d-flex flex-column">
         <div>
           {tags?.map((tag) => (
             <Button
@@ -33,15 +35,15 @@ const WorkCard = ({
             </Button>
           ))}
         </div>
-        <Card.Title className="work-card__title mt-1" as="h4">
+        <Card.Title className="work-card-body__title mt-1" as="h4">
           {name}
         </Card.Title>
-        <Card.Text className="work-card__description">{description}</Card.Text>
+        <Card.Text className="work-card-body__description">{description}</Card.Text>
         <Row className="mt-auto">
           <Col className="col-auto mx-md-0">
             <AdaptiveLink
               to={link}
-              className="work-card__button mt-2 btn btn-sm btn-dark shadow-none"
+              className="work-card-body__button mt-2 btn btn-sm btn-dark shadow-none"
             >
               Read More
             </AdaptiveLink>
@@ -52,20 +54,14 @@ const WorkCard = ({
                 onClick={() => demoCallback(demo)}
                 size="sm"
                 variant="outline-dark"
-                className="work-card__button mt-2"
+                className="work-card-body__button mt-2"
               >
                 Demo {<PlayIcon className="mb-1" />}
               </Button>
-              // <AdaptiveLink
-              //   to={demo}
-              //   className="work-card__button mt-2 btn btn-outline-dark btn-sm"
-              // >
-              //   Demo {<PlayIcon className="mb-1" />}
-              // </AdaptiveLink>
             ) : (
               <AdaptiveLink
                 to={altLinkTo}
-                className="work-card__button mt-2 btn btn-outline-dark btn-sm"
+                className="work-card-body__button mt-2 btn btn-outline-dark btn-sm"
               >
                 {altLinkName}
               </AdaptiveLink>

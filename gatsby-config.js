@@ -5,6 +5,32 @@ module.exports = {
     siteUrl: `https://www.yourdomain.tld`,
   },
   plugins: [
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 900,
+              quality: 75,
+              linkImagesToOriginal: false,
+              showCaptions: ['title'],
+            },
+          },
+        ],
+      },
+    },
+       {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: `work`,
+        path: `${__dirname}/work`,
+      }
+    },
     {
       resolve: `gatsby-plugin-sass`,
       options: {
@@ -19,49 +45,20 @@ module.exports = {
         printRejected: true,
         develop: true,
         ignore: [
-          'prismjs/themes/prism-okaidia.css',
-          'video.js/dist/video-js.css'
+          'video.js/dist/video-js.css',
+          'src/styles/vjs-custom.scss',
+          'src/styles/markdown.scss',
         ],
         purgeCSSOptions: {
-          safelist: ["___gatsby", "gatsby-focus-wrapper", /^row/, /^col/, /^container/, /^btn/, /^card/, /^nav/, /^offcanvas/, /^fixed/, /^form/, /^shadow/, /^modal/, /invalid/, "was-validated", "fade", "show", "h5"],
+          safelist: [/^row/, /^col/, /^container/, /^btn/, /^card/, /^nav/, /^offcanvas/, /^fixed/, /^form/, /^shadow/, /^modal/, /invalid/, "figure", "was-validated", "fade", "show", "h5"],
         },
-      },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: `work`,
-        path: `${__dirname}/work`,
-      }
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: `work`,
-        path: `${__dirname}/src/media`,
-      }
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              classPrefix: "language-",
-              inlineCodeMarker: '›',
-              showLineNumbers: false,
-              noInlineHighlight: false,
-            },
-          },
-        ],
       },
     },
     {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: /icons\/.*\.svg$/
+          include: /icons(\/|\\).*\.svg$/
         }
       }
     },

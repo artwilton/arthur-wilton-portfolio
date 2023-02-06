@@ -2,18 +2,23 @@
 @import "./mixins-and-vars";
 @import "./background-element";
 
-/*
-Used for keeping footer at bottom of page
-Referenced here - https://github.com/gatsbyjs/gatsby/issues/7310
-*/
-#___gatsby, #gatsby-focus-wrapper {
-    flex-direction: column !important;
-    height: 100% !important;
-    display: flex !important;
-  }
+/* purgecss start ignore */
+
+/* Global Selectors */
+.main-layout {
+  flex-direction: column;
+  display: flex;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+figcaption {
+  color: $secondary;
+  text-align: center;
+  font-size: .9em;
+}
 
 /* NavBar and OffCanvas */
-
 .custom-navbar {
   $self: &;
   transition: $transform-transition, $bg-color-transition;
@@ -79,12 +84,22 @@ Referenced here - https://github.com/gatsbyjs/gatsby/issues/7310
 }
 
 .header-with-bg-img {
+  $self: &;
   position: relative;
   color: $color--light;
 
   &__title { 
     @include font-smoothing;
     font-weight: 700;
+    display: inline-block;
+    max-width: 1200px;
+    &--small {
+      @extend #{ $self }__title;
+      @include font-size(3.6rem);
+      @include media-breakpoint-down(sm) {
+        @include font-size(2.9rem)
+      }
+    }
   }
 
   &__gradient-overlay {
@@ -102,3 +117,4 @@ Referenced here - https://github.com/gatsbyjs/gatsby/issues/7310
   background-color: $color--light;
   color: $color--dark;
 }
+/* purgecss end ignore */

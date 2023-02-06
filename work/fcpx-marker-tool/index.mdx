@@ -1,0 +1,84 @@
+---
+name: "FCPX Marker Tool"
+date: "2022-10-19"
+category: "Software"
+description: "Parse, display, and save marker metadata from FCPXML files."
+github: "https://github.com/artwilton/fcpx-marker-tool"
+demo: "https://user-images.githubusercontent.com/69938486/172484701-ef0404ae-5c49-4d5a-bcdc-8e336846d4b5.mp4"
+cardImg: ./fcpx-marker-tool-card.jpg
+headerImg: ./fcpx-marker-tool-header.jpg
+tags:
+    - "Python"
+    - "XML Parser"
+    - "Post Production"
+slug: "fcpx-marker-tool"
+---
+
+import demoPoster from "./fcpx-marker-tool-poster.jpg"
+
+## Project Overview
+
+Final Cut Pro X is an awesome video editing tool, but it's still missing a key feature that was present in FCP7: the ability to export Chapter Marker information.
+
+To solve this I created FCPX Marker Tool. Written in Python, it allows users to parse, display, and save marker metadata from FCPXML files. It supports both the older .fcpxml and newer .fcpxmld formats.
+
+### FCPX Marker Tool in Action
+
+<InlineVideo
+  video="https://user-images.githubusercontent.com/69938486/172484701-ef0404ae-5c49-4d5a-bcdc-8e336846d4b5.mp4"
+  poster={demoPoster}
+>
+</InlineVideo>
+
+Version 2 has now been released and was completely re-written, allowing for more parsers and export options to be easily added. One notable addition is the ability to export a YouTube chapter list.
+
+Combining my experience in both video editing and software development was really fun as I worked on this project, and I've even been able to use it for several client video projects.
+
+### What I Learned While Working on This Project
+
+FCPX Marker Tool was actually one of the first entries into an "App Ideas" list I started several years before learning to code, and I learned so many great lessons working on this project.
+
+**Some notable topics I learned about included:**
+- Parsing XML files using the xml.etree.ElementTree module
+- Examining how Apple structures data in FCPXML files
+- Using rational numbers to store timecode data more accurately.<br></br>**Ex:** representing the frame rate of 23.976 as (24000/1001).
+- Properly structuring a Python project:
+  - Setting up a virtual environment
+  - Creating a setup.py file for configuring version information and entry points
+<br></br>
+---
+<br></br>
+[Check out the project on GitHub](https://github.com/artwilton/fcpx-marker-tool) for more information and installation instructions.
+
+{/* ![FCPX Marker Tool](./fcpx-marker-tool-card.jpg "Test here")
+
+```jsx
+const CodeBlock = ({ children, className }) => {
+  const language = className.replace(/language-/gm, "") || "";
+
+  return (
+    <Highlight {...defaultProps}
+    code={children}
+    language={language}
+    theme={vsDark}
+    >
+      {({ className, style, tokens, getLineProps, getTokenProps }) => (
+        <pre className={className} style={{ ...style }}>
+          {tokens.map((line, index) => {
+            const lineProps = getLineProps({ line, key: index });
+            return (
+              <div key={index} {...lineProps}>
+                {line.map((token, key) => (
+                  <span key={key} {...getTokenProps({ token, key })} />
+                ))}
+              </div>
+            );
+          })}
+        </pre>
+      )}
+    </Highlight>
+  );
+};
+
+export default CodeBlock;
+``` */}

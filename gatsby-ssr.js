@@ -1,16 +1,11 @@
 const React = require("react");
 
-const HtmlAttributes = {
-  className: "h-100"
-};
-
 const BodyAttributes = {
-    className: "h-100 bg--dark"
+    className: "bg--light"
 };
 
 exports.onRenderBody = (
-  { setHtmlAttributes, setBodyAttributes }
+  { setBodyAttributes }
 ) => {
-  setHtmlAttributes(HtmlAttributes);
   setBodyAttributes(BodyAttributes);
 };
