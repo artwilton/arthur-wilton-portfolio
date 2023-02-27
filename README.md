@@ -1,10 +1,14 @@
 ## Arthur Wilton - Portfolio Website
 
-#### My portfolio website, created using Gatsby / React / Bootstrap
+View the website at https://www.arthurwilton.com
 
-🚧 Currently under construction as of 09/29/2022 🚧 
+### Tech Stack
 
-## Demo Videos
-- ### Work Page:
-https://user-images.githubusercontent.com/69938486/197323790-2a1f4080-9832-4c6d-a08b-0c8407175964.mp4
+- Javascript / React
+- Gatsby
+- Bootstrap / Sass
+- Hosted on Cloudflare Pages
 
+Published and last updated: 02/04/2023
+
+[![website-preview](https://user-images.githubusercontent.com/69938486/216895620-d1418048-3a68-4f23-b8be-6e30d21717da.jpg)](https://www.arthurwilton.com)
