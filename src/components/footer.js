@@ -25,7 +25,7 @@ const Footer = (props) => {
       className="bg--dark text-light g-0 justify-content-between align-items-center px-3 px-md-5 py-2 mt-auto"
     >
       <Col>
-        <div className="text-muted">© 2022 Arthur Wilton</div>
+        <div className="text-muted">© 2023 Arthur Wilton</div>
       </Col>
       <Nav className="col justify-content-end ">{renderSocialMediaIcons}</Nav>
     </Row>
