@@ -30,19 +30,15 @@ $markdown-border-radius: 10px;
   .gatsby-resp-image-background-image {
     border-radius: $markdown-border-radius;
   }
+  
   img {
-    border-radius: $markdown-border-radius;
-  }
-
-  video {
     border-radius: $markdown-border-radius;
   }
   
   video-js {
-    background-color: transparent;
-    .vjs-poster {
-      border-radius: $markdown-border-radius;
-    }
+    border-radius: $markdown-border-radius;
+    overflow: hidden;
+
     .vjs-control-bar {
       border-bottom-left-radius: $markdown-border-radius;
       border-bottom-right-radius: $markdown-border-radius;
