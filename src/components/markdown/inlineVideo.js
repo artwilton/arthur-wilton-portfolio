@@ -1,6 +1,7 @@
 import { VideoJS } from "../";
 
 const InlineVideo = ( {video, poster} ) => {
+
   const videoJsOptions = {
     autoplay: false,
     controls: true,
@@ -15,8 +16,8 @@ const InlineVideo = ( {video, poster} ) => {
   };
 
   return (
-    <div className="my-4">
-      <VideoJS video={video} options={videoJsOptions} />
+    <div className="markdown__inline-video-wrapper my-4">
+      <VideoJS options={videoJsOptions} />
     </div>
   );
 };

@@ -34,10 +34,16 @@ $markdown-border-radius: 10px;
   img {
     border-radius: $markdown-border-radius;
   }
-  
-  video-js {
+
+  &__inline-video-wrapper {
     border-radius: $markdown-border-radius;
     overflow: hidden;
+  }
+  
+  video-js {
+    // extra 2 pixels helps prevent background-color sub-pixel color bleed
+    // issue documented here - https://bugs.chromium.org/p/chromium/issues/detail?id=157102
+    border-radius: ($markdown-border-radius + 2px);
 
     .vjs-control-bar {
       border-bottom-left-radius: $markdown-border-radius;
