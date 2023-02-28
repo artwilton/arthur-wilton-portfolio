@@ -113,7 +113,7 @@ const WorkPage = ({ location, data }) => {
 
 export const query = graphql`
   {
-    work: allMdx(sort: { fields: frontmatter___date, order: DESC }) {
+    work: allMdx(sort: {frontmatter: {date: DESC}}) {
       nodes {
         frontmatter {
           date(formatString: "MMMM D, YYYY")
