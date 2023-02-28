@@ -15,7 +15,7 @@
 figcaption {
   color: $secondary;
   text-align: center;
-  font-size: .9em;
+  @include font-size(1rem);
 }
 
 /* NavBar and OffCanvas */
