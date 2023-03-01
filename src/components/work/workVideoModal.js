@@ -26,17 +26,12 @@ const WorkVideoModal = ({ onHide, show, video, title }) => {
   const handlePlayerReady = (player) => {
     playerRef.current = player;
 
-    // You can handle player events here, for example:
+    // Set aspect ratio automatically based on vertical or horizontal video input:
     player.on("loadedmetadata", () => {
       setAspectRatio(player.videoWidth()/player.videoHeight())
     });
 
-    player.on("dispose", () => {
-      console.log("player will dispose");
-    });
   };
-
-  console.log(aspectRatio);
 
   return (
     <Modal
