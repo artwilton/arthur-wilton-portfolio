@@ -12,12 +12,6 @@
   min-height: 100dvh;
 }
 
-figcaption {
-  color: $secondary;
-  text-align: center;
-  @include font-size(1rem);
-}
-
 /* NavBar and OffCanvas */
 .custom-navbar {
   $self: &;

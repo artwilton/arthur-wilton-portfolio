@@ -35,6 +35,12 @@ $markdown-border-radius: 10px;
     border-radius: $markdown-border-radius;
   }
 
+  figcaption {
+    color: $secondary;
+    text-align: center;
+    @include font-size(1rem);
+  }
+
   &__inline-video-wrapper {
     border-radius: $markdown-border-radius;
     overflow: hidden;
