@@ -137,7 +137,7 @@ const AboutPage = () => {
             <Row className="mt-3 mb-3 mb-sm-5">
               <Col className="col-auto mx-md-0">
                 <AdaptiveLink
-                to={'arthur-wilton-resume.pdf'}
+                to={'/arthur-wilton-resume.pdf'}
                 className="about-banner__button mt-2 btn btn-light shadow-none"
                 >
                   View My Resume

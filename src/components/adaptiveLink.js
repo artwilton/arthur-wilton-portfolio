@@ -12,11 +12,12 @@ const AdaptiveLink = ({
   ...other
 }) => {
   // This assumes that any internal link (intended for Gatsby)
-  // will start with exactly one slash, and that anything else is external.
+  // will start with exactly one slash and not contain a file extension. Anything else is considered external.
   const internal = /^\/(?!\/)/.test(to);
+  const file = /\.[0-9a-z]+$/i.test(to);
 
   // Use Gatsby Link for internal links, and <a> for others
-  if (internal) {
+  if (internal && !file) {
     return (
       <GatsbyLink
         to={to}
