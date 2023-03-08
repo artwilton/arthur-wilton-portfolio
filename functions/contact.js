@@ -38,7 +38,7 @@ const handlePost = async (request, env) => {
   //   console.log(`${pair[0]}, ${pair[1]}`);
   // }
 
-  return await sendEmail(env.EMAIL_ADDRESS, name, subject, message);
+  return await sendEmail(env.EMAIL_ADDRESS, env.DKIM_PRIVATE_KEY, name, subject, message);
 };
 
 const parseUserForm = (userFormData) => {
@@ -52,7 +52,7 @@ const parseUserForm = (userFormData) => {
   return { name, subject, message };
 };
 
-const sendEmail = async (email, name, subject, message) => {
+const sendEmail = async (email, dkim_private_key, name, subject, message) => {
 
   let send_request = new Request(
     "https://api.mailchannels.net/tx/v1/send",
@@ -65,6 +65,9 @@ const sendEmail = async (email, name, subject, message) => {
         personalizations: [
           {
             to: [{ email: `${email}`}],
+            "dkim_domain": "arthurwilton.com",
+            "dkim_selector": "mailchannels",
+            "dkim_private_key": dkim_private_key
           },
         ],
         from: {
