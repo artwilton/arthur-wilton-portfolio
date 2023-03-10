@@ -22,4 +22,3 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: 'arthur-wilton-portfolio'
           directory: './public'
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
