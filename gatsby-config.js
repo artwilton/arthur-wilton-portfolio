@@ -2,9 +2,21 @@ module.exports = {
   jsxRuntime: "automatic",
   siteMetadata: {
     title: `Arthur Wilton Portfolio`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://www.arthurwilton.com`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Arthur Wilton Portfolio`,
+        short_name: `Arthur Wilton`,
+        start_url: `/`,
+        background_color: `#f0f0f0`,
+        display: "minimal-ui",
+        icon: `src/media/icons/favicon.svg`,
+        legacy: false,
+      }
+    },
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
