@@ -18,11 +18,11 @@ const HomeLanding = () => {
 
   return (
     <section className="home-landing">
-      <div className="background-element__overlay opacity-75"></div>
+      <div className="background-element background-element__overlay opacity-75"></div>
 
       <video
         key={backgroundVideo}
-        className="background-element--centered"
+        className="background-element background-element--centered"
         poster={landingDefaultBGStill}
         autoPlay
         muted

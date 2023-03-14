@@ -8,7 +8,7 @@
   color: $color--light;
 
   &__gradient-overlay {
-    @extend .background-element__overlay;
+    @extend .background-element, .background-element__overlay;
     background: linear-gradient(to right, transparent 20%, rgba(0,0,0,.5));
     @include media-breakpoint-down(sm) {
     background: linear-gradient(to bottom, transparent 40%, 70%, $color--dark);
