@@ -108,6 +108,7 @@ const AboutPage = () => {
         <Row className="about-banner pt-3 pe-md-0 pb-md-5 g-0 pb-3">
           <div className="about-banner__gradient-overlay"></div>
           <StaticImage
+            style={{position: "absolute"}}
             className="background-element"
             imgClassName="background-element--top-left"
             src={BANNER_IMAGE}

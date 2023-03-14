@@ -97,7 +97,7 @@
   }
 
   &__gradient-overlay {
-    @extend .background-element__overlay;
+    @extend .background-element, .background-element__overlay;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.4), $color--dark);
   }
 }
