@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { graphql } from "gatsby";
+import { getImage } from "gatsby-plugin-image";
 import Layout from "../../components/layout";
 import { WorkCard, WorkVideoModal } from "../../components/work";
 import HeaderWithBGImg from "../../components/headerWithBGImg";
-import workBannerImg from "../../media/work/work-banner.jpg";
+import workBannerImg from "../../media/work/work-banner.webp";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -71,8 +72,7 @@ const WorkPage = ({ location, data }) => {
             description={description ?? "Project Description"}
             category={category}
             link={`/work/${slug ?? ""}`}
-            imgSource={cardImg?.publicURL}
-            imgAlt={cardImg?.alt ?? "Project Icon"}
+            image={getImage(cardImg)}
             altLinkTo={altLink?.to}
             altLinkName={altLink?.name ?? "Project Demo"}
           ></WorkCard>
@@ -122,9 +122,12 @@ export const query = graphql`
           description
           demo
           cardImg {
-            publicURL
             childImageSharp {
-              gatsbyImageData
+              gatsbyImageData(
+                quality: 65
+                placeholder: BLURRED
+                formats: [JPG, WEBP, AVIF]
+              )
             }
           }
           altLink {
