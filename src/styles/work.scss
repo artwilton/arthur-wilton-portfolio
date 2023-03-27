@@ -12,10 +12,9 @@
 .work-card {
   margin-left: auto;
   margin-right: auto;
-
+  
   &__image {
     max-height: 360px;
-    object-fit: cover;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
