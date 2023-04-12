@@ -31,7 +31,7 @@ import {
   AppleFinalCutProIcon, AvidIcon, CatDVIcon, DavinciResolveIcon, FFmpegIcon, MochaIcon, StorageDNAIcon
 } from "../media/icons/video";
 
-const BANNER_IMAGE = "../media/about/about-banner.png"
+const ABOUT_BANNER_IMG = "../media/about/about-banner.webp"
 
 const SOFTWARE_SKILLS = [
   { nameFull: "HTML / CSS", SVGComp: HTML5Icon },
@@ -108,10 +108,11 @@ const AboutPage = () => {
         <Row className="about-banner pt-3 pe-md-0 pb-md-5 g-0 pb-3">
           <div className="about-banner__gradient-overlay"></div>
           <StaticImage
+            loading="eager"
             style={{position: "absolute"}}
             className="background-element"
             imgClassName="background-element--top-left"
-            src={BANNER_IMAGE}
+            src={ABOUT_BANNER_IMG}
             alt=""
             placeholder="blurred"
             formats={["jpg", "webp", "avif"]}
