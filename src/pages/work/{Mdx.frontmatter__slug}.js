@@ -1,7 +1,7 @@
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import MarkdownLayout from "../../components/markdown/markdownLayout";
-import { AdaptiveLink, HeaderWithBGImg, Layout } from "../../components";
+import { AdaptiveLink, HeaderWithBG, Layout } from "../../components";
 import { GitHubIcon } from "../../media/icons/social_media";
 
 import Container from "react-bootstrap/Container";
@@ -10,19 +10,20 @@ import Col from "react-bootstrap/Col";
 
 const WorkProjectPage = ({ data, children }) => {
   const frontmatter = data.mdx.frontmatter;
-  // const headerImg = getImage(frontmatter.headerImg)
-  const headerImg = frontmatter.headerImg?.publicURL;
+  const headerImg = getImage(frontmatter.headerImg);
 
   const renderHeaderButton = (frontmatter) => {
     let buttonLink;
     let buttonContent;
 
     if (frontmatter.github) {
-      buttonLink = frontmatter.github
-      buttonContent = <>View on GitHub {<GitHubIcon className="ms-2 mb-2" />}</>
+      buttonLink = frontmatter.github;
+      buttonContent = (
+        <>View on GitHub {<GitHubIcon className="ms-2 mb-2" />}</>
+      );
     } else {
-      buttonLink = frontmatter.altLink.to
-      buttonContent = frontmatter.altLink.name
+      buttonLink = frontmatter.altLink.to;
+      buttonContent = frontmatter.altLink.name;
     }
 
     return (
@@ -39,12 +40,10 @@ const WorkProjectPage = ({ data, children }) => {
 
   return (
     <Layout>
-      {/* <GatsbyImage image={headerImg} alt={frontmatter.name} /> */}
       <Container fluid className="g-0">
-        <HeaderWithBGImg
+        <HeaderWithBG
           title={frontmatter.name}
-          image={headerImg}
-          small={true}
+          imageComponent={<GatsbyImage image={headerImg} loading="eager" alt=""/>}
           children={
             <>
               <p className="work-project-page__lead mx-auto pt-md-2 pb-md-3">
@@ -53,7 +52,7 @@ const WorkProjectPage = ({ data, children }) => {
               {renderHeaderButton(frontmatter)}
             </>
           }
-        ></HeaderWithBGImg>
+        ></HeaderWithBG>
         <Row className="bg--light py-4 g-0">
           <Col xs="11" className="mx-auto">
             <MarkdownLayout>{children}</MarkdownLayout>
@@ -73,9 +72,13 @@ export const query = graphql`
         description
         demo
         headerImg {
-          publicURL
           childImageSharp {
-            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+            gatsbyImageData(
+              quality: 70
+              layout: FULL_WIDTH
+              placeholder: BLURRED
+              formats: [JPG, WEBP, AVIF]
+            )
           }
         }
         github

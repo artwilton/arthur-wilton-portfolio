@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { graphql } from "gatsby";
-import { getImage } from "gatsby-plugin-image";
+import { StaticImage, getImage } from "gatsby-plugin-image";
 import Layout from "../../components/layout";
 import { WorkCard, WorkVideoModal } from "../../components/work";
-import HeaderWithBGImg from "../../components/headerWithBGImg";
-import workBannerImg from "../../media/work/work-banner.webp";
+import HeaderWithBG from "../../components/headerWithBG";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -13,6 +12,20 @@ import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 
 import "../../styles/work.scss";
+
+const WORK_BANNER_IMG = "../../media/work/work-banner.webp";
+
+const renderImageComponent = () => (
+  <StaticImage
+    src={WORK_BANNER_IMG}
+    loading="eager"
+    alt=""
+    placeholder="blurred"
+    formats={["jpg", "webp", "avif"]}
+    layout="fullWidth"
+    quality={65}
+  />
+)
 
 const FILTER_MAP = {
   All: () => true,
@@ -88,7 +101,10 @@ const WorkPage = ({ location, data }) => {
         video={video}
       />
       <Container fluid className="g-0">
-        <HeaderWithBGImg title="My Work" image={workBannerImg} />
+        <HeaderWithBG
+          title="My Work"
+          imageComponent={renderImageComponent()}
+        />
         <Row className="bg--light px-2 py-4 py-md-5 justify-content-center text-center px-md-5 g-0">
           <Row className="g-0">
             <Col xs="12" className="mx-auto py-md-1 pb-md-2">
@@ -113,7 +129,7 @@ const WorkPage = ({ location, data }) => {
 
 export const query = graphql`
   {
-    work: allMdx(sort: {frontmatter: {date: DESC}}) {
+    work: allMdx(sort: { frontmatter: { date: DESC } }) {
       nodes {
         frontmatter {
           date(formatString: "MMMM D, YYYY")
