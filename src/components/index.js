@@ -1,7 +1,8 @@
 import AdaptiveLink from "./adaptiveLink";
 import ContactAlertModal from "./contactAlertModal";
+import DynamicButton from "./dynamicButton";
 import Footer from "./footer";
-import HeaderWithBGImg from "./headerWithBGImg";
+import HeaderWithBG from "./headerWithBG";
 import Layout from "./layout";
 import Navigation from "./navigation";
 import TitleCard from "./titleCard";
@@ -10,8 +11,9 @@ import VideoJS from "./videoJS";
 export {
   AdaptiveLink,
   ContactAlertModal,
+  DynamicButton,
   Footer,
-  HeaderWithBGImg,
+  HeaderWithBG,
   Layout,
   Navigation,
   TitleCard,
