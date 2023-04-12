@@ -1,10 +1,7 @@
 import { useState, useRef } from "react";
 import { Script } from "gatsby";
-
-import ContactAlertModal from "../components/contactAlertModal";
-import Layout from "../components/layout";
-import HeaderWithBGImg from "../components/headerWithBGImg";
-import contactBannerImg from "../media/contact/contact-banner.jpg";
+import { StaticImage } from "gatsby-plugin-image";
+import { ContactAlertModal, HeaderWithBG, Layout } from "../components";
 
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
@@ -13,6 +10,20 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 import "../styles/contact.scss";
+
+const CONTACT_BANNER_IMG = "../media/contact/contact-banner.webp";
+
+const renderImageComponent = () => (
+  <StaticImage
+    src={CONTACT_BANNER_IMG}
+    loading="eager"
+    alt=""
+    placeholder="blurred"
+    formats={["jpg", "webp", "avif"]}
+    layout="fullWidth"
+    quality={65}
+  />
+)
 
 const ContactPage = () => {
   const [validated, setValidated] = useState(false);
@@ -93,7 +104,11 @@ const ContactPage = () => {
           body={modalBody}
         />
         <Container fluid className="g-0">
-          <HeaderWithBGImg title="Contact Me" image={contactBannerImg} />
+          <HeaderWithBG
+            title="Contact Me"
+            imageComponent={renderImageComponent()}
+          />
+
           <Row className="bg--light pt-4 pb-5 py-md-5 mx-auto gx-0 gx-sm-2">
             <Col xs={1} />
             <Col xs={10} className="contact-form mx-auto">
