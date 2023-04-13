@@ -1,4 +1,5 @@
 import * as React from "react";
+import type { CSSProperties } from "react";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 
 interface ImageWrapperProps {
@@ -7,6 +8,7 @@ interface ImageWrapperProps {
   loading?: "eager" | "lazy";
   className?: string;
   imgClassName?: string;
+  style?: CSSProperties;
 }
 
 const ImageWrapper = ({
@@ -15,10 +17,11 @@ const ImageWrapper = ({
   loading = "lazy",
   className = "",
   imgClassName = "",
+  style = {},
 }: ImageWrapperProps) => {
   if (typeof image === "object") {
     return (
-      <GatsbyImage {...{ image, alt, loading, className, imgClassName }} />
+      <GatsbyImage {...{ image, alt, loading, className, imgClassName, style }} />
     );
   } else {
     return <img src={image} {...{ alt, loading, className }} />;

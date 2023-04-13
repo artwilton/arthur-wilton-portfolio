@@ -92,6 +92,7 @@ module.exports = {
             "fade",
             "show",
             "h5",
+            "header-with-bg-img__title--small",
           ],
         },
       },
