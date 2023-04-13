@@ -107,6 +107,10 @@
       @extend .background-element, .background-element--center-bottom;
     }
   }
+  
+  .gatsby-image-wrapper {
+    position: absolute;
+  }
 }
 
 .bg--dark {
