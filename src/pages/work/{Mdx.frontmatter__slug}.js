@@ -1,8 +1,8 @@
 import { graphql } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { getImage } from "gatsby-plugin-image";
 import MarkdownLayout from "../../components/markdown/markdownLayout";
 import { AdaptiveLink, HeaderWithBG, Layout } from "../../components";
-import { GitHubIcon } from "../../media/icons/social_media";
+import { GitHubIcon } from "../../content/icons/social_media";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -43,7 +43,7 @@ const WorkProjectPage = ({ data, children }) => {
       <Container fluid className="g-0">
         <HeaderWithBG
           title={frontmatter.name}
-          imageComponent={<GatsbyImage image={headerImg} loading="eager" alt=""/>}
+          image={headerImg}
           children={
             <>
               <p className="work-project-page__lead mx-auto pt-md-2 pb-md-3">

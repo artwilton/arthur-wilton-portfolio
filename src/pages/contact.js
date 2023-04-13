@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
-import { Script } from "gatsby";
-import { StaticImage } from "gatsby-plugin-image";
+import { graphql, Script } from "gatsby";
+import { getImage } from "gatsby-plugin-image";
 import { ContactAlertModal, HeaderWithBG, Layout } from "../components";
 
 import Button from "react-bootstrap/Button";
@@ -11,26 +11,14 @@ import Container from "react-bootstrap/Container";
 
 import "../styles/contact.scss";
 
-const CONTACT_BANNER_IMG = "../media/contact/contact-banner.webp";
-
-const renderImageComponent = () => (
-  <StaticImage
-    src={CONTACT_BANNER_IMG}
-    loading="eager"
-    alt=""
-    placeholder="blurred"
-    formats={["jpg", "webp", "avif"]}
-    layout="fullWidth"
-    quality={65}
-  />
-)
-
-const ContactPage = () => {
+const ContactPage = ({ data }) => {
   const [validated, setValidated] = useState(false);
   const [modalSuccess, setModalSuccess] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [modalBody, setModalBody] = useState("");
   const [modalShow, setModalShow] = useState(false);
+
+  const headerImg = getImage(data.header.contactHeader.image)
 
   const form = useRef(null);
 
@@ -106,7 +94,7 @@ const ContactPage = () => {
         <Container fluid className="g-0">
           <HeaderWithBG
             title="Contact Me"
-            imageComponent={renderImageComponent()}
+            image={headerImg}
           />
 
           <Row className="bg--light pt-4 pb-5 py-md-5 mx-auto gx-0 gx-sm-2">
@@ -214,6 +202,26 @@ const ContactPage = () => {
     </>
   );
 };
+
+export const query = graphql`
+{
+  header: contactJson {
+    contactHeader {
+      title
+      image {
+      childImageSharp {
+        gatsbyImageData(
+          quality: 65
+          placeholder: BLURRED
+          formats: [JPG, WEBP, AVIF]
+          layout: FULL_WIDTH
+        )
+      }
+    }
+    }
+  }
+}
+`;
 
 export default ContactPage;
 

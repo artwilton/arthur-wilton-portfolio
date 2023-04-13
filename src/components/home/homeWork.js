@@ -7,28 +7,11 @@ import Col from "react-bootstrap/Col";
 
 import { DynamicButton, TitleCard } from "../../components";
 
-import "../../media/home/index";
-
-const SKILLS_TEXT_ARRAY = [
-  "Python",
-  "JavaScript",
-  "Ruby",
-  "React",
-  "HTML/CSS",
-  "Ruby on Rails",
-  "Shell Scripting",
-  "FFmpeg",
-  "Final Cut Pro",
-  "Premiere Pro",
-  "After Effects",
-];
-
 const HomeWork = () => {
   const data = useStaticQuery(graphql`
     {
-      allTitleCard {
-        nodes {
-          id
+      homeJson {
+        titleCards {
           title
           category
           image {
@@ -42,15 +25,22 @@ const HomeWork = () => {
             }
           }
         }
+        skills
       }
     }
   `);
 
-  const titleCards = data.allTitleCard.nodes.map(
-    ({ id, title, image, category }) => (
-      <Col lg="4" key={id}>
+  const skillsArray = data.homeJson.skills;
+
+  const titleCards = data.homeJson.titleCards.map(
+    ({ title, image, category }) => (
+      <Col lg="4" key={title}>
         <Link to="/work" state={{ fromLink: category }}>
-          <TitleCard title={title} image={getImage(image)} alt="testing alt here"></TitleCard>
+          <TitleCard
+            title={title}
+            image={getImage(image)}
+            alt="testing alt here"
+          ></TitleCard>
         </Link>
       </Col>
     )
@@ -75,7 +65,7 @@ const HomeWork = () => {
             </p>
             <DynamicButton
               to="/work"
-              textArray={SKILLS_TEXT_ARRAY}
+              textArray={skillsArray}
               className="home-work__skills-button btn btn-outline-dark btn-lg btn-block ms-lg-3 mb-3 mt-3 mt-xl-0"
             />
           </Col>
