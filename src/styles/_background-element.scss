@@ -1,5 +1,4 @@
 .background-element {
-  $self: &;
   position: absolute;
   top: 0;
   left: 0;
@@ -9,17 +8,14 @@
   z-index: -2;
 
   &--centered {
-    @extend #{ $self };
     object-position: center center;
   }
 
   &--center-bottom {
-    @extend #{ $self };
     object-position: center bottom;
   }
 
   &--top-left {
-    @extend #{ $self };
     object-position: 10% 5%;
     @include media-breakpoint-down(sm) {
       object-position: 0% 0%;
@@ -27,7 +23,6 @@
   }
 
   &__overlay {
-    @extend #{ $self };
     background-color: black;
     z-index: -1;
   }

@@ -72,8 +72,8 @@
   &__social-media-logo {
     color: $color--light;
     font-size: 1.3rem;
-    padding-left: .3rem;
-    padding-right: .3rem;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
   }
 }
 
@@ -82,7 +82,7 @@
   position: relative;
   color: $color--light;
 
-  &__title { 
+  &__title {
     @include font-smoothing;
     font-weight: 700;
     display: inline-block;
@@ -91,14 +91,21 @@
       @extend #{ $self }__title;
       @include font-size(3.6rem);
       @include media-breakpoint-down(sm) {
-        @include font-size(2.9rem)
+        @include font-size(2.9rem);
       }
     }
   }
 
   &__gradient-overlay {
-    @extend .background-element__overlay;
+    @extend .background-element, .background-element__overlay;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.4), $color--dark);
+  }
+
+  &__img-container {
+    @extend .background-element;
+    img {
+      @extend .background-element, .background-element--center-bottom;
+    }
   }
 }
 
@@ -106,7 +113,7 @@
   background-color: $color--dark;
   color: white;
 }
-  
+
 .bg--light {
   background-color: $color--light;
   color: $color--dark;

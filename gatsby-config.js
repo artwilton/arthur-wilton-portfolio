@@ -13,10 +13,11 @@ module.exports = {
         start_url: `/`,
         background_color: `#f0f0f0`,
         display: "minimal-ui",
-        icon: `src/media/icons/favicon.svg`,
+        icon: `src/content/icons/favicon.svg`,
         legacy: false,
-      }
+      },
     },
+    `gatsby-transformer-json`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
@@ -28,20 +29,31 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 900,
-              quality: 75,
+              quality: 50,
               linkImagesToOriginal: false,
-              showCaptions: ['title'],
+              showCaptions: ["title"],
+              withWebp: true,
+              withAvif: true,
             },
           },
         ],
       },
     },
-       {
+    {
       resolve: "gatsby-source-filesystem",
       options: {
         name: `work`,
         path: `${__dirname}/work`,
-      }
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `content`,
+        path: `${__dirname}/src/content`,
+        ignore: [`**/icons`],
+        fastHash: true,
+      },
     },
     {
       resolve: `gatsby-plugin-sass`,
@@ -52,17 +64,36 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-purgecss',
+      resolve: "gatsby-plugin-purgecss",
       options: {
         printRejected: true,
         develop: true,
         ignore: [
-          'video.js/dist/video-js.css',
-          'src/styles/vjs-custom.scss',
-          'src/styles/markdown.scss',
+          "video.js/dist/video-js.css",
+          "src/styles/vjs-custom.scss",
+          "src/styles/markdown.scss",
         ],
         purgeCSSOptions: {
-          safelist: [/^row/, /^col/, /^container/, /^btn/, /^card/, /^nav/, /^offcanvas/, /^fixed/, /^form/, /^shadow/, /^modal/, /invalid/, "figure", "was-validated", "fade", "show", "h5"],
+          safelist: [
+            /^row/,
+            /^col/,
+            /^container/,
+            /^btn/,
+            /^card/,
+            /^nav/,
+            /^offcanvas/,
+            /^fixed/,
+            /^form/,
+            /^shadow/,
+            /^modal/,
+            /invalid/,
+            "figure",
+            "was-validated",
+            "fade",
+            "show",
+            "h5",
+            "header-with-bg-img__title--small",
+          ],
         },
       },
     },
@@ -70,15 +101,20 @@ module.exports = {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: /icons(\/|\\).*\.svg$/
-        }
-      }
+          include: /icons(\/|\\).*\.svg$/,
+        },
+      },
     },
     {
       resolve: "gatsby-omni-font-loader",
       options: {
         enableListener: true,
-        preconnect: ["https://fonts.googleapis.com", "https://fonts.gstatic.com", "https://use.typekit.net", "https://p.typekit.net"],
+        preconnect: [
+          "https://fonts.googleapis.com",
+          "https://fonts.gstatic.com",
+          "https://use.typekit.net",
+          "https://p.typekit.net",
+        ],
         web: [
           {
             name: "Montserrat",
@@ -90,11 +126,10 @@ module.exports = {
           },
           {
             name: ["europa", "gill-sans-nova"],
-            file: "https://use.typekit.net/phy7oeu.css"
-          }
+            file: "https://use.typekit.net/phy7oeu.css",
+          },
         ],
       },
-    }
+    },
   ],
-  
-}
+};

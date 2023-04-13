@@ -1,10 +1,7 @@
 import { useState, useRef } from "react";
-import { Script } from "gatsby";
-
-import ContactAlertModal from "../components/contactAlertModal";
-import Layout from "../components/layout";
-import HeaderWithBGImg from "../components/headerWithBGImg";
-import contactBannerImg from "../media/contact/contact-banner.jpg";
+import { graphql, Script } from "gatsby";
+import { getImage } from "gatsby-plugin-image";
+import { ContactAlertModal, HeaderWithBG, Layout } from "../components";
 
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
@@ -14,12 +11,14 @@ import Container from "react-bootstrap/Container";
 
 import "../styles/contact.scss";
 
-const ContactPage = () => {
+const ContactPage = ({ data }) => {
   const [validated, setValidated] = useState(false);
   const [modalSuccess, setModalSuccess] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [modalBody, setModalBody] = useState("");
   const [modalShow, setModalShow] = useState(false);
+
+  const headerImg = getImage(data.header.contactHeader.image)
 
   const form = useRef(null);
 
@@ -93,7 +92,11 @@ const ContactPage = () => {
           body={modalBody}
         />
         <Container fluid className="g-0">
-          <HeaderWithBGImg title="Contact Me" image={contactBannerImg} />
+          <HeaderWithBG
+            title="Contact Me"
+            image={headerImg}
+          />
+
           <Row className="bg--light pt-4 pb-5 py-md-5 mx-auto gx-0 gx-sm-2">
             <Col xs={1} />
             <Col xs={10} className="contact-form mx-auto">
@@ -199,6 +202,26 @@ const ContactPage = () => {
     </>
   );
 };
+
+export const query = graphql`
+{
+  header: contactJson {
+    contactHeader {
+      title
+      image {
+      childImageSharp {
+        gatsbyImageData(
+          quality: 65
+          placeholder: BLURRED
+          formats: [JPG, WEBP, AVIF]
+          layout: FULL_WIDTH
+        )
+      }
+    }
+    }
+  }
+}
+`;
 
 export default ContactPage;
 

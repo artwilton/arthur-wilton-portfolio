@@ -1,5 +1,6 @@
 import AdaptiveLink from "../components/adaptiveLink";
 import Layout from "../components/layout";
+import { StaticImage } from "gatsby-plugin-image"
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -7,7 +8,6 @@ import Col from "react-bootstrap/Col";
 
 import "../styles/about.scss"
 
-import aboutBannerImg from "../media/about/about-banner.jpg";
 import {
   BashIcon,
   HTML5Icon,
@@ -20,7 +20,7 @@ import {
   RubyIcon,
   SassIcon,
   SeleniumIcon,
-} from "../media/icons/software";
+} from "../content/icons/software";
 
 import {
   AdobeAfterEffectsIcon,
@@ -29,7 +29,9 @@ import {
   AdobePremiereProIcon,
   AppleCompressorIcon,
   AppleFinalCutProIcon, AvidIcon, CatDVIcon, DavinciResolveIcon, FFmpegIcon, MochaIcon, StorageDNAIcon
-} from "../media/icons/video";
+} from "../content/icons/video";
+
+const ABOUT_BANNER_IMG = "../content/about/media/about-banner.webp"
 
 const SOFTWARE_SKILLS = [
   { nameFull: "HTML / CSS", SVGComp: HTML5Icon },
@@ -105,11 +107,18 @@ const AboutPage = () => {
       <Container fluid className="g-0">
         <Row className="about-banner pt-3 pe-md-0 pb-md-5 g-0 pb-3">
           <div className="about-banner__gradient-overlay"></div>
-          <img
-            className="img-fluid background-element--top-left"
-            src={aboutBannerImg}
-            alt="Arthur in foreground with a blue and orange sky in the background."
-          ></img>
+          <StaticImage
+            loading="eager"
+            style={{position: "absolute"}}
+            className="background-element"
+            imgClassName="background-element--top-left"
+            src={ABOUT_BANNER_IMG}
+            alt=""
+            placeholder="blurred"
+            formats={["jpg", "webp", "avif"]}
+            layout="fullWidth"
+            quality={75}
+          />
           <Col xs="1" sm="5" />
           <Col xs="10" sm="6" className="mt-20 my-sm-auto">
             <div className="text-start mt-5">
@@ -137,8 +146,8 @@ const AboutPage = () => {
             <Row className="mt-3 mb-3 mb-sm-5">
               <Col className="col-auto mx-md-0">
                 <AdaptiveLink
-                to={'/arthur-wilton-resume.pdf'}
-                className="about-banner__button mt-2 btn btn-light shadow-none"
+                  to={"/arthur-wilton-resume.pdf"}
+                  className="about-banner__button mt-2 btn btn-light shadow-none"
                 >
                   View My Resume
                 </AdaptiveLink>
@@ -161,8 +170,9 @@ const AboutPage = () => {
             <h3>Software Development</h3>
             <p className="about-skills-section__description lead mt-3">
               {" "}
-              Whether it's writing front-end or back-end code, automating tasks with shell scripts, or building
-              PCs, I love solving problems using technology.
+              Whether it's writing front-end or back-end code, automating tasks
+              with shell scripts, or building PCs, I love solving problems using
+              technology.
             </p>
             <AdaptiveLink
               to="/work"
@@ -189,7 +199,10 @@ const AboutPage = () => {
             <h3>Video Production</h3>
             <p className="about-skills-section__description lead mt-3">
               {" "}
-              With a background in Editing and Media Asset Management, I've worked across a variety of industries from Advertising to Film and Television. My skills also include Color Correction, VFX, Motion Graphics, and Camera Operation.
+              With a background in Editing and Media Asset Management, I've
+              worked across a variety of industries from Advertising to Film and
+              Television. My skills also include Color Correction, VFX, Motion
+              Graphics, and Camera Operation.
             </p>
             <AdaptiveLink
               to="/work"

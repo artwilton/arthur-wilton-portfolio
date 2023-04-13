@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { graphql } from "gatsby";
+import { getImage } from "gatsby-plugin-image";
 import Layout from "../../components/layout";
 import { WorkCard, WorkVideoModal } from "../../components/work";
-import HeaderWithBGImg from "../../components/headerWithBGImg";
-import workBannerImg from "../../media/work/work-banner.jpg";
+import HeaderWithBG from "../../components/headerWithBG";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -26,6 +26,9 @@ const WorkPage = ({ location, data }) => {
   const [modalShow, setModalShow] = useState(false);
   const [video, setVideo] = useState("");
   const [filter, setFilter] = useState(location.state?.fromLink ?? "All");
+
+  const headerTitle = data.header.workHeader.title
+  const bannerImage = getImage(data.header.workHeader.image)
 
   const demoCallback = (video) => {
     setVideo(video);
@@ -71,8 +74,7 @@ const WorkPage = ({ location, data }) => {
             description={description ?? "Project Description"}
             category={category}
             link={`/work/${slug ?? ""}`}
-            imgSource={cardImg?.publicURL}
-            imgAlt={cardImg?.alt ?? "Project Icon"}
+            image={getImage(cardImg)}
             altLinkTo={altLink?.to}
             altLinkName={altLink?.name ?? "Project Demo"}
           ></WorkCard>
@@ -88,7 +90,7 @@ const WorkPage = ({ location, data }) => {
         video={video}
       />
       <Container fluid className="g-0">
-        <HeaderWithBGImg title="My Work" image={workBannerImg} />
+        <HeaderWithBG title={headerTitle} image={bannerImage} />
         <Row className="bg--light px-2 py-4 py-md-5 justify-content-center text-center px-md-5 g-0">
           <Row className="g-0">
             <Col xs="12" className="mx-auto py-md-1 pb-md-2">
@@ -112,32 +114,50 @@ const WorkPage = ({ location, data }) => {
 };
 
 export const query = graphql`
-  {
-    work: allMdx(sort: {frontmatter: {date: DESC}}) {
-      nodes {
-        frontmatter {
-          date(formatString: "MMMM D, YYYY")
-          name
-          category
-          description
-          demo
-          cardImg {
-            publicURL
-            childImageSharp {
-              gatsbyImageData
-            }
-          }
-          altLink {
-            to
-            name
-          }
-          tags
-          slug
-        }
-        id
+{
+  header: workJson {
+    workHeader {
+      title
+      image {
+      childImageSharp {
+        gatsbyImageData(
+          quality: 65
+          placeholder: BLURRED
+          formats: [JPG, WEBP, AVIF]
+          layout: FULL_WIDTH
+        )
       }
     }
+    }
   }
+  work: allMdx(sort: { frontmatter: { date: DESC } }) {
+    nodes {
+      frontmatter {
+        date(formatString: "MMMM D, YYYY")
+        name
+        category
+        description
+        demo
+        cardImg {
+          childImageSharp {
+            gatsbyImageData(
+              quality: 65
+              placeholder: BLURRED
+              formats: [JPG, WEBP, AVIF]
+            )
+          }
+        }
+        altLink {
+          to
+          name
+        }
+        tags
+        slug
+      }
+      id
+    }
+  }
+}
 `;
 
 export default WorkPage;

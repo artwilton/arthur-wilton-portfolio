@@ -1,10 +1,12 @@
 import { Link } from "gatsby";
 
+import { ImageWrapper } from "../../components"
+
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import { featuredProject01 } from "../../media/home";
+import { featuredProject01 } from "../../content/home/media";
 
 const HomeFeatured = () => {
   const renderProjectButton = (additionalClassInfo) => (
@@ -38,10 +40,10 @@ const HomeFeatured = () => {
             {renderProjectButton("d-none d-md-inline-block")}
           </Col>
           <Col md="5" lg="4" className="my-auto">
-            <img
-              className="home-featured__image shadow-lg ps-md-4 ps-lg-5 d-block mx-auto mb-4 mb-md-5 mt-md-5"
-              src={featuredProject01}
+            <ImageWrapper
+              image={featuredProject01}
               alt="PIM Project"
+              className="home-featured__image shadow-lg ps-md-4 ps-lg-5 d-block mx-auto mb-4 mb-md-5 mt-md-5"
             />
             {renderProjectButton("d-md-none mx-auto d-block")}
           </Col>

@@ -1,0 +1,36 @@
+{
+  "titleCards": [
+    {
+      "title": "SOFTWARE DEVELOPMENT",
+      "image": "./media/work-dev-bg.webp",
+      "category": "Software"
+    },
+    {
+      "title": "VIDEO PRODUCTION",
+      "image": "./media/work-video-bg.webp",
+      "category": "Video"
+    },
+    {
+      "title": "CREATIVE PROJECTS",
+      "image": "./media/work-creative-bg.webp",
+      "category": "Creative"
+    }
+  ],
+  "skills": [
+    "Python",
+    "JavaScript",
+    "Ruby",
+    "React",
+    "HTML/CSS",
+    "Ruby on Rails",
+    "Shell Scripting",
+    "FFmpeg",
+    "Final Cut Pro",
+    "Premiere Pro",
+    "After Effects"
+  ],
+  "homeAboutImg": {
+    "image": "./media/about-photo-with-dog-4x5.webp",
+    "alt": "Arthur holding a cute dog"
+  }
+}

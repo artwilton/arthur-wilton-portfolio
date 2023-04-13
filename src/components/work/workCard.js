@@ -1,10 +1,12 @@
+import { GatsbyImage } from "gatsby-plugin-image";
+
 import AdaptiveLink from "../adaptiveLink";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-import { PlayIcon } from "../../media/icons/generic";
+import { PlayIcon } from "../../content/icons/generic";
 
 const WorkCard = ({
   name,
@@ -13,15 +15,22 @@ const WorkCard = ({
   demo,
   demoCallback,
   tags,
-  imgSource,
-  imgAlt,
+  image,
   altLinkTo,
   altLinkName,
 }) => {
   return (
     <Card className="work-card text-start border-0 shadow-light h-100">
       <AdaptiveLink to={link}>
-        <Card.Img className="work-card__image" src={imgSource} alt={imgAlt}/>
+        <GatsbyImage
+          // fix for translateZ(0) issue in Firefox
+          // reference - https://github.com/gatsbyjs/gatsby/pull/31905
+          imgStyle={{"-moz-transform": "none"}}
+          className="card-img work-card__image"
+          image={image}
+          alt=""
+        >
+        </GatsbyImage>
       </AdaptiveLink>
       <Card.Body className="work-card-body d-flex flex-column">
         <div>
