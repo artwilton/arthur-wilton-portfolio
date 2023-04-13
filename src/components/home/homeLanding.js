@@ -6,10 +6,10 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import { landingDefaultBGStill, landingDefaultBG } from "../../media/home";
+import { landingDefaultBGStill, landingDefaultBG } from "../../content/home/media";
 
 // Re-enable when Work, About, and Blog videos are all prepared
-// import { landingAboutBG } from "../../media/home";
+// import { landingAboutBG } from "../../content/home/media";
 
 
 const HomeLanding = () => {

@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import { featuredProject01 } from "../../media/home";
+import { featuredProject01 } from "../../content/home/media";
 
 const HomeFeatured = () => {
   const renderProjectButton = (additionalClassInfo) => (

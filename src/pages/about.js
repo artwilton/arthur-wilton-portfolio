@@ -20,7 +20,7 @@ import {
   RubyIcon,
   SassIcon,
   SeleniumIcon,
-} from "../media/icons/software";
+} from "../content/icons/software";
 
 import {
   AdobeAfterEffectsIcon,
@@ -29,9 +29,9 @@ import {
   AdobePremiereProIcon,
   AppleCompressorIcon,
   AppleFinalCutProIcon, AvidIcon, CatDVIcon, DavinciResolveIcon, FFmpegIcon, MochaIcon, StorageDNAIcon
-} from "../media/icons/video";
+} from "../content/icons/video";
 
-const ABOUT_BANNER_IMG = "../media/about/about-banner.webp"
+const ABOUT_BANNER_IMG = "../content/about/media/about-banner.webp"
 
 const SOFTWARE_SKILLS = [
   { nameFull: "HTML / CSS", SVGComp: HTML5Icon },

@@ -1,7 +1,7 @@
 import Navigation from "./navigation";
 import Footer from "./footer";
-import { GitHubIcon, LinkedInIcon, BehanceIcon } from "../media/icons/social_media";
-import { AWLogo } from "../media/icons/generic";
+import { GitHubIcon, LinkedInIcon, BehanceIcon } from "../content/icons/social_media";
+import { AWLogo } from "../content/icons/generic";
 import "../styles/layout.scss";
 
 const NAV_LINKS = [

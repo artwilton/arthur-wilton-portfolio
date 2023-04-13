@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { CheckCircle, ExclamationCircle } from "../media/icons/generic";
+import { CheckCircle, ExclamationCircle } from "../content/icons/generic";
 
 const ContactAlertModal = ({ onHide, show, success, title, body }) => {
   
