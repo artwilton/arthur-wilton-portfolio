@@ -28,5 +28,9 @@
     "Final Cut Pro",
     "Premiere Pro",
     "After Effects"
-  ]
+  ],
+  "homeAboutImg": {
+    "image": "./media/about-photo-with-dog-4x5.webp",
+    "alt": "Arthur holding a cute dog"
+  }
 }
