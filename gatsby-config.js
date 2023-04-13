@@ -13,16 +13,11 @@ module.exports = {
         start_url: `/`,
         background_color: `#f0f0f0`,
         display: "minimal-ui",
-        icon: `src/media/icons/favicon.svg`,
+        icon: `src/content/icons/favicon.svg`,
         legacy: false,
       },
     },
-    {
-    resolve: `gatsby-transformer-json`,
-      options: {
-        typeName: ({ node, object, isArray }) => object.type,
-      },
-    },
+    `gatsby-transformer-json`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
@@ -54,8 +49,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `media`,
-        path: `${__dirname}/src/media`,
+        name: `content`,
+        path: `${__dirname}/src/content`,
         ignore: [`**/icons`],
         fastHash: true,
       },
